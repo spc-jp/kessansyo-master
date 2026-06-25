@@ -636,6 +636,244 @@
     .compare-table { font-size: 12px; }
   }
 
+  /* ===== TOP BAR ===== */
+  .top-bar {
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .top-bar-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+  .top-bar-logo span { color: rgba(255,255,255,0.5); font-size: 11px; margin-left: 8px; font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
+  .top-bar-btns { display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    font-family: sans-serif;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.2); }
+  .icon-btn.how { font-size: 13px; font-weight: 700; width: auto; padding: 0 14px; letter-spacing: 0.5px; }
+
+  /* ===== OVERLAY PANEL ===== */
+  .overlay-bg {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    animation: fadeInBg 0.2s ease;
+  }
+  .overlay-bg.show { display: block; }
+  @keyframes fadeInBg { from{opacity:0} to{opacity:1} }
+
+  .side-panel {
+    position: fixed;
+    top: 0; right: -420px;
+    width: min(420px, 95vw);
+    height: 100vh;
+    background: white;
+    z-index: 300;
+    overflow-y: auto;
+    transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  }
+  .side-panel.open { right: 0; }
+
+  .how-panel {
+    position: fixed;
+    top: 0; left: -420px;
+    width: min(420px, 95vw);
+    height: 100vh;
+    background: white;
+    z-index: 300;
+    overflow-y: auto;
+    transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+  }
+  .how-panel.open { left: 0; }
+
+  .panel-header {
+    background: var(--navy);
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0;
+  }
+  .panel-header h2 { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; }
+  .panel-close {
+    background: rgba(255,255,255,0.15);
+    border: none; border-radius: 8px;
+    color: white; font-size: 20px;
+    width: 36px; height: 36px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .panel-close:hover { background: rgba(255,255,255,0.25); }
+  .panel-body { padding: 24px; }
+
+  /* ===== SETTINGS STYLES ===== */
+  .setting-section { margin-bottom: 28px; }
+  .setting-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .setting-group {
+    background: #f8fafc;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+  .setting-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 12px;
+  }
+  .setting-row:last-child { border-bottom: none; }
+  .setting-row-icon { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
+  .setting-row-info { flex: 1; }
+  .setting-row-info .s-title { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .setting-row-info .s-desc { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+  .setting-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: 6px;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .setting-input:focus { outline: none; border-color: var(--gold); }
+  .setting-save-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .setting-save-btn:hover { background: #b8851a; }
+  .setting-reset-btn {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    color: var(--text-light);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: 8px;
+  }
+  .saved-toast {
+    display: none;
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .saved-toast.show { display: block; animation: fadeIn 0.3s ease; }
+
+  /* ===== HOW-TO STYLES ===== */
+  .how-hero {
+    background: linear-gradient(135deg, #1a2744, #2d4a8a);
+    color: white;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .how-hero .big-icon { font-size: 48px; margin-bottom: 12px; display: block; }
+  .how-hero h3 { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--gold-light); }
+  .how-hero p { font-size: 13px; opacity: 0.85; line-height: 1.8; }
+  .how-purpose {
+    background: #fffbeb;
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+  .how-purpose strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 15px; }
+  .how-step-list { list-style: none; margin: 0; }
+  .how-step-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f3f4f6;
+    align-items: flex-start;
+  }
+  .how-step-item:last-child { border-bottom: none; }
+  .how-step-num {
+    width: 28px; height: 28px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .how-step-content .hs-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 3px; }
+  .how-step-content .hs-desc { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .how-contact-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .how-contact-box p { font-size: 13px; opacity: 0.85; margin-bottom: 14px; line-height: 1.8; }
+  .contact-link-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .contact-link-btn:hover { background: var(--gold-light); }
+  .how-tag { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 6px; padding: 2px 8px; font-size: 11px; margin-top: 4px; }
+
   /* ===== CASH DIAGRAM ===== */
   .cash-diagram {
     display: flex;
@@ -664,6 +902,193 @@
 </style>
 </head>
 <body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-logo" id="topBarTitle">決算書マスター <span id="topBarOrg"></span></div>
+  <div class="top-bar-btns">
+    <button class="icon-btn how" onclick="openHow()" title="使い方を見る">📖 使い方</button>
+    <button class="icon-btn" onclick="openSettings()" title="設定">⚙️</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay-bg" id="overlayBg" onclick="closeAll()"></div>
+
+<!-- 使い方パネル（左からスライド） -->
+<div class="how-panel" id="howPanel">
+  <div class="panel-header">
+    <h2>📖 使い方ガイド</h2>
+    <button class="panel-close" onclick="closeAll()">✕</button>
+  </div>
+  <div class="how-hero">
+    <span class="big-icon">🏆</span>
+    <h3>決算書マスター</h3>
+    <p>税理士に丸投げしない。<br>数字で会社を守る経営者になるための<br>5ステップ完全学習ツールです。</p>
+  </div>
+  <div class="panel-body">
+
+    <div class="how-purpose">
+      <strong>🎯 このアプリの目的</strong>
+      決算書の「貸借対照表（BS）」と「損益計算書（PL）」を、経営者が自分の言葉で語れるようになること。
+      税理士・銀行担当者と対等に数字で話せる経営者を目指します。
+      専門用語を日常の言葉に置き換えて、ビジュアルで直感的に理解できる設計です。
+    </div>
+
+    <div class="setting-label">使い方ステップ</div>
+    <ul class="how-step-list">
+      <li class="how-step-item">
+        <div class="how-step-num">1</div>
+        <div class="how-step-content">
+          <div class="hs-title">① 全体像を把握する</div>
+          <div class="hs-desc">まずステップ1で「決算書が何のためにあるか」を学びます。BSとPLの違い、「なぜ読めないと損するか」を3つの場面で確認しましょう。</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">2</div>
+        <div class="how-step-content">
+          <div class="hs-title">② 貸借対照表（BS）を読む</div>
+          <div class="hs-desc">左側（資産）と右側（負債＋純資産）をビジュアル図解で確認します。「流動比率」の計算で自社の安全性をチェックする方法を学べます。</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">3</div>
+        <div class="how-step-content">
+          <div class="hs-title">③ 損益計算書（PL）の5つの利益</div>
+          <div class="hs-desc">棒グラフをクリックすると各利益の詳細が展開されます。「経常利益」がなぜ最重要なのか、ラーメン屋の例えで直感的に理解できます。</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">4</div>
+        <div class="how-step-content">
+          <div class="hs-title">④ 経営指標メーターを確認する</div>
+          <div class="hs-desc">5つの指標カードをクリックすると計算式・業種別目安・判定が表示されます。「利益が出ているのに現金がない」謎もここで解決します。</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">5</div>
+        <div class="how-step-content">
+          <div class="hs-title">⑤ アクションプランを実行する</div>
+          <div class="hs-desc">3ヶ月ロードマップとチェックリストで「今週から何をするか」を明確にします。全部チェックしたら修了証を受け取りましょう！</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">💡</div>
+        <div class="how-step-content">
+          <div class="hs-title">各ステップのクイズに答える</div>
+          <div class="hs-desc">各ステップの末尾に確認クイズがあります。正解・不正解どちらでも解説が表示されます。間違えても大丈夫！繰り返し学べます。</div>
+        </div>
+      </li>
+      <li class="how-step-item">
+        <div class="how-step-num">💡</div>
+        <div class="how-step-content">
+          <div class="hs-title">何度でも復習できます</div>
+          <div class="hs-desc">修了後の「もう一度最初から」ボタンで全リセットできます。毎年の決算後に見直す習慣にするのがおすすめです。</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="how-contact-box" id="howContactBox" style="display:none;">
+      <p id="howContactText">数字のことで気になることがあれば、<br>お気軽にご相談ください。</p>
+      <a href="#" id="howContactLink" class="contact-link-btn" target="_blank">📞 無料相談・お問い合わせ</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 設定パネル（右からスライド） -->
+<div class="side-panel" id="settingsPanel">
+  <div class="panel-header">
+    <h2>⚙️ カスタマイズ設定</h2>
+    <button class="panel-close" onclick="closeAll()">✕</button>
+  </div>
+  <div class="panel-body">
+
+    <div class="setting-section">
+      <span class="setting-label">🏢 事務所・会社情報</span>
+      <div class="setting-group">
+        <div class="setting-row">
+          <div class="setting-row-icon">🏢</div>
+          <div class="setting-row-info">
+            <div class="s-title">事務所・会社名</div>
+            <div class="s-desc">ヘッダーに表示されます</div>
+            <input type="text" class="setting-input" id="setOrgName" placeholder="例：○○税理士事務所" maxlength="30">
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row-icon">📝</div>
+          <div class="setting-row-info">
+            <div class="s-title">アプリタイトル</div>
+            <div class="s-desc">ヘッダーのメインタイトルを変更</div>
+            <input type="text" class="setting-input" id="setAppTitle" placeholder="例：決算書マスター" maxlength="20">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-section">
+      <span class="setting-label">🔗 お問い合わせ設定</span>
+      <div class="setting-group">
+        <div class="setting-row">
+          <div class="setting-row-icon">🌐</div>
+          <div class="setting-row-info">
+            <div class="s-title">お問い合わせURL</div>
+            <div class="s-desc">使い方パネルのボタンに反映されます</div>
+            <input type="url" class="setting-input" id="setContactUrl" placeholder="https://your-office.com/contact">
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row-icon">💬</div>
+          <div class="setting-row-info">
+            <div class="s-title">お問い合わせボタンのテキスト</div>
+            <div class="s-desc">ボタンの文言をカスタマイズ</div>
+            <input type="text" class="setting-input" id="setContactText" placeholder="例：無料相談はこちら" maxlength="20">
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row-icon">📄</div>
+          <div class="setting-row-info">
+            <div class="s-title">お問い合わせ案内文</div>
+            <div class="s-desc">ボタン上部に表示するメッセージ</div>
+            <input type="text" class="setting-input" id="setContactMsg" placeholder="例：数字のことはお気軽にご相談ください。" maxlength="50">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-section">
+      <span class="setting-label">🎨 カラーテーマ</span>
+      <div class="setting-group">
+        <div class="setting-row" style="flex-wrap:wrap;gap:10px;">
+          <div class="setting-row-icon">🎨</div>
+          <div class="setting-row-info">
+            <div class="s-title">メインカラー</div>
+            <div class="s-desc">ボタン・アクセントカラー</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;width:100%;padding-left:40px;">
+            <button onclick="setTheme('#c8962a','#1a2744')" style="width:36px;height:36px;border-radius:50%;background:#c8962a;border:3px solid white;box-shadow:0 0 0 2px #c8962a;cursor:pointer;" title="ゴールド（デフォルト）"></button>
+            <button onclick="setTheme('#1d4ed8','#0f2060')" style="width:36px;height:36px;border-radius:50%;background:#1d4ed8;border:3px solid white;box-shadow:0 0 0 2px #1d4ed8;cursor:pointer;" title="ブルー"></button>
+            <button onclick="setTheme('#059669','#064e3b')" style="width:36px;height:36px;border-radius:50%;background:#059669;border:3px solid white;box-shadow:0 0 0 2px #059669;cursor:pointer;" title="グリーン"></button>
+            <button onclick="setTheme('#7c3aed','#3b0764')" style="width:36px;height:36px;border-radius:50%;background:#7c3aed;border:3px solid white;box-shadow:0 0 0 2px #7c3aed;cursor:pointer;" title="パープル"></button>
+            <button onclick="setTheme('#dc2626','#7f1d1d')" style="width:36px;height:36px;border-radius:50%;background:#dc2626;border:3px solid white;box-shadow:0 0 0 2px #dc2626;cursor:pointer;" title="レッド"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="setting-save-btn" onclick="saveSettings()">💾 設定を保存する</button>
+    <button class="setting-reset-btn" onclick="resetSettings()">🔄 デフォルトに戻す</button>
+    <div class="saved-toast" id="savedToast">✅ 設定を保存しました！</div>
+
+    <div style="margin-top:24px;padding:16px;background:#f8fafc;border-radius:10px;font-size:12px;color:var(--text-light);line-height:1.9;">
+      💡 <strong>設定のヒント</strong><br>
+      設定はブラウザに保存されます（localStorage）。<br>
+      税理士事務所様がご利用の場合は、事務所名とお問い合わせURLを設定しておくと、顧問先への配布ツールとして活用できます。<br>
+      URLはhttps://から始まる形式で入力してください。
+    </div>
+
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -1248,6 +1673,121 @@
 </div><!-- /container -->
 
 <script>
+  // ===== SETTINGS & PANELS =====
+  const STORAGE_KEY = 'kessan_master_settings';
+
+  function loadSettings() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const s = JSON.parse(raw);
+      if (s.orgName) {
+        document.getElementById('setOrgName').value = s.orgName;
+        document.getElementById('topBarOrg').textContent = s.orgName;
+      }
+      if (s.appTitle) {
+        document.getElementById('setAppTitle').value = s.appTitle;
+        document.getElementById('topBarTitle').childNodes[0].textContent = s.appTitle + ' ';
+      }
+      if (s.contactUrl) {
+        document.getElementById('setContactUrl').value = s.contactUrl;
+        document.getElementById('howContactLink').href = s.contactUrl;
+        document.getElementById('howContactBox').style.display = 'block';
+      }
+      if (s.contactText) {
+        document.getElementById('setContactText').value = s.contactText;
+        document.getElementById('howContactLink').textContent = '📞 ' + s.contactText;
+      }
+      if (s.contactMsg) {
+        document.getElementById('setContactMsg').value = s.contactMsg;
+        document.getElementById('howContactText').textContent = s.contactMsg;
+      }
+      if (s.gold) {
+        document.documentElement.style.setProperty('--gold', s.gold);
+        document.documentElement.style.setProperty('--gold-light', s.goldLight || s.gold);
+        document.documentElement.style.setProperty('--navy', s.navy || '#1a2744');
+      }
+    } catch(e) {}
+  }
+
+  function saveSettings() {
+    const orgName = document.getElementById('setOrgName').value.trim();
+    const appTitle = document.getElementById('setAppTitle').value.trim();
+    const contactUrl = document.getElementById('setContactUrl').value.trim();
+    const contactText = document.getElementById('setContactText').value.trim();
+    const contactMsg = document.getElementById('setContactMsg').value.trim();
+
+    const s = {
+      orgName, appTitle, contactUrl, contactText, contactMsg,
+      gold: getComputedStyle(document.documentElement).getPropertyValue('--gold').trim(),
+      goldLight: getComputedStyle(document.documentElement).getPropertyValue('--gold-light').trim(),
+      navy: getComputedStyle(document.documentElement).getPropertyValue('--navy').trim()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+
+    // 即時反映
+    if (orgName) document.getElementById('topBarOrg').textContent = orgName;
+    if (appTitle) document.getElementById('topBarTitle').childNodes[0].textContent = appTitle + ' ';
+    if (contactUrl) {
+      document.getElementById('howContactLink').href = contactUrl;
+      document.getElementById('howContactBox').style.display = 'block';
+    }
+    if (contactText) document.getElementById('howContactLink').textContent = '📞 ' + contactText;
+    if (contactMsg) document.getElementById('howContactText').textContent = contactMsg;
+
+    const toast = document.getElementById('savedToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  function resetSettings() {
+    if (!confirm('設定をデフォルトに戻しますか？')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById('setOrgName').value = '';
+    document.getElementById('setAppTitle').value = '';
+    document.getElementById('setContactUrl').value = '';
+    document.getElementById('setContactText').value = '';
+    document.getElementById('setContactMsg').value = '';
+    document.getElementById('topBarOrg').textContent = '';
+    document.getElementById('topBarTitle').childNodes[0].textContent = '決算書マスター ';
+    document.getElementById('howContactBox').style.display = 'none';
+    document.documentElement.style.setProperty('--gold', '#c8962a');
+    document.documentElement.style.setProperty('--gold-light', '#f0c040');
+    document.documentElement.style.setProperty('--navy', '#1a2744');
+    const toast = document.getElementById('savedToast');
+    toast.textContent = '🔄 デフォルトに戻しました';
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); toast.textContent = '✅ 設定を保存しました！'; }, 2000);
+  }
+
+  function setTheme(gold, navy) {
+    document.documentElement.style.setProperty('--gold', gold);
+    document.documentElement.style.setProperty('--gold-light', gold);
+    document.documentElement.style.setProperty('--navy', navy);
+  }
+
+  function openSettings() {
+    document.getElementById('settingsPanel').classList.add('open');
+    document.getElementById('overlayBg').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openHow() {
+    document.getElementById('howPanel').classList.add('open');
+    document.getElementById('overlayBg').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAll() {
+    document.getElementById('settingsPanel').classList.remove('open');
+    document.getElementById('howPanel').classList.remove('open');
+    document.getElementById('overlayBg').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', loadSettings);
+
+  // ===== MAIN APP =====
   let currentStep = 1;
   const totalSteps = 5;
   const completedSteps = new Set();
