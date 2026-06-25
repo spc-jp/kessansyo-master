@@ -876,6 +876,102 @@
   .contact-link-btn:hover { background: var(--gold-light); }
   .how-tag { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 6px; padding: 2px 8px; font-size: 11px; margin-top: 4px; }
 
+  /* ===== TRIAL / PASSWORD OVERLAY ===== */
+  .trial-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,18,40,0.97);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .trial-overlay.show { display: flex; }
+  .trial-box {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 32px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn {
+    from { opacity:0; transform: scale(0.85) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .trial-icon { font-size: 56px; margin-bottom: 16px; display: block; }
+  .trial-box h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--navy); margin-bottom: 10px;
+  }
+  .trial-box p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+  .trial-count-wrap {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 24px;
+  }
+  .trial-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #e5e7eb; border: 2px solid #d1d5db;
+    transition: all 0.3s;
+  }
+  .trial-dot.used { background: var(--gold); border-color: var(--gold); }
+  .trial-dot.remaining { background: #d1fae5; border-color: #16a34a; }
+  .trial-remaining-text {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .trial-remaining-text span { color: var(--gold); font-size: 22px; }
+  .trial-start-btn {
+    width: 100%; padding: 16px;
+    background: var(--gold); color: var(--navy);
+    border: none; border-radius: 12px;
+    font-weight: 700; font-size: 16px;
+    cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.2s; margin-bottom: 12px;
+  }
+  .trial-start-btn:hover { background: #b8851a; }
+  .trial-divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 16px 0; color: var(--text-light); font-size: 12px;
+  }
+  .trial-divider::before, .trial-divider::after {
+    content: ''; flex: 1; height: 1px; background: #e5e7eb;
+  }
+  .pw-input {
+    width: 100%; padding: 12px 16px;
+    border: 2px solid #e5e7eb; border-radius: 10px;
+    font-size: 16px; text-align: center; letter-spacing: 3px;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-bottom: 10px; transition: border-color 0.2s;
+  }
+  .pw-input:focus { outline: none; border-color: var(--gold); }
+  .pw-input.error { border-color: var(--red); animation: shake 0.4s ease; }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-8px)}
+    75%{transform:translateX(8px)}
+  }
+  .pw-submit-btn {
+    width: 100%; padding: 13px;
+    background: var(--navy); color: white;
+    border: none; border-radius: 10px;
+    font-weight: 700; font-size: 14px;
+    cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.2s;
+  }
+  .pw-submit-btn:hover { background: #0f1a30; }
+  .pw-error-msg {
+    color: var(--red); font-size: 13px;
+    margin-top: 8px; display: none;
+  }
+  .pw-error-msg.show { display: block; }
+  .trial-purchase-note {
+    margin-top: 16px; font-size: 12px; color: var(--text-light); line-height: 1.8;
+  }
+  .trial-purchase-note a { color: var(--gold); text-decoration: none; font-weight: 700; }
+
   /* ===== CASH DIAGRAM ===== */
   .cash-diagram {
     display: flex;
@@ -904,6 +1000,45 @@
 </style>
 </head>
 <body>
+
+<!-- ===== TRIAL / PASSWORD OVERLAY ===== -->
+<div class="trial-overlay" id="trialOverlay">
+  <div class="trial-box" id="trialBox">
+
+    <!-- 残回数あり：起動画面 -->
+    <div id="trialView">
+      <span class="trial-icon">📊</span>
+      <h2>決算書マスター</h2>
+      <p>税理士に丸投げしない。<br>数字で会社を守る経営者になる<br>5ステップ完全学習ツール</p>
+      <div class="trial-count-wrap" id="trialDots"></div>
+      <div class="trial-remaining-text" id="trialRemText"></div>
+      <button class="trial-start-btn" onclick="startApp()">▶ 学習をスタートする</button>
+      <div class="trial-divider">パスワードをお持ちの方</div>
+      <input type="password" class="pw-input" id="pwInput" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw()">
+      <button class="pw-submit-btn" onclick="checkPw()">🔓 パスワードで解除する</button>
+      <div class="pw-error-msg" id="pwError">パスワードが違います。もう一度お試しください。</div>
+      <div class="trial-purchase-note" id="purchaseNote">
+        今すぐ使い続けたい方は <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank">こちらから購入</a> できます。
+      </div>
+    </div>
+
+    <!-- 回数終了：パスワード要求画面 -->
+    <div id="lockedView" style="display:none;">
+      <span class="trial-icon">🔒</span>
+      <h2>無料体験が終了しました</h2>
+      <p>3回の無料体験をご利用いただきました。<br>続けてご利用いただくには<br>パスワードの入力が必要です。</p>
+      <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank" class="trial-start-btn" style="display:block;text-decoration:none;margin-bottom:16px;">
+        💳 購入してパスワードを取得する
+      </a>
+      <div class="trial-divider">購入済みの方はこちら</div>
+      <input type="password" class="pw-input" id="pwInput2" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw2()">
+      <button class="pw-submit-btn" onclick="checkPw2()">🔓 パスワードで解除する</button>
+      <div class="pw-error-msg" id="pwError2">パスワードが違います。もう一度お試しください。</div>
+      <div class="trial-purchase-note" id="purchaseNote2"></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- TOP BAR -->
 <div class="top-bar">
@@ -1675,6 +1810,89 @@
 </div><!-- /container -->
 
 <script>
+  // ===== TRIAL CONTROL =====
+  const TRIAL_KEY   = 'kessan_trial_count';
+  const UNLOCK_KEY  = 'kessan_unlocked';
+  const CORRECT_PW  = 'kessansyo-2025';
+  const MAX_TRIAL   = 3;
+  const STRIPE_URL  = 'https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z';
+
+  function initTrial() {
+    // すでに解除済みならそのまま
+    if (localStorage.getItem(UNLOCK_KEY) === '1') return;
+
+    const used = parseInt(localStorage.getItem(TRIAL_KEY) || '0');
+
+    // 購入リンクを設定から取得して表示
+    buildPurchaseNote('purchaseNote');
+    buildPurchaseNote('purchaseNote2');
+
+    if (used >= MAX_TRIAL) {
+      // 回数終了 → ロック画面
+      document.getElementById('trialView').style.display  = 'none';
+      document.getElementById('lockedView').style.display = 'block';
+      document.getElementById('trialOverlay').classList.add('show');
+      return;
+    }
+
+    // ドット描画
+    const dots = document.getElementById('trialDots');
+    dots.innerHTML = '';
+    for (let i = 0; i < MAX_TRIAL; i++) {
+      const d = document.createElement('div');
+      d.className = 'trial-dot ' + (i < used ? 'used' : 'remaining');
+      dots.appendChild(d);
+    }
+
+    const rem = MAX_TRIAL - used;
+    document.getElementById('trialRemText').innerHTML =
+      `残り <span>${rem}</span> 回 無料でご利用いただけます`;
+
+    document.getElementById('trialOverlay').classList.add('show');
+  }
+
+  function buildPurchaseNote(elId) {
+    document.getElementById(elId).innerHTML =
+      `続けてご利用いただくには <a href="${STRIPE_URL}" target="_blank">こちらから購入</a> してパスワードを取得してください。`;
+  }
+
+  function startApp() {
+    const used = parseInt(localStorage.getItem(TRIAL_KEY) || '0');
+    localStorage.setItem(TRIAL_KEY, used + 1);
+    document.getElementById('trialOverlay').classList.remove('show');
+  }
+
+  function checkPw() {
+    const val = document.getElementById('pwInput').value.trim();
+    if (val === CORRECT_PW) {
+      unlock();
+    } else {
+      const inp = document.getElementById('pwInput');
+      const err = document.getElementById('pwError');
+      inp.classList.add('error');
+      err.classList.add('show');
+      setTimeout(() => inp.classList.remove('error'), 500);
+    }
+  }
+
+  function checkPw2() {
+    const val = document.getElementById('pwInput2').value.trim();
+    if (val === CORRECT_PW) {
+      unlock();
+    } else {
+      const inp = document.getElementById('pwInput2');
+      const err = document.getElementById('pwError2');
+      inp.classList.add('error');
+      err.classList.add('show');
+      setTimeout(() => inp.classList.remove('error'), 500);
+    }
+  }
+
+  function unlock() {
+    localStorage.setItem(UNLOCK_KEY, '1');
+    document.getElementById('trialOverlay').classList.remove('show');
+  }
+
   // ===== SETTINGS & PANELS =====
   const STORAGE_KEY = 'kessan_master_settings';
 
@@ -1787,7 +2005,10 @@
     document.body.style.overflow = '';
   }
 
-  document.addEventListener('DOMContentLoaded', loadSettings);
+  document.addEventListener('DOMContentLoaded', () => {
+    loadSettings();
+    initTrial();
+  });
 
   // ===== MAIN APP =====
   let currentStep = 1;
