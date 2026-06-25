@@ -6,1298 +6,452 @@
 <title>決算書マスター｜数字を自分の言葉で語れる経営者になる</title>
 <link rel="icon" type="image/png" href="https://spc-jp.github.io/kessansyo-master/favicon.png">
 <link rel="apple-touch-icon" href="https://spc-jp.github.io/kessansyo-master/favicon.png">
-
-<!-- OGP -->
 <meta property="og:title" content="決算書マスター｜数字を自分の言葉で語れる経営者になる">
-<meta property="og:description" content="税理士に丸投げしない。貸借対照表・損益計算書・経営指標を5ステップのビジュアル学習で30分でマスター。中小企業経営者向け無料学習ツール。">
+<meta property="og:description" content="税理士に丸投げしない。貸借対照表・損益計算書・経営指標を5ステップのビジュアル学習でマスター。中小企業経営者向け学習ツール。">
 <meta property="og:image" content="https://spc-jp.github.io/kessansyo-master/ogp.png">
 <meta property="og:url" content="https://spc-jp.github.io/kessansyo-master/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="決算書マスター">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="決算書マスター｜数字を自分の言葉で語れる経営者になる">
-<meta name="twitter:description" content="税理士に丸投げしない。5ステップで決算書を自分の言葉で語れる経営者になる無料学習ツール。">
 <meta name="twitter:image" content="https://spc-jp.github.io/kessansyo-master/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+:root {
+  --navy:#1a2744; --gold:#c8962a; --gold-l:#f0c040;
+  --cream:#fdf8f0; --warm:#f5f0e8;
+  --text:#1a2744; --muted:#6b7280;
+  --green:#16a34a; --red:#dc2626; --blue:#1d4ed8; --purple:#7c3aed;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;}
 
-  :root {
-    --navy: #1a2744;
-    --gold: #c8962a;
-    --gold-light: #f0c040;
-    --cream: #fdf8f0;
-    --warm-gray: #f5f0e8;
-    --text: #1a2744;
-    --text-light: #6b7280;
-    --green: #16a34a;
-    --red: #dc2626;
-    --blue: #1d4ed8;
-    --purple: #7c3aed;
-    --orange: #ea580c;
-  }
+/* TOP BAR */
+.topbar{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:10px 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.topbar-logo{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--gold-l);letter-spacing:1px;}
+.topbar-logo span{color:rgba(255,255,255,.5);font-size:11px;margin-left:8px;font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.topbar-btns{display:flex;gap:8px;}
+.ibtn{background:rgba(255,255,255,.1);border:none;border-radius:8px;color:white;font-size:13px;font-weight:700;padding:0 14px;height:36px;cursor:pointer;transition:.2s;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+.ibtn:hover{background:rgba(255,255,255,.2);}
+.ibtn.gear{font-size:18px;width:36px;padding:0;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* TRIAL OVERLAY */
+.t-overlay{display:none;position:fixed;inset:0;background:rgba(10,18,40,.97);z-index:500;align-items:center;justify-content:center;padding:20px;}
+.t-overlay.show{display:flex;}
+.t-box{background:white;border-radius:24px;padding:36px 28px;max-width:400px;width:100%;text-align:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.t-icon{font-size:52px;margin-bottom:14px;display:block;}
+.t-box h2{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:900;color:var(--navy);margin-bottom:8px;}
+.t-box p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+.t-dots{display:flex;justify-content:center;gap:10px;margin-bottom:16px;}
+.t-dot{width:14px;height:14px;border-radius:50%;background:#e5e7eb;border:2px solid #d1d5db;transition:.3s;}
+.t-dot.used{background:var(--gold);border-color:var(--gold);}
+.t-dot.rem{background:#d1fae5;border-color:var(--green);}
+.t-rem{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:18px;}
+.t-rem span{color:var(--gold);font-size:22px;}
+.t-start{width:100%;padding:15px;background:var(--gold);color:var(--navy);border:none;border-radius:12px;font-weight:700;font-size:16px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-bottom:14px;}
+.t-start:hover{background:#b8851a;}
+.t-div{display:flex;align-items:center;gap:10px;margin:14px 0;color:var(--muted);font-size:12px;}
+.t-div::before,.t-div::after{content:'';flex:1;height:1px;background:#e5e7eb;}
+.pw-in{width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;text-align:center;letter-spacing:3px;font-family:'Noto Sans JP',sans-serif;margin-bottom:10px;transition:.2s;}
+.pw-in:focus{outline:none;border-color:var(--gold);}
+.pw-in.err{border-color:var(--red);animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.pw-btn{width:100%;padding:13px;background:var(--navy);color:white;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.pw-btn:hover{background:#0f1a30;}
+.pw-err{color:var(--red);font-size:12px;margin-top:6px;display:none;}
+.pw-err.show{display:block;}
+.t-note{margin-top:14px;font-size:12px;color:var(--muted);}
+.t-note a{color:var(--gold);font-weight:700;text-decoration:none;}
+.buy-btn{display:block;width:100%;padding:15px;background:var(--gold);color:var(--navy);border:none;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-decoration:none;margin-bottom:14px;}
+.buy-btn:hover{background:#b8851a;}
 
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.7;
-  }
+/* SIDE PANELS */
+.overlay-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;}
+.overlay-bg.show{display:block;}
+.side-r{position:fixed;top:0;right:-420px;width:min(420px,95vw);height:100vh;background:white;z-index:300;overflow-y:auto;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(0,0,0,.15);}
+.side-r.open{right:0;}
+.side-l{position:fixed;top:0;left:-420px;width:min(420px,95vw);height:100vh;background:white;z-index:300;overflow-y:auto;transition:left .35s cubic-bezier(.4,0,.2,1);box-shadow:4px 0 24px rgba(0,0,0,.15);}
+.side-l.open{left:0;}
+.ph{background:var(--navy);color:white;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;}
+.ph h2{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;}
+.pc{background:rgba(255,255,255,.15);border:none;border-radius:8px;color:white;font-size:20px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pb{padding:22px;}
 
-  /* ===== HERO ===== */
-  .hero {
-    background: var(--navy);
-    color: white;
-    padding: 60px 20px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(200,150,42,0.15);
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(200,150,42,0.08);
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(24px, 5vw, 42px);
-    font-weight: 900;
-    line-height: 1.4;
-    margin-bottom: 16px;
-  }
-  .hero h1 span { color: var(--gold-light); }
-  .hero p {
-    font-size: 16px;
-    color: rgba(255,255,255,0.75);
-    max-width: 560px;
-    margin: 0 auto 32px;
-  }
-  .progress-bar-wrap {
-    max-width: 400px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.1);
-    border-radius: 8px;
-    padding: 12px 20px;
-  }
-  .progress-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 8px;
-    text-align: left;
-  }
-  .progress-bar {
-    background: rgba(255,255,255,0.15);
-    border-radius: 4px;
-    height: 8px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: 4px;
-    transition: width 0.6s ease;
-  }
+/* HOW PANEL */
+.how-hero{background:linear-gradient(135deg,var(--navy),#2d4a8a);color:white;padding:24px;text-align:center;}
+.how-hero .bi{font-size:44px;margin-bottom:10px;display:block;}
+.how-hero h3{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;margin-bottom:6px;color:var(--gold-l);}
+.how-hero p{font-size:13px;opacity:.85;line-height:1.8;}
+.purpose-box{background:#fffbeb;border-left:4px solid var(--gold);padding:14px 18px;margin:18px 0;border-radius:0 10px 10px 0;font-size:13px;line-height:1.9;}
+.purpose-box strong{color:var(--navy);display:block;margin-bottom:4px;font-size:14px;}
+.how-steps{list-style:none;}
+.hs-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #f3f4f6;align-items:flex-start;}
+.hs-item:last-child{border-bottom:none;}
+.hs-num{width:26px;height:26px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.hs-title{font-weight:700;font-size:13px;color:var(--navy);margin-bottom:2px;}
+.hs-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.contact-box{background:var(--navy);color:white;border-radius:12px;padding:18px;text-align:center;margin-top:18px;}
+.contact-box p{font-size:12px;opacity:.85;margin-bottom:12px;line-height:1.8;}
+.contact-link{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;padding:10px 24px;border-radius:8px;text-decoration:none;}
 
-  /* ===== STEP NAV ===== */
-  .step-nav {
-    display: flex;
-    overflow-x: auto;
-    gap: 0;
-    background: white;
-    border-bottom: 2px solid #e5e7eb;
-    padding: 0 16px;
-    scrollbar-width: none;
-  }
-  .step-nav::-webkit-scrollbar { display: none; }
-  .step-btn {
-    flex-shrink: 0;
-    padding: 14px 18px;
-    border: none;
-    background: none;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-light);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .step-btn:hover { color: var(--navy); }
-  .step-btn.active {
-    color: var(--navy);
-    border-bottom-color: var(--gold);
-    font-weight: 700;
-  }
-  .step-btn.done {
-    color: var(--green);
-  }
-  .step-btn.done::after { content: ' ✓'; }
+/* SETTINGS */
+.s-sec{margin-bottom:24px;}
+.s-lbl{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:8px;display:block;}
+.s-group{background:#f8fafc;border-radius:12px;border:1px solid #e5e7eb;}
+.s-row{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;border-bottom:1px solid #e5e7eb;}
+.s-row:last-child{border-bottom:none;}
+.s-ico{font-size:18px;flex-shrink:0;width:26px;text-align:center;margin-top:2px;}
+.s-info{flex:1;}
+.s-title{font-weight:600;font-size:13px;color:var(--navy);}
+.s-desc{font-size:11px;color:var(--muted);margin-top:1px;}
+.s-in{width:100%;padding:9px 11px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:'Noto Sans JP',sans-serif;margin-top:6px;transition:.2s;background:white;}
+.s-in:focus{outline:none;border-color:var(--gold);}
+.s-save{width:100%;padding:13px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:6px;}
+.s-save:hover{background:#b8851a;}
+.s-reset{width:100%;padding:9px;background:white;color:var(--muted);border:1px solid #e5e7eb;border-radius:10px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:8px;}
+.toast{display:none;background:var(--green);color:white;text-align:center;padding:9px;border-radius:8px;font-size:13px;font-weight:700;margin-top:8px;}
+.toast.show{display:block;}
+.theme-dots{display:flex;gap:10px;padding:10px 14px;flex-wrap:wrap;}
+.tdot{width:32px;height:32px;border-radius:50%;border:3px solid white;cursor:pointer;}
 
-  /* ===== MAIN CONTENT ===== */
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-  }
+/* HERO */
+.hero{background:var(--navy);color:white;padding:48px 20px 64px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:260px;height:260px;border-radius:50%;background:rgba(200,150,42,.12);}
+.hero-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:2px;margin-bottom:18px;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(22px,5vw,38px);font-weight:900;line-height:1.4;margin-bottom:14px;}
+.hero h1 span{color:var(--gold-l);}
+.hero p{font-size:15px;color:rgba(255,255,255,.75);max-width:500px;margin:0 auto 28px;}
+.prog-wrap{max-width:360px;margin:0 auto;background:rgba(255,255,255,.1);border-radius:8px;padding:12px 18px;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:6px;text-align:left;}
+.prog-bar{background:rgba(255,255,255,.15);border-radius:4px;height:7px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-l));border-radius:4px;transition:width .6s ease;}
 
-  .step-panel {
-    display: none;
-    animation: fadeIn 0.4s ease;
-  }
-  .step-panel.active { display: block; }
+/* STEP NAV */
+.step-nav{display:flex;overflow-x:auto;background:white;border-bottom:2px solid #e5e7eb;padding:0 12px;scrollbar-width:none;}
+.step-nav::-webkit-scrollbar{display:none;}
+.snav-btn{flex-shrink:0;padding:13px 16px;border:none;background:none;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.2s;white-space:nowrap;}
+.snav-btn:hover{color:var(--navy);}
+.snav-btn.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
+.snav-btn.done{color:var(--green);}
+.snav-btn.done::after{content:' ✓';}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* MAIN */
+.container{max-width:780px;margin:0 auto;padding:0 18px 80px;}
+.step-panel{display:none;animation:fadeIn .4s ease;}
+.step-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  .section-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--navy);
-    margin: 40px 0 8px;
-    padding-left: 16px;
-    border-left: 4px solid var(--gold);
-  }
-  .section-sub {
-    color: var(--text-light);
-    font-size: 14px;
-    margin-bottom: 28px;
-    padding-left: 20px;
-  }
+.sec-title{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:900;color:var(--navy);margin:36px 0 6px;padding-left:14px;border-left:4px solid var(--gold);}
+.sec-sub{color:var(--muted);font-size:13px;margin-bottom:24px;padding-left:18px;}
 
-  /* ===== CARDS ===== */
-  .card {
-    background: white;
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .card-title {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .card-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
+/* CARD */
+.card{background:white;border-radius:16px;padding:24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.card-title{font-weight:700;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.cico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
 
-  /* ===== BALANCE SHEET VISUAL ===== */
-  .bs-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 20px 0;
-  }
-  .bs-side {
-    background: white;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  }
-  .bs-side-title {
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
-    padding: 8px;
-    border-radius: 8px;
-    margin-bottom: 14px;
-    letter-spacing: 1px;
-  }
-  .bs-left .bs-side-title { background: #dbeafe; color: #1d4ed8; }
-  .bs-right .bs-side-title { background: #fce7f3; color: #9d174d; }
+/* ANALOGY */
+.analogy{background:linear-gradient(135deg,#fff7ed,#fef3c7);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.8;}
+.analogy strong{display:block;margin-bottom:4px;}
 
-  .bs-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 12px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .bs-item.current { background: #eff6ff; }
-  .bs-item.fixed { background: #f0fdf4; }
-  .bs-item.liability { background: #fef3c7; }
-  .bs-item.equity { background: #f3e8ff; }
-  .bs-item .amount {
-    font-weight: 700;
-    font-family: 'Noto Serif JP', serif;
-  }
-  .bs-divider {
-    height: 1px;
-    background: #e5e7eb;
-    margin: 10px 0;
-  }
-  .bs-section-label {
-    font-size: 11px;
-    color: var(--text-light);
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-    padding-left: 4px;
-  }
-  .bs-total {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    background: var(--navy);
-    color: white;
-    border-radius: 8px;
-    font-weight: 700;
-    margin-top: 10px;
-  }
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+.tbl th{background:var(--navy);color:white;padding:10px 14px;text-align:left;font-weight:600;}
+.tbl th:first-child{border-radius:8px 0 0 0;}.tbl th:last-child{border-radius:0 8px 0 0;}
+.tbl td{padding:10px 14px;border-bottom:1px solid #f3f4f6;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fafafa;}
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:700;}
+.tag-b{background:#dbeafe;color:#1d4ed8;}.tag-r{background:#fee2e2;color:#dc2626;}
+.tag-g{background:#d1fae5;color:#065f46;}.tag-y{background:#fef3c7;color:#92400e;}
 
-  .analogy-box {
-    background: linear-gradient(135deg, #fff7ed, #fef3c7);
-    border-left: 4px solid var(--gold);
-    border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    margin: 16px 0;
-    font-size: 14px;
-    line-height: 1.8;
-  }
-  .analogy-box .emoji { font-size: 24px; margin-right: 8px; }
+/* BS */
+.bs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.bs-side{background:white;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.bs-side-title{font-size:12px;font-weight:700;text-align:center;padding:7px;border-radius:7px;margin-bottom:12px;letter-spacing:1px;}
+.bs-l .bs-side-title{background:#dbeafe;color:#1d4ed8;}
+.bs-r .bs-side-title{background:#fce7f3;color:#9d174d;}
+.bs-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:7px;margin-bottom:6px;font-size:13px;font-weight:500;}
+.bs-item.cur{background:#eff6ff;}.bs-item.fix{background:#f0fdf4;}
+.bs-item.lia{background:#fef3c7;}.bs-item.equ{background:#f3e8ff;}
+.bs-item .amt{font-weight:700;font-family:'Noto Serif JP',serif;}
+.bs-lbl{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-bottom:4px;padding-left:2px;}
+.bs-div{height:1px;background:#e5e7eb;margin:8px 0;}
+.bs-total{display:flex;justify-content:space-between;padding:10px;background:var(--navy);color:white;border-radius:7px;font-weight:700;margin-top:8px;font-size:13px;}
 
-  /* ===== PL VISUAL ===== */
-  .pl-funnel {
-    margin: 20px 0;
-  }
-  .pl-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 6px;
-    cursor: pointer;
-  }
-  .pl-row:hover .pl-bar-inner { filter: brightness(1.1); }
-  .pl-label {
-    width: 160px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .pl-bar {
-    flex: 1;
-    background: #f3f4f6;
-    border-radius: 6px;
-    height: 40px;
-    overflow: hidden;
-    position: relative;
-  }
-  .pl-bar-inner {
-    height: 100%;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
-    font-size: 13px;
-    font-weight: 700;
-    color: white;
-    transition: width 0.8s ease, filter 0.2s;
-  }
-  .pl-badge {
-    width: 80px;
-    text-align: right;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .pl-detail {
-    display: none;
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin: 4px 0 10px 172px;
-    font-size: 13px;
-    line-height: 1.8;
-    border-left: 3px solid #e2e8f0;
-    animation: fadeIn 0.3s ease;
-  }
-  .pl-detail.show { display: block; }
-  .pl-star {
-    background: #fff3cd;
-    border-left-color: var(--gold);
-  }
+/* CASH */
+.cash-row{display:flex;gap:10px;align-items:stretch;margin:14px 0;flex-wrap:wrap;}
+.cash-box{flex:1;min-width:120px;border-radius:10px;padding:14px;text-align:center;}
+.cash-box .cl{font-size:11px;font-weight:700;margin-bottom:6px;}
+.cash-box .cv{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:900;}
+.cash-box .cs{font-size:10px;margin-top:3px;opacity:.7;}
+.cash-arr{display:flex;align-items:center;font-size:22px;color:var(--muted);flex-shrink:0;}
 
-  /* ===== QUIZ ===== */
-  .quiz-box {
-    background: white;
-    border-radius: 16px;
-    padding: 28px;
-    margin: 24px 0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .quiz-q {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: var(--navy);
-    line-height: 1.6;
-  }
-  .quiz-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .quiz-opt {
-    padding: 14px 18px;
-    border-radius: 10px;
-    border: 2px solid #e5e7eb;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s;
-    background: white;
-    text-align: left;
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-  .quiz-opt:hover:not(.disabled) { border-color: var(--gold); background: #fffbeb; }
-  .quiz-opt.correct { border-color: var(--green); background: #f0fdf4; color: var(--green); }
-  .quiz-opt.wrong { border-color: var(--red); background: #fef2f2; color: var(--red); }
-  .quiz-opt.disabled { cursor: not-allowed; }
-  .quiz-feedback {
-    display: none;
-    margin-top: 16px;
-    padding: 14px 16px;
-    border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.8;
-  }
-  .quiz-feedback.show { display: block; }
-  .quiz-feedback.ok { background: #f0fdf4; color: #166534; border-left: 4px solid var(--green); }
-  .quiz-feedback.ng { background: #fef2f2; color: #991b1b; border-left: 4px solid var(--red); }
+/* PL */
+.pl-funnel{margin:16px 0;}
+.pl-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;cursor:pointer;}
+.pl-row:hover .pl-bi{filter:brightness(1.1);}
+.pl-lbl{width:140px;font-size:12px;font-weight:500;text-align:right;flex-shrink:0;line-height:1.4;}
+.pl-bar{flex:1;background:#f3f4f6;border-radius:6px;height:38px;overflow:hidden;}
+.pl-bi{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;color:white;transition:width .8s ease,filter .2s;}
+.pl-val{width:72px;text-align:right;font-size:12px;font-weight:700;flex-shrink:0;}
+.pl-detail{display:none;background:#f8fafc;border-radius:9px;padding:12px 14px;margin:2px 0 10px 150px;font-size:13px;line-height:1.8;border-left:3px solid #e2e8f0;}
+.pl-detail.show{display:block;}
+.pl-star{background:#fff3cd;border-left-color:var(--gold);}
 
-  /* ===== CHECK ITEMS ===== */
-  .check-list { list-style: none; }
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px 0;
-    border-bottom: 1px solid #f3f4f6;
-  }
-  .check-item:last-child { border-bottom: none; }
-  .check-box {
-    width: 26px;
-    height: 26px;
-    border: 2px solid #d1d5db;
-    border-radius: 6px;
-    flex-shrink: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    transition: all 0.2s;
-    margin-top: 2px;
-  }
-  .check-box.checked { background: var(--green); border-color: var(--green); color: white; }
-  .check-text { font-size: 14px; line-height: 1.7; }
-  .check-text strong { color: var(--navy); display: block; margin-bottom: 2px; }
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,var(--navy),#2d4a8a);color:white;border-radius:14px;padding:24px;margin:16px 0;}
+.highlight h3{font-family:'Noto Serif JP',serif;font-size:18px;margin-bottom:10px;color:var(--gold-l);}
+.highlight p{font-size:13px;line-height:1.9;opacity:.9;}
 
-  /* ===== RATIO METERS ===== */
-  .meter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin: 20px 0;
-  }
-  .meter-card {
-    background: white;
-    border-radius: 14px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  .meter-card:hover { transform: translateY(-3px); }
-  .meter-label { font-size: 12px; color: var(--text-light); margin-bottom: 8px; font-weight: 500; }
-  .meter-value {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 4px;
-  }
-  .meter-bench { font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
-  .meter-bar-bg {
-    background: #f3f4f6;
-    border-radius: 4px;
-    height: 6px;
-    overflow: hidden;
-  }
-  .meter-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 1s ease;
-  }
-  .meter-status {
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 8px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-  }
-  .status-ok { background: #d1fae5; color: #065f46; }
-  .status-warn { background: #fef3c7; color: #92400e; }
-  .status-ng { background: #fee2e2; color: #991b1b; }
+/* QUIZ */
+.quiz-box{background:white;border-radius:14px;padding:24px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.quiz-q{font-weight:700;font-size:15px;margin-bottom:16px;color:var(--navy);line-height:1.6;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.q-opt{padding:13px 16px;border-radius:9px;border:2px solid #e5e7eb;cursor:pointer;font-size:13px;font-weight:500;transition:.2s;background:white;text-align:left;font-family:'Noto Sans JP',sans-serif;}
+.q-opt:hover:not(.dis){border-color:var(--gold);background:#fffbeb;}
+.q-opt.ok{border-color:var(--green);background:#f0fdf4;color:var(--green);}
+.q-opt.ng{border-color:var(--red);background:#fef2f2;color:var(--red);}
+.q-opt.dis{cursor:not-allowed;}
+.q-fb{display:none;margin-top:14px;padding:12px 14px;border-radius:9px;font-size:13px;line-height:1.8;}
+.q-fb.show{display:block;}
+.q-fb.ok{background:#f0fdf4;color:#166534;border-left:4px solid var(--green);}
+.q-fb.ng{background:#fef2f2;color:#991b1b;border-left:4px solid var(--red);}
 
-  /* ===== ACTION PLAN ===== */
-  .action-timeline {
-    position: relative;
-    padding-left: 32px;
-    margin: 20px 0;
-  }
-  .action-timeline::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--gold), var(--navy));
-  }
-  .action-item {
-    position: relative;
-    margin-bottom: 24px;
-  }
-  .action-dot {
-    position: absolute;
-    left: -28px;
-    top: 4px;
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--gold);
-    background: var(--gold);
-  }
-  .action-when {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-  }
-  .action-title {
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .action-desc { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+/* METERS */
+.meter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0;}
+.meter-card{background:white;border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;transition:transform .2s;}
+.meter-card:hover{transform:translateY(-2px);}
+.m-lbl{font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:500;}
+.m-val{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:900;margin-bottom:3px;}
+.m-bench{font-size:10px;color:var(--muted);margin-bottom:8px;}
+.m-bar-bg{background:#f3f4f6;border-radius:3px;height:5px;overflow:hidden;}
+.m-bar-fill{height:100%;border-radius:3px;transition:width 1s ease;}
+.m-st{font-size:11px;font-weight:700;margin-top:7px;padding:2px 9px;border-radius:20px;display:inline-block;}
+.st-ok{background:#d1fae5;color:#065f46;}.st-warn{background:#fef3c7;color:#92400e;}.st-ng{background:#fee2e2;color:#991b1b;}
 
-  /* ===== BUTTONS ===== */
-  .btn {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    border: none;
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--navy);
-  }
-  .btn-primary:hover { background: #b8851a; transform: translateY(-1px); }
-  .btn-navy {
-    background: var(--navy);
-    color: white;
-  }
-  .btn-navy:hover { background: #0f1a30; transform: translateY(-1px); }
-  .btn-outline {
-    background: white;
-    color: var(--navy);
-    border: 2px solid var(--navy);
-  }
-  .btn-outline:hover { background: var(--navy); color: white; }
+/* SELF DIAGNOSIS */
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.diag-label{font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;}
+.diag-in{width:100%;padding:9px 11px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:'Noto Sans JP',sans-serif;transition:.2s;}
+.diag-in:focus{outline:none;border-color:var(--gold);}
+.diag-result{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #e5e7eb;}
+.diag-comment{margin-top:14px;padding:14px;background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 9px 9px 0;font-size:13px;line-height:1.9;display:none;}
 
-  .nav-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: space-between;
-    margin-top: 36px;
-    padding-top: 24px;
-    border-top: 1px solid #e5e7eb;
-  }
+/* CHECKLIST */
+.chk-list{list-style:none;}
+.chk-item{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid #f3f4f6;}
+.chk-item:last-child{border-bottom:none;}
+.chk-box{width:24px;height:24px;border:2px solid #d1d5db;border-radius:5px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:.2s;margin-top:2px;}
+.chk-box.chk{background:var(--green);border-color:var(--green);color:white;}
+.chk-text{font-size:13px;line-height:1.7;}
+.chk-text strong{color:var(--navy);display:block;margin-bottom:2px;}
 
-  /* ===== HIGHLIGHT BOX ===== */
-  .highlight {
-    background: linear-gradient(135deg, var(--navy), #2d4a8a);
-    color: white;
-    border-radius: 16px;
-    padding: 28px;
-    margin: 20px 0;
-  }
-  .highlight h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 20px;
-    margin-bottom: 12px;
-    color: var(--gold-light);
-  }
-  .highlight p { font-size: 14px; line-height: 1.9; opacity: 0.9; }
+/* TIMELINE */
+.tl{position:relative;padding-left:28px;margin:16px 0;}
+.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--navy));}
+.tl-item{position:relative;margin-bottom:20px;}
+.tl-dot{position:absolute;left:-24px;top:4px;width:14px;height:14px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 2px var(--gold);background:var(--gold);}
+.tl-when{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.tl-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:2px;}
+.tl-desc{font-size:12px;color:var(--muted);line-height:1.7;}
 
-  /* ===== COMPLETION ===== */
-  .completion {
-    text-align: center;
-    padding: 60px 20px;
-  }
-  .completion-icon {
-    font-size: 72px;
-    margin-bottom: 20px;
-    display: block;
-    animation: bounce 1s ease infinite;
-  }
-  @keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  .completion h2 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--navy);
-    margin-bottom: 12px;
-  }
-  .completion p { color: var(--text-light); font-size: 15px; margin-bottom: 32px; }
+/* MEMO */
+.memo-area{width:100%;padding:11px 13px;border:2px solid #e5e7eb;border-radius:9px;font-size:13px;font-family:'Noto Sans JP',sans-serif;resize:vertical;transition:.2s;line-height:1.7;}
+.memo-area:focus{outline:none;border-color:var(--gold);}
+.memo-lbl{font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:5px;}
 
-  /* ===== COMPARE TABLE ===== */
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    margin: 16px 0;
-  }
-  .compare-table th {
-    background: var(--navy);
-    color: white;
-    padding: 12px 16px;
-    text-align: left;
-    font-weight: 600;
-  }
-  .compare-table th:first-child { border-radius: 10px 0 0 0; }
-  .compare-table th:last-child { border-radius: 0 10px 0 0; }
-  .compare-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #f3f4f6;
-    vertical-align: top;
-  }
-  .compare-table tr:last-child td:first-child { border-radius: 0 0 0 10px; }
-  .compare-table tr:last-child td:last-child { border-radius: 0 0 10px 0; }
-  .compare-table tr:nth-child(even) td { background: #fafafa; }
-  .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .tag-blue { background: #dbeafe; color: #1d4ed8; }
-  .tag-red { background: #fee2e2; color: #dc2626; }
-  .tag-green { background: #d1fae5; color: #065f46; }
-  .tag-gold { background: #fef3c7; color: #92400e; }
+/* QUESTION TEMPLATE */
+.q-template-item{padding:14px;border-radius:10px;background:#f8fafc;margin-bottom:10px;border-left:3px solid var(--navy);}
+.q-template-item .qt-label{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:4px;}
+.q-template-item .qt-text{font-size:13px;line-height:1.8;color:var(--text);}
 
-  /* ===== MOBILE ===== */
-  @media (max-width: 600px) {
-    .bs-wrap { grid-template-columns: 1fr; }
-    .pl-label { width: 110px; font-size: 12px; }
-    .pl-detail { margin-left: 122px; }
-    .meter-grid { grid-template-columns: 1fr 1fr; }
-    .nav-btns { flex-direction: column; }
-    .compare-table { font-size: 12px; }
-  }
+/* COMPLETION */
+.completion{text-align:center;padding:48px 16px;}
+.comp-icon{font-size:64px;margin-bottom:16px;display:block;animation:bounce 1s ease infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.completion h2{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:900;color:var(--navy);margin-bottom:10px;}
+.completion p{color:var(--muted);font-size:14px;margin-bottom:24px;}
+.comp-summary{background:var(--warm);border-radius:14px;padding:20px;margin:16px 0;text-align:left;}
+.comp-summary .cs-title{font-weight:700;font-size:15px;color:var(--navy);margin-bottom:10px;}
+.comp-summary .cs-item{font-size:13px;line-height:2.0;color:var(--text);}
 
-  /* ===== TOP BAR ===== */
-  .top-bar {
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-  .top-bar-logo {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--gold-light);
-    letter-spacing: 1px;
-  }
-  .top-bar-logo span { color: rgba(255,255,255,0.5); font-size: 11px; margin-left: 8px; font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
-  .top-bar-btns { display: flex; gap: 8px; align-items: center; }
-  .icon-btn {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 18px;
-    width: 38px; height: 38px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-    font-family: sans-serif;
-  }
-  .icon-btn:hover { background: rgba(255,255,255,0.2); }
-  .icon-btn.how { font-size: 13px; font-weight: 700; width: auto; padding: 0 14px; letter-spacing: 0.5px; }
+/* BTNS */
+.btn{display:inline-block;padding:13px 26px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif;transition:.2s;}
+.btn-g{background:var(--gold);color:var(--navy);}
+.btn-g:hover{background:#b8851a;transform:translateY(-1px);}
+.btn-n{background:var(--navy);color:white;}
+.btn-n:hover{background:#0f1a30;transform:translateY(-1px);}
+.btn-o{background:white;color:var(--navy);border:2px solid var(--navy);}
+.btn-o:hover{background:var(--navy);color:white;}
+.nav-btns{display:flex;gap:10px;justify-content:space-between;margin-top:32px;padding-top:20px;border-top:1px solid #e5e7eb;}
 
-  /* ===== OVERLAY PANEL ===== */
-  .overlay-bg {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 200;
-    animation: fadeInBg 0.2s ease;
-  }
-  .overlay-bg.show { display: block; }
-  @keyframes fadeInBg { from{opacity:0} to{opacity:1} }
-
-  .side-panel {
-    position: fixed;
-    top: 0; right: -420px;
-    width: min(420px, 95vw);
-    height: 100vh;
-    background: white;
-    z-index: 300;
-    overflow-y: auto;
-    transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
-  }
-  .side-panel.open { right: 0; }
-
-  .how-panel {
-    position: fixed;
-    top: 0; left: -420px;
-    width: min(420px, 95vw);
-    height: 100vh;
-    background: white;
-    z-index: 300;
-    overflow-y: auto;
-    transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
-  }
-  .how-panel.open { left: 0; }
-
-  .panel-header {
-    background: var(--navy);
-    color: white;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky; top: 0;
-  }
-  .panel-header h2 { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; }
-  .panel-close {
-    background: rgba(255,255,255,0.15);
-    border: none; border-radius: 8px;
-    color: white; font-size: 20px;
-    width: 36px; height: 36px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-  }
-  .panel-close:hover { background: rgba(255,255,255,0.25); }
-  .panel-body { padding: 24px; }
-
-  /* ===== SETTINGS STYLES ===== */
-  .setting-section { margin-bottom: 28px; }
-  .setting-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-light);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    display: block;
-  }
-  .setting-group {
-    background: #f8fafc;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
-  }
-  .setting-row {
-    display: flex;
-    align-items: center;
-    padding: 14px 16px;
-    border-bottom: 1px solid #e5e7eb;
-    gap: 12px;
-  }
-  .setting-row:last-child { border-bottom: none; }
-  .setting-row-icon { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
-  .setting-row-info { flex: 1; }
-  .setting-row-info .s-title { font-weight: 600; font-size: 14px; color: var(--navy); }
-  .setting-row-info .s-desc { font-size: 12px; color: var(--text-light); margin-top: 2px; }
-  .setting-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'Noto Sans JP', sans-serif;
-    margin-top: 6px;
-    transition: border-color 0.2s;
-    background: white;
-  }
-  .setting-input:focus { outline: none; border-color: var(--gold); }
-  .setting-save-btn {
-    width: 100%;
-    padding: 14px;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: background 0.2s;
-    margin-top: 8px;
-  }
-  .setting-save-btn:hover { background: #b8851a; }
-  .setting-reset-btn {
-    width: 100%;
-    padding: 10px;
-    background: white;
-    color: var(--text-light);
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    font-size: 13px;
-    cursor: pointer;
-    font-family: 'Noto Sans JP', sans-serif;
-    margin-top: 8px;
-  }
-  .saved-toast {
-    display: none;
-    background: var(--green);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-top: 8px;
-  }
-  .saved-toast.show { display: block; animation: fadeIn 0.3s ease; }
-
-  /* ===== HOW-TO STYLES ===== */
-  .how-hero {
-    background: linear-gradient(135deg, #1a2744, #2d4a8a);
-    color: white;
-    padding: 28px 24px;
-    text-align: center;
-  }
-  .how-hero .big-icon { font-size: 48px; margin-bottom: 12px; display: block; }
-  .how-hero h3 { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--gold-light); }
-  .how-hero p { font-size: 13px; opacity: 0.85; line-height: 1.8; }
-  .how-purpose {
-    background: #fffbeb;
-    border-left: 4px solid var(--gold);
-    padding: 16px 20px;
-    margin: 20px 0;
-    border-radius: 0 10px 10px 0;
-    font-size: 14px;
-    line-height: 1.9;
-  }
-  .how-purpose strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 15px; }
-  .how-step-list { list-style: none; margin: 0; }
-  .how-step-item {
-    display: flex;
-    gap: 14px;
-    padding: 14px 0;
-    border-bottom: 1px solid #f3f4f6;
-    align-items: flex-start;
-  }
-  .how-step-item:last-child { border-bottom: none; }
-  .how-step-num {
-    width: 28px; height: 28px;
-    background: var(--navy);
-    color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .how-step-content .hs-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 3px; }
-  .how-step-content .hs-desc { font-size: 13px; color: var(--text-light); line-height: 1.7; }
-  .how-contact-box {
-    background: var(--navy);
-    color: white;
-    border-radius: 14px;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .how-contact-box p { font-size: 13px; opacity: 0.85; margin-bottom: 14px; line-height: 1.8; }
-  .contact-link-btn {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--navy);
-    font-weight: 700;
-    font-size: 14px;
-    padding: 12px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .contact-link-btn:hover { background: var(--gold-light); }
-  .how-tag { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 6px; padding: 2px 8px; font-size: 11px; margin-top: 4px; }
-
-  /* ===== TRIAL / PASSWORD OVERLAY ===== */
-  .trial-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(10,18,40,0.97);
-    z-index: 500;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .trial-overlay.show { display: flex; }
-  .trial-box {
-    background: white;
-    border-radius: 24px;
-    padding: 40px 32px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  }
-  @keyframes popIn {
-    from { opacity:0; transform: scale(0.85) translateY(20px); }
-    to   { opacity:1; transform: scale(1) translateY(0); }
-  }
-  .trial-icon { font-size: 56px; margin-bottom: 16px; display: block; }
-  .trial-box h2 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 22px; font-weight: 900;
-    color: var(--navy); margin-bottom: 10px;
-  }
-  .trial-box p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
-  .trial-count-wrap {
-    display: flex; justify-content: center; gap: 10px; margin-bottom: 24px;
-  }
-  .trial-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #e5e7eb; border: 2px solid #d1d5db;
-    transition: all 0.3s;
-  }
-  .trial-dot.used { background: var(--gold); border-color: var(--gold); }
-  .trial-dot.remaining { background: #d1fae5; border-color: #16a34a; }
-  .trial-remaining-text {
-    font-size: 15px; font-weight: 700; color: var(--navy);
-    margin-bottom: 20px;
-  }
-  .trial-remaining-text span { color: var(--gold); font-size: 22px; }
-  .trial-start-btn {
-    width: 100%; padding: 16px;
-    background: var(--gold); color: var(--navy);
-    border: none; border-radius: 12px;
-    font-weight: 700; font-size: 16px;
-    cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
-    transition: background 0.2s; margin-bottom: 12px;
-  }
-  .trial-start-btn:hover { background: #b8851a; }
-  .trial-divider {
-    display: flex; align-items: center; gap: 10px;
-    margin: 16px 0; color: var(--text-light); font-size: 12px;
-  }
-  .trial-divider::before, .trial-divider::after {
-    content: ''; flex: 1; height: 1px; background: #e5e7eb;
-  }
-  .pw-input {
-    width: 100%; padding: 12px 16px;
-    border: 2px solid #e5e7eb; border-radius: 10px;
-    font-size: 16px; text-align: center; letter-spacing: 3px;
-    font-family: 'Noto Sans JP', sans-serif;
-    margin-bottom: 10px; transition: border-color 0.2s;
-  }
-  .pw-input:focus { outline: none; border-color: var(--gold); }
-  .pw-input.error { border-color: var(--red); animation: shake 0.4s ease; }
-  @keyframes shake {
-    0%,100%{transform:translateX(0)}
-    25%{transform:translateX(-8px)}
-    75%{transform:translateX(8px)}
-  }
-  .pw-submit-btn {
-    width: 100%; padding: 13px;
-    background: var(--navy); color: white;
-    border: none; border-radius: 10px;
-    font-weight: 700; font-size: 14px;
-    cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
-    transition: background 0.2s;
-  }
-  .pw-submit-btn:hover { background: #0f1a30; }
-  .pw-error-msg {
-    color: var(--red); font-size: 13px;
-    margin-top: 8px; display: none;
-  }
-  .pw-error-msg.show { display: block; }
-  .trial-purchase-note {
-    margin-top: 16px; font-size: 12px; color: var(--text-light); line-height: 1.8;
-  }
-  .trial-purchase-note a { color: var(--gold); text-decoration: none; font-weight: 700; }
-
-  /* ===== CASH DIAGRAM ===== */
-  .cash-diagram {
-    display: flex;
-    gap: 12px;
-    align-items: stretch;
-    margin: 20px 0;
-    flex-wrap: wrap;
-  }
-  .cash-box {
-    flex: 1;
-    min-width: 140px;
-    border-radius: 12px;
-    padding: 18px;
-    text-align: center;
-  }
-  .cash-box .box-label { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
-  .cash-box .box-value { font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 900; }
-  .cash-box .box-sub { font-size: 11px; margin-top: 4px; opacity: 0.7; }
-  .cash-arrow {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    color: var(--text-light);
-    flex-shrink: 0;
-  }
+@media(max-width:600px){
+  .bs-wrap{grid-template-columns:1fr;}
+  .pl-lbl{width:100px;font-size:11px;}
+  .pl-detail{margin-left:110px;}
+  .meter-grid{grid-template-columns:1fr 1fr;}
+  .nav-btns{flex-direction:column;}
+  .diag-grid{grid-template-columns:1fr 1fr;}
+  .cash-row{flex-wrap:wrap;}
+}
 </style>
 </head>
 <body>
 
-<!-- ===== TRIAL / PASSWORD OVERLAY ===== -->
-<div class="trial-overlay" id="trialOverlay">
-  <div class="trial-box" id="trialBox">
-
-    <!-- 残回数あり：起動画面 -->
-    <div id="trialView">
-      <span class="trial-icon">📊</span>
+<!-- TRIAL OVERLAY -->
+<div class="t-overlay" id="tOverlay">
+  <div class="t-box">
+    <div id="tv-trial">
+      <span class="t-icon">📊</span>
       <h2>決算書マスター</h2>
       <p>税理士に丸投げしない。<br>数字で会社を守る経営者になる<br>5ステップ完全学習ツール</p>
-      <div class="trial-count-wrap" id="trialDots"></div>
-      <div class="trial-remaining-text" id="trialRemText"></div>
-      <button class="trial-start-btn" onclick="startApp()">▶ 学習をスタートする</button>
-      <div class="trial-divider">パスワードをお持ちの方</div>
-      <input type="password" class="pw-input" id="pwInput" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw()">
-      <button class="pw-submit-btn" onclick="checkPw()">🔓 パスワードで解除する</button>
-      <div class="pw-error-msg" id="pwError">パスワードが違います。もう一度お試しください。</div>
-      <div class="trial-purchase-note" id="purchaseNote">
-        今すぐ使い続けたい方は <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank">こちらから購入</a> できます。
-      </div>
+      <div class="t-dots" id="tDots"></div>
+      <div class="t-rem" id="tRem"></div>
+      <button class="t-start" onclick="startApp()">▶ 学習をスタートする</button>
+      <div class="t-div">パスワードをお持ちの方</div>
+      <input type="password" class="pw-in" id="pw1" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')chkPw(1)">
+      <button class="pw-btn" onclick="chkPw(1)">🔓 パスワードで解除する</button>
+      <div class="pw-err" id="pe1">パスワードが違います。もう一度お試しください。</div>
+      <div class="t-note">今すぐ使い続けたい方は <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank">こちらから購入</a> できます。</div>
     </div>
-
-    <!-- 回数終了：パスワード要求画面 -->
-    <div id="lockedView" style="display:none;">
-      <span class="trial-icon">🔒</span>
+    <div id="tv-locked" style="display:none;">
+      <span class="t-icon">🔒</span>
       <h2>無料体験が終了しました</h2>
       <p>3回の無料体験をご利用いただきました。<br>続けてご利用いただくには<br>パスワードの入力が必要です。</p>
-      <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank" class="trial-start-btn" style="display:block;text-decoration:none;margin-bottom:16px;">
-        💳 購入してパスワードを取得する
-      </a>
-      <div class="trial-divider">購入済みの方はこちら</div>
-      <input type="password" class="pw-input" id="pwInput2" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw2()">
-      <button class="pw-submit-btn" onclick="checkPw2()">🔓 パスワードで解除する</button>
-      <div class="pw-error-msg" id="pwError2">パスワードが違います。もう一度お試しください。</div>
-      <div class="trial-purchase-note" id="purchaseNote2"></div>
+      <a href="https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z" target="_blank" class="buy-btn">💳 購入してパスワードを取得する</a>
+      <div class="t-div">購入済みの方はこちら</div>
+      <input type="password" class="pw-in" id="pw2" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')chkPw(2)">
+      <button class="pw-btn" onclick="chkPw(2)">🔓 パスワードで解除する</button>
+      <div class="pw-err" id="pe2">パスワードが違います。もう一度お試しください。</div>
     </div>
+  </div>
+</div>
 
+<!-- OVERLAY BG -->
+<div class="overlay-bg" id="oBg" onclick="closeAll()"></div>
+
+<!-- 使い方パネル（左） -->
+<div class="side-l" id="howPanel">
+  <div class="ph"><h2>📖 使い方ガイド</h2><button class="pc" onclick="closeAll()">✕</button></div>
+  <div class="how-hero">
+    <span class="bi">🏆</span>
+    <h3>決算書マスター</h3>
+    <p>税理士に丸投げしない。<br>数字で会社を守る経営者になるための<br>5ステップ完全学習ツールです。</p>
+  </div>
+  <div class="pb">
+    <div class="purpose-box">
+      <strong>🎯 このアプリの目的</strong>
+      決算書の「貸借対照表（BS）」と「損益計算書（PL）」を、経営者が自分の言葉で語れるようになること。税理士・銀行担当者と対等に数字で話せる経営者を目指します。専門用語を日常の言葉に置き換え、ビジュアルで直感的に理解できる設計です。
+    </div>
+    <div class="s-lbl" style="margin-top:4px;">使い方ステップ</div>
+    <ul class="how-steps">
+      <li class="hs-item"><div class="hs-num">1</div><div><div class="hs-title">全体像を把握する</div><div class="hs-desc">BSとPLの違いと「なぜ読めないと損するか」を理解します。</div></div></li>
+      <li class="hs-item"><div class="hs-num">2</div><div><div class="hs-title">貸借対照表（BS）を読む</div><div class="hs-desc">左右の構造をビジュアル図解で確認。流動比率で安全性をチェックします。</div></div></li>
+      <li class="hs-item"><div class="hs-num">3</div><div><div class="hs-title">損益計算書（PL）の5つの利益</div><div class="hs-desc">棒グラフをクリックすると詳細展開。経常利益の重要性を理解します。</div></div></li>
+      <li class="hs-item"><div class="hs-num">4</div><div><div class="hs-title">自社の数字で経営指標を診断</div><div class="hs-desc">自社の決算書の数字を入力して5指標をリアル診断。アドバイスも表示されます。</div></div></li>
+      <li class="hs-item"><div class="hs-num">5</div><div><div class="hs-title">アクション＋税理士への質問＋メモ</div><div class="hs-desc">3ヶ月ロードマップ、税理士への質問テンプレート、自分の言葉メモで完結します。</div></div></li>
+      <li class="hs-item"><div class="hs-num">💡</div><div><div class="hs-title">各ステップのクイズに答える</div><div class="hs-desc">正解・不正解どちらでも解説が表示されます。復習のたびに解き直せます。</div></div></li>
+    </ul>
+    <div class="contact-box" id="howContact" style="display:none;">
+      <p id="howContactMsg">数字のことで気になることがあれば、お気軽にご相談ください。</p>
+      <a href="#" id="howContactLink" class="contact-link" target="_blank">📞 お問い合わせはこちら</a>
+    </div>
+  </div>
+</div>
+
+<!-- 設定パネル（右） -->
+<div class="side-r" id="settPanel">
+  <div class="ph"><h2>⚙️ カスタマイズ設定</h2><button class="pc" onclick="closeAll()">✕</button></div>
+  <div class="pb">
+    <div class="s-sec">
+      <span class="s-lbl">🏢 事務所・会社情報</span>
+      <div class="s-group">
+        <div class="s-row"><div class="s-ico">🏢</div><div class="s-info"><div class="s-title">事務所・会社名</div><div class="s-desc">ヘッダーに表示</div><input type="text" class="s-in" id="sOrg" placeholder="例：○○税理士事務所" maxlength="30"></div></div>
+        <div class="s-row"><div class="s-ico">📝</div><div class="s-info"><div class="s-title">アプリタイトル</div><div class="s-desc">ヘッダーのメインタイトル</div><input type="text" class="s-in" id="sTitle" placeholder="例：決算書マスター" maxlength="20"></div></div>
+      </div>
+    </div>
+    <div class="s-sec">
+      <span class="s-lbl">🔗 お問い合わせ設定</span>
+      <div class="s-group">
+        <div class="s-row"><div class="s-ico">🌐</div><div class="s-info"><div class="s-title">お問い合わせURL</div><div class="s-desc">使い方パネルのボタンに反映</div><input type="url" class="s-in" id="sUrl" placeholder="https://your-office.com/contact"></div></div>
+        <div class="s-row"><div class="s-ico">💬</div><div class="s-info"><div class="s-title">ボタンのテキスト</div><div class="s-desc">ボタン文言をカスタマイズ</div><input type="text" class="s-in" id="sBtnTxt" placeholder="例：無料相談はこちら" maxlength="20"></div></div>
+        <div class="s-row"><div class="s-ico">📄</div><div class="s-info"><div class="s-title">案内メッセージ</div><div class="s-desc">ボタン上部のメッセージ</div><input type="text" class="s-in" id="sMsg" placeholder="例：お気軽にご相談ください。" maxlength="50"></div></div>
+      </div>
+    </div>
+    <div class="s-sec">
+      <span class="s-lbl">🎨 カラーテーマ</span>
+      <div class="s-group">
+        <div class="theme-dots">
+          <div class="tdot" style="background:#c8962a;box-shadow:0 0 0 2px #c8962a;" onclick="setTheme('#c8962a','#f0c040','#1a2744')" title="ゴールド"></div>
+          <div class="tdot" style="background:#1d4ed8;box-shadow:0 0 0 2px #1d4ed8;" onclick="setTheme('#1d4ed8','#60a5fa','#0f2060')" title="ブルー"></div>
+          <div class="tdot" style="background:#059669;box-shadow:0 0 0 2px #059669;" onclick="setTheme('#059669','#34d399','#064e3b')" title="グリーン"></div>
+          <div class="tdot" style="background:#7c3aed;box-shadow:0 0 0 2px #7c3aed;" onclick="setTheme('#7c3aed','#a78bfa','#3b0764')" title="パープル"></div>
+          <div class="tdot" style="background:#dc2626;box-shadow:0 0 0 2px #dc2626;" onclick="setTheme('#dc2626','#f87171','#7f1d1d')" title="レッド"></div>
+        </div>
+      </div>
+    </div>
+    <button class="s-save" onclick="saveSettings()">💾 設定を保存する</button>
+    <button class="s-reset" onclick="resetSettings()">🔄 デフォルトに戻す</button>
+    <div class="toast" id="toast">✅ 設定を保存しました！</div>
+    <div style="margin-top:20px;padding:14px;background:#f8fafc;border-radius:9px;font-size:12px;color:var(--muted);line-height:1.9;">
+      💡 設定はブラウザに保存されます。税理士事務所様は事務所名とURLを設定することで、顧問先への配布ツールとして活用できます。
+    </div>
   </div>
 </div>
 
 <!-- TOP BAR -->
-<div class="top-bar">
-  <div class="top-bar-logo" id="topBarTitle">決算書マスター <span id="topBarOrg"></span></div>
-  <div class="top-bar-btns">
-    <button class="icon-btn how" onclick="openHow()" title="使い方を見る">📖 使い方</button>
-    <button class="icon-btn" onclick="openSettings()" title="設定">⚙️</button>
-  </div>
-</div>
-
-<!-- OVERLAY -->
-<div class="overlay-bg" id="overlayBg" onclick="closeAll()"></div>
-
-<!-- 使い方パネル（左からスライド） -->
-<div class="how-panel" id="howPanel">
-  <div class="panel-header">
-    <h2>📖 使い方ガイド</h2>
-    <button class="panel-close" onclick="closeAll()">✕</button>
-  </div>
-  <div class="how-hero">
-    <span class="big-icon">🏆</span>
-    <h3>決算書マスター</h3>
-    <p>税理士に丸投げしない。<br>数字で会社を守る経営者になるための<br>5ステップ完全学習ツールです。</p>
-  </div>
-  <div class="panel-body">
-
-    <div class="how-purpose">
-      <strong>🎯 このアプリの目的</strong>
-      決算書の「貸借対照表（BS）」と「損益計算書（PL）」を、経営者が自分の言葉で語れるようになること。
-      税理士・銀行担当者と対等に数字で話せる経営者を目指します。
-      専門用語を日常の言葉に置き換えて、ビジュアルで直感的に理解できる設計です。
-    </div>
-
-    <div class="setting-label">使い方ステップ</div>
-    <ul class="how-step-list">
-      <li class="how-step-item">
-        <div class="how-step-num">1</div>
-        <div class="how-step-content">
-          <div class="hs-title">① 全体像を把握する</div>
-          <div class="hs-desc">まずステップ1で「決算書が何のためにあるか」を学びます。BSとPLの違い、「なぜ読めないと損するか」を3つの場面で確認しましょう。</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">2</div>
-        <div class="how-step-content">
-          <div class="hs-title">② 貸借対照表（BS）を読む</div>
-          <div class="hs-desc">左側（資産）と右側（負債＋純資産）をビジュアル図解で確認します。「流動比率」の計算で自社の安全性をチェックする方法を学べます。</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">3</div>
-        <div class="how-step-content">
-          <div class="hs-title">③ 損益計算書（PL）の5つの利益</div>
-          <div class="hs-desc">棒グラフをクリックすると各利益の詳細が展開されます。「経常利益」がなぜ最重要なのか、ラーメン屋の例えで直感的に理解できます。</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">4</div>
-        <div class="how-step-content">
-          <div class="hs-title">④ 経営指標メーターを確認する</div>
-          <div class="hs-desc">5つの指標カードをクリックすると計算式・業種別目安・判定が表示されます。「利益が出ているのに現金がない」謎もここで解決します。</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">5</div>
-        <div class="how-step-content">
-          <div class="hs-title">⑤ アクションプランを実行する</div>
-          <div class="hs-desc">3ヶ月ロードマップとチェックリストで「今週から何をするか」を明確にします。全部チェックしたら修了証を受け取りましょう！</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">💡</div>
-        <div class="how-step-content">
-          <div class="hs-title">各ステップのクイズに答える</div>
-          <div class="hs-desc">各ステップの末尾に確認クイズがあります。正解・不正解どちらでも解説が表示されます。間違えても大丈夫！繰り返し学べます。</div>
-        </div>
-      </li>
-      <li class="how-step-item">
-        <div class="how-step-num">💡</div>
-        <div class="how-step-content">
-          <div class="hs-title">何度でも復習できます</div>
-          <div class="hs-desc">修了後の「もう一度最初から」ボタンで全リセットできます。毎年の決算後に見直す習慣にするのがおすすめです。</div>
-        </div>
-      </li>
-    </ul>
-
-    <div class="how-contact-box" id="howContactBox" style="display:none;">
-      <p id="howContactText">数字のことで気になることがあれば、<br>お気軽にご相談ください。</p>
-      <a href="#" id="howContactLink" class="contact-link-btn" target="_blank">📞 無料相談・お問い合わせ</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- 設定パネル（右からスライド） -->
-<div class="side-panel" id="settingsPanel">
-  <div class="panel-header">
-    <h2>⚙️ カスタマイズ設定</h2>
-    <button class="panel-close" onclick="closeAll()">✕</button>
-  </div>
-  <div class="panel-body">
-
-    <div class="setting-section">
-      <span class="setting-label">🏢 事務所・会社情報</span>
-      <div class="setting-group">
-        <div class="setting-row">
-          <div class="setting-row-icon">🏢</div>
-          <div class="setting-row-info">
-            <div class="s-title">事務所・会社名</div>
-            <div class="s-desc">ヘッダーに表示されます</div>
-            <input type="text" class="setting-input" id="setOrgName" placeholder="例：○○税理士事務所" maxlength="30">
-          </div>
-        </div>
-        <div class="setting-row">
-          <div class="setting-row-icon">📝</div>
-          <div class="setting-row-info">
-            <div class="s-title">アプリタイトル</div>
-            <div class="s-desc">ヘッダーのメインタイトルを変更</div>
-            <input type="text" class="setting-input" id="setAppTitle" placeholder="例：決算書マスター" maxlength="20">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="setting-section">
-      <span class="setting-label">🔗 お問い合わせ設定</span>
-      <div class="setting-group">
-        <div class="setting-row">
-          <div class="setting-row-icon">🌐</div>
-          <div class="setting-row-info">
-            <div class="s-title">お問い合わせURL</div>
-            <div class="s-desc">使い方パネルのボタンに反映されます</div>
-            <input type="url" class="setting-input" id="setContactUrl" placeholder="https://your-office.com/contact">
-          </div>
-        </div>
-        <div class="setting-row">
-          <div class="setting-row-icon">💬</div>
-          <div class="setting-row-info">
-            <div class="s-title">お問い合わせボタンのテキスト</div>
-            <div class="s-desc">ボタンの文言をカスタマイズ</div>
-            <input type="text" class="setting-input" id="setContactText" placeholder="例：無料相談はこちら" maxlength="20">
-          </div>
-        </div>
-        <div class="setting-row">
-          <div class="setting-row-icon">📄</div>
-          <div class="setting-row-info">
-            <div class="s-title">お問い合わせ案内文</div>
-            <div class="s-desc">ボタン上部に表示するメッセージ</div>
-            <input type="text" class="setting-input" id="setContactMsg" placeholder="例：数字のことはお気軽にご相談ください。" maxlength="50">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="setting-section">
-      <span class="setting-label">🎨 カラーテーマ</span>
-      <div class="setting-group">
-        <div class="setting-row" style="flex-wrap:wrap;gap:10px;">
-          <div class="setting-row-icon">🎨</div>
-          <div class="setting-row-info">
-            <div class="s-title">メインカラー</div>
-            <div class="s-desc">ボタン・アクセントカラー</div>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;width:100%;padding-left:40px;">
-            <button onclick="setTheme('#c8962a','#1a2744')" style="width:36px;height:36px;border-radius:50%;background:#c8962a;border:3px solid white;box-shadow:0 0 0 2px #c8962a;cursor:pointer;" title="ゴールド（デフォルト）"></button>
-            <button onclick="setTheme('#1d4ed8','#0f2060')" style="width:36px;height:36px;border-radius:50%;background:#1d4ed8;border:3px solid white;box-shadow:0 0 0 2px #1d4ed8;cursor:pointer;" title="ブルー"></button>
-            <button onclick="setTheme('#059669','#064e3b')" style="width:36px;height:36px;border-radius:50%;background:#059669;border:3px solid white;box-shadow:0 0 0 2px #059669;cursor:pointer;" title="グリーン"></button>
-            <button onclick="setTheme('#7c3aed','#3b0764')" style="width:36px;height:36px;border-radius:50%;background:#7c3aed;border:3px solid white;box-shadow:0 0 0 2px #7c3aed;cursor:pointer;" title="パープル"></button>
-            <button onclick="setTheme('#dc2626','#7f1d1d')" style="width:36px;height:36px;border-radius:50%;background:#dc2626;border:3px solid white;box-shadow:0 0 0 2px #dc2626;cursor:pointer;" title="レッド"></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button class="setting-save-btn" onclick="saveSettings()">💾 設定を保存する</button>
-    <button class="setting-reset-btn" onclick="resetSettings()">🔄 デフォルトに戻す</button>
-    <div class="saved-toast" id="savedToast">✅ 設定を保存しました！</div>
-
-    <div style="margin-top:24px;padding:16px;background:#f8fafc;border-radius:10px;font-size:12px;color:var(--text-light);line-height:1.9;">
-      💡 <strong>設定のヒント</strong><br>
-      設定はブラウザに保存されます（localStorage）。<br>
-      税理士事務所様がご利用の場合は、事務所名とお問い合わせURLを設定しておくと、顧問先への配布ツールとして活用できます。<br>
-      URLはhttps://から始まる形式で入力してください。
-    </div>
-
+<div class="topbar">
+  <div class="topbar-logo" id="tbTitle">決算書マスター <span id="tbOrg"></span></div>
+  <div class="topbar-btns">
+    <button class="ibtn" onclick="openHow()">📖 使い方</button>
+    <button class="ibtn gear" onclick="openSett()">⚙️</button>
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">中小企業経営者向け 無料学習ツール</div>
+  <div class="hero-badge">中小企業経営者向け 学習ツール</div>
   <h1>決算書を<span>自分の言葉</span>で<br>語れる経営者になる</h1>
   <p>税理士に丸投げしない。数字で会社を守るための<br>5ステップ完全マスター</p>
-  <div class="progress-bar-wrap">
-    <div class="progress-label" id="progressLabel">STEP 1 / 5 ── 決算書の全体像</div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill" style="width:20%"></div>
-    </div>
+  <div class="prog-wrap">
+    <div class="prog-lbl" id="progLbl">STEP 1 / 5 ── 決算書の全体像</div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:20%"></div></div>
   </div>
 </div>
 
 <!-- STEP NAV -->
-<div class="step-nav" id="stepNav">
-  <button class="step-btn active" onclick="gotoStep(1)" id="navBtn1">① 全体像</button>
-  <button class="step-btn" onclick="gotoStep(2)" id="navBtn2">② 貸借対照表</button>
-  <button class="step-btn" onclick="gotoStep(3)" id="navBtn3">③ 損益計算書</button>
-  <button class="step-btn" onclick="gotoStep(4)" id="navBtn4">④ 経営指標</button>
-  <button class="step-btn" onclick="gotoStep(5)" id="navBtn5">⑤ アクションプラン</button>
+<div class="step-nav">
+  <button class="snav-btn active" onclick="goStep(1)" id="nb1">① 全体像</button>
+  <button class="snav-btn" onclick="goStep(2)" id="nb2">② 貸借対照表</button>
+  <button class="snav-btn" onclick="goStep(3)" id="nb3">③ 損益計算書</button>
+  <button class="snav-btn" onclick="goStep(4)" id="nb4">④ 自社診断</button>
+  <button class="snav-btn" onclick="goStep(5)" id="nb5">⑤ アクション</button>
 </div>
 
 <div class="container">
 
-<!-- ========== STEP 1 ========== -->
+<!-- ====== STEP 1 ====== -->
 <div class="step-panel active" id="step1">
-  <div class="section-title">決算書って何のためにあるの？</div>
-  <div class="section-sub">まず「地図を持つ」ことから始めましょう</div>
+  <div class="sec-title">決算書って何のためにあるの？</div>
+  <div class="sec-sub">まず「地図を持つ」ことから始めましょう</div>
 
-  <div class="analogy-box">
-    <span class="emoji">🏥</span>
-    <strong>例えるなら「会社の健康診断書」</strong><br>
-    体重・血圧・コレステロール… 数字を見るだけで「健康かどうか」がわかるように、決算書も会社の状態を数字で教えてくれます。年1回、ちゃんと自分で読めるようになりましょう！
+  <div class="analogy">
+    <strong>🏥 例えるなら「会社の健康診断書」</strong>
+    体重・血圧・コレステロール… 数字を見るだけで「健康かどうか」がわかるように、決算書も会社の状態を数字で教えてくれます。年1回、自分で読めるようになりましょう！
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#dbeafe;">📊</div>
-      決算書には「主に2つの表」がある
-    </div>
-
-    <table class="compare-table" style="margin-top:0;">
-      <thead>
-        <tr>
-          <th>表の名前</th>
-          <th>教えてくれること</th>
-          <th>例え</th>
-          <th>期間</th>
-        </tr>
-      </thead>
+    <div class="card-title"><div class="cico" style="background:#dbeafe;">📊</div>決算書には「主に2つの表」がある</div>
+    <table class="tbl">
+      <thead><tr><th>表の名前</th><th>教えてくれること</th><th>例え</th><th>期間</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>貸借対照表（BS）</strong><br><span class="tag tag-blue">バランスシート</span></td>
+          <td><strong>貸借対照表（BS）</strong><br><span class="tag tag-b">バランスシート</span></td>
           <td>会社の財産と借金の状態</td>
           <td>🏦 通帳・財布・借用書の一覧</td>
           <td>決算日時点のスナップショット</td>
         </tr>
         <tr>
-          <td><strong>損益計算書（PL）</strong><br><span class="tag tag-red">プロフィットロス</span></td>
+          <td><strong>損益計算書（PL）</strong><br><span class="tag tag-r">プロフィットロス</span></td>
           <td>1年間で儲かったかどうか</td>
           <td>📝 1年間の家計簿・成績表</td>
           <td>1年間の期間の合計</td>
@@ -1307,690 +461,370 @@
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#fce7f3;">💡</div>
-      「知らない」と損する3つの場面
+    <div class="card-title"><div class="cico" style="background:#fef3c7;">⚠️</div>「知らない」と損する3つの場面</div>
+    <div style="font-size:14px;line-height:2.1;">
+      🏦 <strong>銀行融資の交渉</strong>｜「御社の自己資本比率は？」と聞かれて答えられない経営者は信頼されません。<br>
+      📉 <strong>黒字倒産を防ぐ</strong>｜「利益が出てるのになぜか現金がない」は決算書を読めば原因がわかります。<br>
+      💬 <strong>税理士との会話</strong>｜「先生にお任せ」のままでは、自社の本当の課題に気づけません。
     </div>
-    <ul class="check-list">
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>🏦 銀行融資の交渉</strong>
-          担当者に「御社の自己資本比率は？」と聞かれて答えられない経営者は信頼されません
-        </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>📉 黒字倒産を防ぐ</strong>
-          「利益が出てるのになぜか現金がない」は決算書を読めば原因がわかります
-        </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>💬 税理士との会話</strong>
-          「先生にお任せ」のままでは、自社の本当の課題に気づけません
-        </div>
-      </li>
-    </ul>
   </div>
 
   <div class="quiz-box">
-    <div class="quiz-q">🎯 確認クイズ① ── 決算書で「今日時点の財産と借金の状態」を表す表はどちらですか？</div>
-    <div class="quiz-options">
-      <button class="quiz-opt" onclick="answer(this,'q1',false)">A. 損益計算書（PL）</button>
-      <button class="quiz-opt" onclick="answer(this,'q1',true)">B. 貸借対照表（BS）</button>
+    <div class="quiz-q">🎯 クイズ① ── 「今日時点の財産と借金の状態」を表す表はどちらですか？</div>
+    <div class="quiz-opts">
+      <button class="q-opt" onclick="ans(this,'q1',false)">A. 損益計算書（PL）</button>
+      <button class="q-opt" onclick="ans(this,'q1',true)">B. 貸借対照表（BS）</button>
     </div>
-    <div class="quiz-feedback" id="q1-fb"></div>
+    <div class="q-fb" id="q1-fb"></div>
   </div>
 
   <div class="nav-btns">
     <div></div>
-    <button class="btn btn-primary" onclick="nextStep(1)">次へ：貸借対照表を学ぶ →</button>
+    <button class="btn btn-g" onclick="nextStep(1)">次へ：貸借対照表を学ぶ →</button>
   </div>
 </div>
 
-<!-- ========== STEP 2 ========== -->
+<!-- ====== STEP 2 ====== -->
 <div class="step-panel" id="step2">
-  <div class="section-title">貸借対照表（BS）を読む</div>
-  <div class="section-sub">「どこにお金があるか」「誰から集めたか」が一目でわかる</div>
+  <div class="sec-title">貸借対照表（BS）を読む</div>
+  <div class="sec-sub">「どこにお金があるか」「誰から集めたか」が一目でわかる</div>
 
-  <div class="analogy-box">
-    <span class="emoji">🏠</span>
-    <strong>マイホームで考えてみよう</strong><br>
-    家（3,000万）を持っている人がいます。
-    頭金500万（自分のお金）＋住宅ローン2,500万（銀行から借りた）。
-    これがBSの構造そのものです。<br>
+  <div class="analogy">
+    <strong>🏠 マイホームで考えてみよう</strong>
+    家（3,000万）を持っている人。頭金500万（自分のお金）＋住宅ローン2,500万（銀行から借りた）。これがBSの構造そのものです。<br>
     左側＝家（資産）　右側＝頭金（純資産）＋ローン（負債）
   </div>
 
-  <!-- BS図解 -->
-  <div style="font-size:13px;color:var(--text-light);margin-bottom:8px;">▼ サンプル会社の貸借対照表（単位：万円） ── 各項目をご確認ください</div>
+  <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">▼ サンプル会社の貸借対照表（単位：万円）</div>
   <div class="bs-wrap">
-    <!-- 左側：資産 -->
-    <div class="bs-side bs-left">
+    <div class="bs-side bs-l">
       <div class="bs-side-title">左側：資産（何を持っているか）</div>
-      <div class="bs-section-label">流動資産（1年以内にお金になる）</div>
-      <div class="bs-item current"><span>💰 現金・預金</span><span class="amount" style="color:#1d4ed8;">800</span></div>
-      <div class="bs-item current"><span>📦 売掛金</span><span class="amount" style="color:#1d4ed8;">600</span></div>
-      <div class="bs-item current"><span>🏷 在庫</span><span class="amount" style="color:#1d4ed8;">400</span></div>
-      <div class="bs-divider"></div>
-      <div class="bs-section-label">固定資産（1年超の財産）</div>
-      <div class="bs-item fixed"><span>🏭 建物・設備</span><span class="amount" style="color:#16a34a;">1,500</span></div>
-      <div class="bs-item fixed"><span>🚗 車両</span><span class="amount" style="color:#16a34a;">200</span></div>
+      <div class="bs-lbl">流動資産（1年以内にお金になる）</div>
+      <div class="bs-item cur"><span>💰 現金・預金</span><span class="amt" style="color:#1d4ed8;">800</span></div>
+      <div class="bs-item cur"><span>📦 売掛金</span><span class="amt" style="color:#1d4ed8;">600</span></div>
+      <div class="bs-item cur"><span>🏷 在庫</span><span class="amt" style="color:#1d4ed8;">400</span></div>
+      <div class="bs-div"></div>
+      <div class="bs-lbl">固定資産（1年超の財産）</div>
+      <div class="bs-item fix"><span>🏭 建物・設備</span><span class="amt" style="color:#16a34a;">1,500</span></div>
+      <div class="bs-item fix"><span>🚗 車両</span><span class="amt" style="color:#16a34a;">200</span></div>
       <div class="bs-total"><span>資産合計</span><span>3,500</span></div>
     </div>
-    <!-- 右側：負債＋純資産 -->
-    <div class="bs-side bs-right">
+    <div class="bs-side bs-r">
       <div class="bs-side-title">右側：どうやって集めたか</div>
-      <div class="bs-section-label">流動負債（1年以内に返す）</div>
-      <div class="bs-item liability"><span>🏦 短期借入金</span><span class="amount" style="color:#d97706;">500</span></div>
-      <div class="bs-item liability"><span>📄 買掛金</span><span class="amount" style="color:#d97706;">300</span></div>
-      <div class="bs-divider"></div>
-      <div class="bs-section-label">固定負債（1年超の借金）</div>
-      <div class="bs-item liability"><span>🏦 長期借入金</span><span class="amount" style="color:#d97706;">1,200</span></div>
-      <div class="bs-divider"></div>
-      <div class="bs-section-label">純資産（自分のお金）</div>
-      <div class="bs-item equity"><span>💎 資本金</span><span class="amount" style="color:#7c3aed;">500</span></div>
-      <div class="bs-item equity"><span>📈 利益剰余金</span><span class="amount" style="color:#7c3aed;">1,000</span></div>
+      <div class="bs-lbl">流動負債（1年以内に返す）</div>
+      <div class="bs-item lia"><span>🏦 短期借入金</span><span class="amt" style="color:#d97706;">500</span></div>
+      <div class="bs-item lia"><span>📄 買掛金</span><span class="amt" style="color:#d97706;">300</span></div>
+      <div class="bs-div"></div>
+      <div class="bs-lbl">固定負債（1年超の借金）</div>
+      <div class="bs-item lia"><span>🏦 長期借入金</span><span class="amt" style="color:#d97706;">1,200</span></div>
+      <div class="bs-div"></div>
+      <div class="bs-lbl">純資産（自分のお金）</div>
+      <div class="bs-item equ"><span>💎 資本金</span><span class="amt" style="color:#7c3aed;">500</span></div>
+      <div class="bs-item equ"><span>📈 利益剰余金</span><span class="amt" style="color:#7c3aed;">1,000</span></div>
       <div class="bs-total"><span>負債＋純資産合計</span><span>3,500</span></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#d1fae5;">🔍</div>
-      経営者が最初にチェックすべき「安全性」の確認
-    </div>
-    <div style="background:#f8fafc;border-radius:12px;padding:20px;margin:12px 0;">
-      <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">流動比率のチェック（1年以内に返せるか？）</div>
-      <div class="cash-diagram">
-        <div class="cash-box" style="background:#dbeafe;">
-          <div class="box-label" style="color:#1d4ed8;">流動資産</div>
-          <div class="box-value" style="color:#1d4ed8;">1,800万</div>
-          <div class="box-sub">（現金＋売掛金＋在庫）</div>
-        </div>
-        <div class="cash-arrow">÷</div>
-        <div class="cash-box" style="background:#fef3c7;">
-          <div class="box-label" style="color:#d97706;">流動負債</div>
-          <div class="box-value" style="color:#d97706;">800万</div>
-          <div class="box-sub">（短期借入＋買掛金）</div>
-        </div>
-        <div class="cash-arrow">＝</div>
-        <div class="cash-box" style="background:#d1fae5;">
-          <div class="box-label" style="color:#065f46;">流動比率</div>
-          <div class="box-value" style="color:#065f46;">225%</div>
-          <div class="box-sub">✅ 目安：120%以上OK</div>
-        </div>
+    <div class="card-title"><div class="cico" style="background:#d1fae5;">🔍</div>最初にチェックすべき「安全性」の確認</div>
+    <div style="background:#f8fafc;border-radius:10px;padding:16px;margin:10px 0;">
+      <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">流動比率のチェック（1年以内に返せるか？）</div>
+      <div class="cash-row">
+        <div class="cash-box" style="background:#dbeafe;"><div class="cl" style="color:#1d4ed8;">流動資産</div><div class="cv" style="color:#1d4ed8;">1,800万</div><div class="cs">現金＋売掛金＋在庫</div></div>
+        <div class="cash-arr">÷</div>
+        <div class="cash-box" style="background:#fef3c7;"><div class="cl" style="color:#d97706;">流動負債</div><div class="cv" style="color:#d97706;">800万</div><div class="cs">短期借入＋買掛金</div></div>
+        <div class="cash-arr">＝</div>
+        <div class="cash-box" style="background:#d1fae5;"><div class="cl" style="color:#065f46;">流動比率</div><div class="cv" style="color:#065f46;">225%</div><div class="cs">✅ 目安120%以上OK</div></div>
       </div>
-      <div style="font-size:13px;color:var(--text-light);line-height:1.8;margin-top:8px;">
-        💡 このサンプル会社は225%。流動資産が流動負債の2倍以上あり、<strong style="color:var(--green);">短期的な支払能力は十分</strong>な状態です。
-      </div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:8px;">💡 このサンプル会社は225%。流動資産が流動負債の2倍以上あり、<strong style="color:var(--green);">短期的な支払能力は十分</strong>な状態です。</div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#f3e8ff;">💎</div>
-      「利益剰余金」とは？ ── これが経営の通知表
-    </div>
-    <div style="font-size:14px;line-height:1.9;">
-      創業してから今日まで、毎年少しずつ積み上げてきた利益の合計です。<br>
+    <div class="card-title"><div class="cico" style="background:#f3e8ff;">💎</div>「利益剰余金」とは？── これが経営の通知表</div>
+    <div style="font-size:14px;line-height:2.0;">
+      創業してから今日まで毎年積み上げてきた利益の合計です。<br>
       <span style="background:#f3e8ff;padding:2px 6px;border-radius:4px;color:#7c3aed;font-weight:700;">プラスが大きい</span> ＝ 長年しっかり稼いできた会社<br>
       <span style="background:#fee2e2;padding:2px 6px;border-radius:4px;color:#dc2626;font-weight:700;">マイナス（繰越損失）</span> ＝ 累積赤字があり要注意！
     </div>
   </div>
 
   <div class="quiz-box">
-    <div class="quiz-q">🎯 確認クイズ② ── 貸借対照表の「右側」は何を意味しますか？</div>
-    <div class="quiz-options">
-      <button class="quiz-opt" onclick="answer(this,'q2',false)">A. 会社が持っている財産の一覧</button>
-      <button class="quiz-opt" onclick="answer(this,'q2',true)">B. そのお金をどうやって調達したか（負債＋純資産）</button>
-      <button class="quiz-opt" onclick="answer(this,'q2',false)">C. 今年1年間の売上の記録</button>
+    <div class="quiz-q">🎯 クイズ② ── 貸借対照表の「右側」は何を意味しますか？</div>
+    <div class="quiz-opts">
+      <button class="q-opt" onclick="ans(this,'q2',false)">A. 会社が持っている財産の一覧</button>
+      <button class="q-opt" onclick="ans(this,'q2',true)">B. そのお金をどうやって調達したか（負債＋純資産）</button>
+      <button class="q-opt" onclick="ans(this,'q2',false)">C. 今年1年間の売上の記録</button>
     </div>
-    <div class="quiz-feedback" id="q2-fb"></div>
+    <div class="q-fb" id="q2-fb"></div>
   </div>
 
   <div class="nav-btns">
-    <button class="btn btn-outline" onclick="prevStep(2)">← 前へ</button>
-    <button class="btn btn-primary" onclick="nextStep(2)">次へ：損益計算書を学ぶ →</button>
+    <button class="btn btn-o" onclick="prevStep(2)">← 前へ</button>
+    <button class="btn btn-g" onclick="nextStep(2)">次へ：損益計算書を学ぶ →</button>
   </div>
 </div>
 
-<!-- ========== STEP 3 ========== -->
+<!-- ====== STEP 3 ====== -->
 <div class="step-panel" id="step3">
-  <div class="section-title">損益計算書（PL）の「5つの利益」</div>
-  <div class="section-sub">売上から利益が生まれるまでの「流れ」を追いかけよう</div>
+  <div class="sec-title">損益計算書（PL）の「5つの利益」</div>
+  <div class="sec-sub">売上から利益が生まれるまでの「流れ」を追いかけよう</div>
 
-  <div class="analogy-box">
-    <span class="emoji">🍜</span>
-    <strong>ラーメン屋さんで考えてみよう</strong><br>
-    1杯1,000円のラーメンを1,000杯売ると売上100万円。でも麺・スープ・具材で400万かかったら粗利は600万。
-    そこから家賃・人件費・光熱費を引いたら…本当の「儲け」が見えてきます。
+  <div class="analogy">
+    <strong>🍜 ラーメン屋さんで考えてみよう</strong>
+    1杯1,000円のラーメンを5,000杯売ると売上500万円。でも麺・スープ・具材で150万かかったら粗利は350万。そこから家賃・人件費・光熱費を引いたら…本当の「儲け」が見えてきます。
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#fef3c7;">📊</div>
-      5つの利益ウォーターフォール ── クリックで詳細を確認
-    </div>
-
+    <div class="card-title"><div class="cico" style="background:#fef3c7;">📊</div>5つの利益ウォーターフォール ── 各行をクリックで詳細表示</div>
     <div class="pl-funnel">
       <div class="pl-row" onclick="togglePL('pl1')">
-        <div class="pl-label">売上高</div>
-        <div class="pl-bar">
-          <div class="pl-bar-inner" style="width:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);">5,000万</div>
-        </div>
-        <div class="pl-badge" style="color:#3b82f6;">5,000万</div>
+        <div class="pl-lbl">売上高</div>
+        <div class="pl-bar"><div class="pl-bi" style="width:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);">5,000万</div></div>
+        <div class="pl-val" style="color:#3b82f6;">5,000万</div>
       </div>
       <div class="pl-detail" id="pl1">
-        📌 <strong>売上高</strong>｜商品やサービスを売った合計金額。税抜きで計上します。<br>
-        ⚠️ 売上高が増えても、原価が増えていたら意味がない。次の「粗利」まで追うことが大切！
+        📌 <strong>売上高</strong>｜商品やサービスを売った合計金額（税抜）。<br>
+        ⚠️ 売上が増えても原価も増えていたら意味がない。次の「粗利」まで必ず確認を！
       </div>
 
       <div class="pl-row" onclick="togglePL('pl2')">
-        <div class="pl-label">売上総利益<br><small>（粗利）</small></div>
-        <div class="pl-bar">
-          <div class="pl-bar-inner" style="width:70%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);">3,500万</div>
-        </div>
-        <div class="pl-badge" style="color:#8b5cf6;">3,500万</div>
+        <div class="pl-lbl">売上総利益<br><small>（粗利）</small></div>
+        <div class="pl-bar"><div class="pl-bi" style="width:70%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);">3,500万</div></div>
+        <div class="pl-val" style="color:#8b5cf6;">3,500万</div>
       </div>
       <div class="pl-detail" id="pl2">
-        📌 <strong>売上総利益（粗利）</strong>｜売上高 ─ 売上原価（仕入れ・製造コスト）<br>
-        <strong>粗利率 ＝ 3,500 ÷ 5,000 ＝ 70%</strong><br>
-        💡 物価高騰の時代、原材料費が上がっても粗利率を維持できているかチェック！
+        📌 <strong>売上総利益（粗利）</strong>｜売上高 ─ 売上原価（仕入・製造コスト）<br>
+        粗利率 ＝ 3,500 ÷ 5,000 ＝ <strong>70%</strong><br>
+        💡 物価高騰の時代、原材料費が上がっても粗利率を維持できているか毎年チェック！
       </div>
 
       <div class="pl-row" onclick="togglePL('pl3')">
-        <div class="pl-label">営業利益</div>
-        <div class="pl-bar">
-          <div class="pl-bar-inner" style="width:40%;background:linear-gradient(90deg,#059669,#34d399);">2,000万</div>
-        </div>
-        <div class="pl-badge" style="color:#059669;">2,000万</div>
+        <div class="pl-lbl">営業利益</div>
+        <div class="pl-bar"><div class="pl-bi" style="width:40%;background:linear-gradient(90deg,#059669,#34d399);">2,000万</div></div>
+        <div class="pl-val" style="color:#059669;">2,000万</div>
       </div>
       <div class="pl-detail" id="pl3">
         📌 <strong>営業利益</strong>｜粗利 ─ 販管費（人件費・家賃・広告費など）<br>
         「本業で稼いだ利益」です。<br>
-        💡 販管費の中でも人件費は最大のコスト。次のステップで「労働分配率」を確認しましょう！
+        💡 販管費の中でも人件費が最大コスト。労働分配率は次のステップで確認します！
       </div>
 
       <div class="pl-row" onclick="togglePL('pl4')">
-        <div class="pl-label">経常利益<br><small>★最重要★</small></div>
-        <div class="pl-bar">
-          <div class="pl-bar-inner" style="width:34%;background:linear-gradient(90deg,#dc2626,#f87171);">1,700万</div>
-        </div>
-        <div class="pl-badge" style="color:#dc2626;">1,700万</div>
+        <div class="pl-lbl">経常利益<br><small style="color:#dc2626;font-weight:700;">⭐最重要</small></div>
+        <div class="pl-bar"><div class="pl-bi" style="width:34%;background:linear-gradient(90deg,#dc2626,#f87171);">1,700万</div></div>
+        <div class="pl-val" style="color:#dc2626;">1,700万</div>
       </div>
       <div class="pl-detail pl-star" id="pl4">
-        ⭐ <strong>経常利益（一番重要！）</strong>｜営業利益 ± 営業外損益（支払利息など）<br>
+        ⭐ <strong>経常利益（5つの中で最重要！）</strong>｜営業利益 ± 営業外損益（支払利息など）<br>
         「通常の状態で会社が出せる実力の利益」。銀行も税理士も、一番ここを見ます。<br>
-        ⚠️ 金利上昇の今、支払利息が増えて営業利益より経常利益が大きく下がる会社が増えています！
+        ⚠️ 金利上昇の今、支払利息が増えて経常利益が大きく下がる会社が増えています！
       </div>
 
       <div class="pl-row" onclick="togglePL('pl5')">
-        <div class="pl-label">当期純利益</div>
-        <div class="pl-bar">
-          <div class="pl-bar-inner" style="width:22%;background:linear-gradient(90deg,#1a2744,#2d4a8a);">1,100万</div>
-        </div>
-        <div class="pl-badge" style="color:#1a2744;">1,100万</div>
+        <div class="pl-lbl">当期純利益</div>
+        <div class="pl-bar"><div class="pl-bi" style="width:22%;background:linear-gradient(90deg,#1a2744,#2d4a8a);">1,100万</div></div>
+        <div class="pl-val" style="color:#1a2744;">1,100万</div>
       </div>
       <div class="pl-detail" id="pl5">
         📌 <strong>当期純利益</strong>｜経常利益 ± 特別損益 ─ 法人税等<br>
-        最終的な「手残り」の利益。これがBSの利益剰余金に積み上がっていきます。<br>
-        💡 特別損益（土地売却益など）で大きく変動することがあるので、毎年の比較には経常利益を使うほうが正確です。
+        最終的な「手残り」の利益。BSの利益剰余金に積み上がっていきます。<br>
+        💡 特別損益（土地売却益など）で大きく変動するので、毎年比較には経常利益を使うほうが正確です。
       </div>
     </div>
-    <div style="font-size:12px;color:var(--text-light);text-align:center;">※ 各行をクリックすると詳細が表示されます</div>
   </div>
 
   <div class="highlight">
     <h3>⭐ 経常利益が「一番大事」な理由</h3>
-    <p>
-      当期純利益は「土地を売った」「補助金をもらった」などの一時的な出来事で大きく変わります。
-      でも経常利益は、そういった特別なことを除いた「普通の1年間で会社が稼ぐ実力」を示します。
-      3年分の経常利益を並べて見ると、会社の本当の体力がわかります。
-    </p>
-  </div>
-
-  <div class="quiz-box">
-    <div class="quiz-q">🎯 確認クイズ③ ── 「銀行融資の審査でもっとも重視される」利益はどれですか？</div>
-    <div class="quiz-options">
-      <button class="quiz-opt" onclick="answer(this,'q3',false)">A. 売上総利益（粗利）</button>
-      <button class="quiz-opt" onclick="answer(this,'q3',false)">B. 当期純利益</button>
-      <button class="quiz-opt" onclick="answer(this,'q3',true)">C. 経常利益</button>
-    </div>
-    <div class="quiz-feedback" id="q3-fb"></div>
-  </div>
-
-  <div class="nav-btns">
-    <button class="btn btn-outline" onclick="prevStep(3)">← 前へ</button>
-    <button class="btn btn-primary" onclick="nextStep(3)">次へ：経営指標を学ぶ →</button>
-  </div>
-</div>
-
-<!-- ========== STEP 4 ========== -->
-<div class="step-panel" id="step4">
-  <div class="section-title">経営者が使う「5つの指標」</div>
-  <div class="section-sub">数字を読んだら「どう動くか」に変換しよう</div>
-
-  <div class="analogy-box">
-    <span class="emoji">🩺</span>
-    <strong>健診の数値と同じです</strong><br>
-    血圧・血糖値・コレステロール…「高め」「正常」「要治療」と判定されるように、
-    会社にも「目安の数値」があります。自社はどうかチェックしてみましょう！
-  </div>
-
-  <div class="meter-grid">
-    <div class="meter-card" onclick="showMeterDetail('m1')">
-      <div class="meter-label">自己資本比率</div>
-      <div class="meter-value" style="color:#7c3aed;">43%</div>
-      <div class="meter-bench">目安：30%以上 ◎</div>
-      <div class="meter-bar-bg">
-        <div class="meter-bar-fill" style="width:43%;background:linear-gradient(90deg,#7c3aed,#a78bfa);"></div>
-      </div>
-      <div class="meter-status status-ok">✅ 健全</div>
-    </div>
-    <div class="meter-card" onclick="showMeterDetail('m2')">
-      <div class="meter-label">流動比率</div>
-      <div class="meter-value" style="color:#059669;">225%</div>
-      <div class="meter-bench">目安：120%以上 ◎</div>
-      <div class="meter-bar-bg">
-        <div class="meter-bar-fill" style="width:80%;background:linear-gradient(90deg,#059669,#34d399);"></div>
-      </div>
-      <div class="meter-status status-ok">✅ 優良</div>
-    </div>
-    <div class="meter-card" onclick="showMeterDetail('m3')">
-      <div class="meter-label">売上高経常利益率</div>
-      <div class="meter-value" style="color:#dc2626;">34%</div>
-      <div class="meter-bench">目安：3〜5%以上 ◎</div>
-      <div class="meter-bar-bg">
-        <div class="meter-bar-fill" style="width:60%;background:linear-gradient(90deg,#dc2626,#f87171);"></div>
-      </div>
-      <div class="meter-status status-ok">✅ 非常に高い</div>
-    </div>
-    <div class="meter-card" onclick="showMeterDetail('m4')">
-      <div class="meter-label">労働分配率</div>
-      <div class="meter-value" style="color:#d97706;">58%</div>
-      <div class="meter-bench">目安：50〜60%以下</div>
-      <div class="meter-bar-bg">
-        <div class="meter-bar-fill" style="width:58%;background:linear-gradient(90deg,#d97706,#fcd34d);"></div>
-      </div>
-      <div class="meter-status status-warn">⚠️ 要注意</div>
-    </div>
-    <div class="meter-card" onclick="showMeterDetail('m5')">
-      <div class="meter-label">粗利率</div>
-      <div class="meter-value" style="color:#1d4ed8;">70%</div>
-      <div class="meter-bench">業種平均と比較を</div>
-      <div class="meter-bar-bg">
-        <div class="meter-bar-fill" style="width:70%;background:linear-gradient(90deg,#1d4ed8,#60a5fa);"></div>
-      </div>
-      <div class="meter-status status-ok">✅ 高水準</div>
-    </div>
-  </div>
-
-  <!-- 指標詳細 -->
-  <div id="meterDetail" class="card" style="display:none;">
-    <div id="meterDetailContent"></div>
+    <p>当期純利益は「土地を売った」「補助金をもらった」などの一時的な出来事で大きく変わります。でも経常利益は、そういった特別なことを除いた「普通の1年間で会社が稼ぐ実力」を示します。3年分の経常利益を並べて見ると、会社の本当の体力がわかります。</p>
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#fef3c7;">⚠️</div>
-      「利益が出てるのに現金がない」の謎を解く
+    <div class="card-title"><div class="cico" style="background:#fef3c7;">⚠️</div>「利益が出てるのに現金がない」の謎を解く</div>
+    <div class="cash-row">
+      <div class="cash-box" style="background:#fef3c7;"><div class="cl" style="color:#92400e;">PL利益</div><div class="cv" style="color:#d97706;">1,100万</div><div class="cs">当期純利益</div></div>
+      <div class="cash-arr">≠</div>
+      <div class="cash-box" style="background:#fee2e2;"><div class="cl" style="color:#991b1b;">現金増加</div><div class="cv" style="color:#dc2626;">300万</div><div class="cs">なぜ？</div></div>
     </div>
-    <div class="cash-diagram">
-      <div class="cash-box" style="background:#fef3c7;">
-        <div class="box-label" style="color:#92400e;">PL利益</div>
-        <div class="box-value" style="color:#d97706;">1,100万</div>
-        <div class="box-sub">当期純利益</div>
-      </div>
-      <div class="cash-arrow">≠</div>
-      <div class="cash-box" style="background:#fee2e2;">
-        <div class="box-label" style="color:#991b1b;">実際の現金増加</div>
-        <div class="box-value" style="color:#dc2626;">300万</div>
-        <div class="box-sub">なぜ？</div>
-      </div>
-    </div>
-    <div style="margin-top:12px;font-size:14px;line-height:1.9;">
-      <strong>現金が利益より少ない3つの理由</strong><br>
-      1️⃣ <strong>設備投資</strong>：機械・車を買ったらBSの固定資産が増えてキャッシュが減る<br>
+    <div style="font-size:13px;line-height:2.0;margin-top:10px;">
+      1️⃣ <strong>設備投資</strong>：機械・車を買うとBSの固定資産が増えてキャッシュが減る<br>
       2️⃣ <strong>売掛金の増加</strong>：売ったけど代金をまだもらっていない<br>
-      3️⃣ <strong>借入金の返済</strong>：元金返済はPLに出てこないがキャッシュは減る<br><br>
-      💡 これを把握するには「キャッシュフロー計算書（CF）」も合わせて読むのが理想です
+      3️⃣ <strong>借入金の返済</strong>：元金返済はPLに出てこないがキャッシュは減る<br>
+      <span style="color:var(--muted);font-size:12px;">💡 これを把握するには「キャッシュフロー計算書（CF）」も合わせて読むのが理想です</span>
     </div>
   </div>
 
   <div class="quiz-box">
-    <div class="quiz-q">🎯 確認クイズ④ ── 粗利のうち人件費が占める割合を表す指標は何ですか？</div>
-    <div class="quiz-options">
-      <button class="quiz-opt" onclick="answer(this,'q4',false)">A. 自己資本比率</button>
-      <button class="quiz-opt" onclick="answer(this,'q4',true)">B. 労働分配率</button>
-      <button class="quiz-opt" onclick="answer(this,'q4',false)">C. 流動比率</button>
+    <div class="quiz-q">🎯 クイズ③ ── 銀行融資の審査でもっとも重視される利益はどれですか？</div>
+    <div class="quiz-opts">
+      <button class="q-opt" onclick="ans(this,'q3',false)">A. 売上総利益（粗利）</button>
+      <button class="q-opt" onclick="ans(this,'q3',false)">B. 当期純利益</button>
+      <button class="q-opt" onclick="ans(this,'q3',true)">C. 経常利益</button>
     </div>
-    <div class="quiz-feedback" id="q4-fb"></div>
+    <div class="q-fb" id="q3-fb"></div>
   </div>
 
   <div class="nav-btns">
-    <button class="btn btn-outline" onclick="prevStep(4)">← 前へ</button>
-    <button class="btn btn-primary" onclick="nextStep(4)">次へ：アクションプランへ →</button>
+    <button class="btn btn-o" onclick="prevStep(3)">← 前へ</button>
+    <button class="btn btn-g" onclick="nextStep(3)">次へ：自社の数字を診断する →</button>
   </div>
 </div>
 
-<!-- ========== STEP 5 ========== -->
-<div class="step-panel" id="step5">
-  <div class="section-title">これからどうすればいい？</div>
-  <div class="section-sub">「知識」を「行動」に変えるアクションプラン</div>
+<!-- ====== STEP 4 ====== -->
+<div class="step-panel" id="step4">
+  <div class="sec-title">自社の数字で経営指標を診断</div>
+  <div class="sec-sub">決算書の数字を入力するだけ。自社の健康診断ができます</div>
 
-  <div class="highlight">
-    <h3>🎓 ここまで学んだこと、まとめ</h3>
-    <p>
-      ✅ 貸借対照表（BS）＝財産と調達源の一覧（スナップショット）<br>
-      ✅ 損益計算書（PL）＝1年間の儲けの過程（フロー）<br>
-      ✅ 5つの利益：粗利→営業利益→経常利益（最重要）→税引前→純利益<br>
-      ✅ 自己資本比率・流動比率・経常利益率・労働分配率を把握する<br>
-      ✅ 利益≠現金。BSとPLを両方見て初めて全体がわかる
-    </p>
+  <div class="analogy">
+    <strong>🩺 健診の数値と同じです</strong>
+    血圧・血糖値・コレステロール…「高め」「正常」「要治療」と判定されるように、会社にも「目安の数値」があります。自社の決算書を手元に用意して入力してみましょう！
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#d1fae5;">📋</div>
-      今すぐできる「毎月の数字チェック習慣」
+    <div class="card-title"><div class="cico" style="background:#dbeafe;">🏢</div>自社 経営指標 簡易診断シート</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">直近の決算書を手元に用意して入力してください（単位：万円）</div>
+    <div class="diag-grid">
+      <div><label class="diag-label">売上高（万円）</label><input type="number" id="dUriage" class="diag-in" placeholder="例：5000" oninput="calcDiag()"></div>
+      <div><label class="diag-label">売上原価（万円）</label><input type="number" id="dGenka" class="diag-in" placeholder="例：1500" oninput="calcDiag()"></div>
+      <div><label class="diag-label">経常利益（万円）</label><input type="number" id="dKeijo" class="diag-in" placeholder="例：300" oninput="calcDiag()"></div>
+      <div><label class="diag-label">人件費（万円）</label><input type="number" id="dJinken" class="diag-in" placeholder="例：800" oninput="calcDiag()"></div>
+      <div><label class="diag-label">流動資産（万円）</label><input type="number" id="dRyudoS" class="diag-in" placeholder="例：1800" oninput="calcDiag()"></div>
+      <div><label class="diag-label">流動負債（万円）</label><input type="number" id="dRyudoF" class="diag-in" placeholder="例：800" oninput="calcDiag()"></div>
+      <div><label class="diag-label">純資産（万円）</label><input type="number" id="dJunS" class="diag-in" placeholder="例：1500" oninput="calcDiag()"></div>
+      <div><label class="diag-label">総資産（万円）</label><input type="number" id="dSoS" class="diag-in" placeholder="例：3500" oninput="calcDiag()"></div>
     </div>
-    <ul class="check-list" id="actionChecks">
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>📅 毎月10日：月次試算表をもらう</strong>
-          税理士に「月次で試算表を出してください」とお願いするだけ。最初の一歩です。
+    <div class="diag-result" id="diagResult">
+      <div style="font-weight:700;font-size:13px;color:var(--navy);margin-bottom:10px;">📊 あなたの会社の診断結果</div>
+      <div class="meter-grid">
+        <div class="meter-card" style="cursor:default;">
+          <div class="m-lbl">粗利率</div>
+          <div class="m-val" id="dr_arari" style="font-size:22px;">－</div>
+          <div class="m-bench">業種平均と比較を</div>
+          <div class="m-st" id="ds_arari">入力待ち</div>
         </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>💰 毎月：粗利率の確認</strong>
-          先月と比べて粗利率が下がっていたら、原材料費か値引きが増えているサイン
+        <div class="meter-card" style="cursor:default;">
+          <div class="m-lbl">経常利益率</div>
+          <div class="m-val" id="dr_keijo" style="font-size:22px;">－</div>
+          <div class="m-bench">目安：3%以上◎</div>
+          <div class="m-st" id="ds_keijo">入力待ち</div>
         </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>🏦 3ヶ月ごと：現金残高と経常利益の確認</strong>
-          「利益は出ているか？現金は増えているか？」を同時に追う習慣をつける
+        <div class="meter-card" style="cursor:default;">
+          <div class="m-lbl">労働分配率</div>
+          <div class="m-val" id="dr_rodo" style="font-size:22px;">－</div>
+          <div class="m-bench">目安：60%以下◎</div>
+          <div class="m-st" id="ds_rodo">入力待ち</div>
         </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>📊 半年ごと：5指標の確認</strong>
-          自己資本比率・流動比率・経常利益率・労働分配率・粗利率を一覧で確認する
+        <div class="meter-card" style="cursor:default;">
+          <div class="m-lbl">流動比率</div>
+          <div class="m-val" id="dr_ryudo" style="font-size:22px;">－</div>
+          <div class="m-bench">目安：120%以上◎</div>
+          <div class="m-st" id="ds_ryudo">入力待ち</div>
         </div>
-      </li>
-      <li class="check-item">
-        <div class="check-box" onclick="toggleCheck(this)">　</div>
-        <div class="check-text">
-          <strong>💬 年1回：税理士との「数字で語る」面談</strong>
-          「経常利益が前年より下がった理由は何ですか？」と自分から質問できれば合格！
+        <div class="meter-card" style="cursor:default;grid-column:1/-1;">
+          <div class="m-lbl">自己資本比率</div>
+          <div class="m-val" id="dr_jiko" style="font-size:22px;">－</div>
+          <div class="m-bench">目安：30%以上◎</div>
+          <div class="m-st" id="ds_jiko">入力待ち</div>
         </div>
-      </li>
+      </div>
+      <div class="diag-comment" id="diagComment"></div>
+    </div>
+  </div>
+
+  <div class="quiz-box">
+    <div class="quiz-q">🎯 クイズ④ ── 粗利のうち人件費が占める割合を表す指標は何ですか？</div>
+    <div class="quiz-opts">
+      <button class="q-opt" onclick="ans(this,'q4',false)">A. 自己資本比率</button>
+      <button class="q-opt" onclick="ans(this,'q4',true)">B. 労働分配率</button>
+      <button class="q-opt" onclick="ans(this,'q4',false)">C. 流動比率</button>
+    </div>
+    <div class="q-fb" id="q4-fb"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-o" onclick="prevStep(4)">← 前へ</button>
+    <button class="btn btn-g" onclick="nextStep(4)">次へ：アクションプランへ →</button>
+  </div>
+</div>
+
+<!-- ====== STEP 5 ====== -->
+<div class="step-panel" id="step5">
+  <div class="sec-title">これからどうすればいい？</div>
+  <div class="sec-sub">「知識」を「行動」に変えるアクションプラン</div>
+
+  <div class="card">
+    <div class="card-title"><div class="cico" style="background:#d1fae5;">📋</div>毎月の数字チェック習慣</div>
+    <ul class="chk-list">
+      <li class="chk-item"><div class="chk-box" onclick="toggleChk(this)">　</div><div class="chk-text"><strong>📅 毎月10日：月次試算表をもらう</strong>税理士に「月次で試算表を送ってください」とお願いするだけ。最初の一歩です。</div></li>
+      <li class="chk-item"><div class="chk-box" onclick="toggleChk(this)">　</div><div class="chk-text"><strong>💰 毎月：粗利率の確認</strong>先月と比べて粗利率が下がっていたら、原材料費か値引きが増えているサインです。</div></li>
+      <li class="chk-item"><div class="chk-box" onclick="toggleChk(this)">　</div><div class="chk-text"><strong>🏦 3ヶ月ごと：現金残高と経常利益の確認</strong>「利益は出ているか？現金は増えているか？」を同時に追う習慣をつけましょう。</div></li>
+      <li class="chk-item"><div class="chk-box" onclick="toggleChk(this)">　</div><div class="chk-text"><strong>📊 半年ごと：5指標の確認</strong>自己資本比率・流動比率・経常利益率・労働分配率・粗利率を一覧で確認します。</div></li>
+      <li class="chk-item"><div class="chk-box" onclick="toggleChk(this)">　</div><div class="chk-text"><strong>💬 年1回：税理士との「数字で語る」面談</strong>「経常利益が前年より下がった理由は？」と自分から聞けれれば合格です！</div></li>
     </ul>
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#dbeafe;">🗺️</div>
-      3ヶ月ロードマップ
-    </div>
-    <div class="action-timeline">
-      <div class="action-item">
-        <div class="action-dot"></div>
-        <div class="action-when">今週中</div>
-        <div class="action-title">税理士に「月次試算表」をお願いする</div>
-        <div class="action-desc">まずここから。「毎月10日頃に送ってもらえますか？」の一言でOK</div>
-      </div>
-      <div class="action-item">
-        <div class="action-dot"></div>
-        <div class="action-when">1ヶ月以内</div>
-        <div class="action-title">直近3期分の決算書を手元に揃える</div>
-        <div class="action-desc">3年分の経常利益を並べれば「会社の実力の推移」が一目でわかる</div>
-      </div>
-      <div class="action-item">
-        <div class="action-dot"></div>
-        <div class="action-when">2ヶ月以内</div>
-        <div class="action-title">5指標を自社で計算してみる</div>
-        <div class="action-desc">電卓で計算できます。Excelで一覧化すると毎期比較が楽になります</div>
-      </div>
-      <div class="action-item">
-        <div class="action-dot"></div>
-        <div class="action-when">3ヶ月後</div>
-        <div class="action-title">「数字で語れる経営者」として税理士と対等に話す</div>
-        <div class="action-desc">「経常利益は確保できていますか？労働分配率はどうですか？」と自分から聞けたらゴール🎉</div>
-      </div>
+    <div class="card-title"><div class="cico" style="background:#dbeafe;">🗺️</div>3ヶ月ロードマップ</div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">今週中</div><div class="tl-title">税理士に「月次試算表」をお願いする</div><div class="tl-desc">「毎月10日頃に送ってもらえますか？」の一言でOK</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">1ヶ月以内</div><div class="tl-title">直近3期分の決算書を手元に揃える</div><div class="tl-desc">3年分の経常利益を並べれば「会社の実力の推移」が一目でわかる</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2ヶ月以内</div><div class="tl-title">自社の5指標を計算してみる</div><div class="tl-desc">このアプリのステップ4で入力すれば自動計算できます</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">3ヶ月後</div><div class="tl-title">「数字で語れる経営者」として税理士と対等に話す</div><div class="tl-desc">「経常利益は確保できていますか？労働分配率はどうですか？」と聞けたらゴール🎉</div></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">
-      <div class="card-icon" style="background:#fce7f3;">📞</div>
-      さらに詳しく知りたい方へ
-    </div>
-    <div style="font-size:14px;line-height:2.0;">
-      📚 <strong>おすすめの次のステップ</strong><br>
-      ・会計ソフト（freee・マネーフォワード）で月次把握を自動化<br>
-      ・キャッシュフロー計算書の読み方を学ぶ<br>
-      ・資金繰り表の作り方を覚えて「3ヶ月先の現金残高」を予測する<br>
-      ・同業他社の平均指標（中小企業庁の経営指標）と自社を比較する<br><br>
-      💡 数字がわかると、<strong>「何をすれば会社がよくなるか」</strong>が自分でわかるようになります。<br>
-      それが「数字で守る経営」の第一歩です。
+    <div class="card-title"><div class="cico" style="background:#d1fae5;">💬</div>税理士への質問テンプレート ── 次回の面談でそのまま使えます</div>
+    <div class="q-template-item"><div class="qt-label">Q1. 経常利益について</div><div class="qt-text">「先生、今期の経常利益は前期と比べていかがでしょうか？変化の主な原因を教えていただけますか？」</div></div>
+    <div class="q-template-item"><div class="qt-label">Q2. 粗利率について</div><div class="qt-text">「売上高は増えていますが、粗利率は維持できていますか？原価率が上がっている場合、どう対処すべきでしょうか？」</div></div>
+    <div class="q-template-item"><div class="qt-label">Q3. 労働分配率について</div><div class="qt-text">「人件費の労働分配率は何%でしょうか？賃上げを検討していますが、どのくらいの粗利増加が必要か教えてください。」</div></div>
+    <div class="q-template-item"><div class="qt-label">Q4. 自己資本比率について</div><div class="qt-text">「自己資本比率は現在何%ですか？銀行からの評価という観点でいかがでしょうか？」</div></div>
+    <div class="q-template-item"><div class="qt-label">Q5. 現金とキャッシュフローについて</div><div class="qt-text">「利益は出ているのに現金が増えない気がします。どこにお金が使われているか一緒に確認していただけますか？」</div></div>
+    <div style="margin-top:12px;padding:12px;background:#f8fafc;border-radius:8px;font-size:12px;color:var(--muted);line-height:1.8;">
+      💡 これらの質問を自分の言葉で聞けるようになったとき、あなたは本当の意味で「数字で語れる経営者」です。
     </div>
   </div>
 
-  <div style="text-align:center;margin-top:40px;" id="completeSection">
-    <div id="completeBtn">
-      <button class="btn btn-primary" style="font-size:18px;padding:18px 48px;" onclick="showCompletion()">
-        🎉 全ステップ完了！修了証を受け取る
-      </button>
+  <div class="card">
+    <div class="card-title"><div class="cico" style="background:#f3e8ff;">✏️</div>学んだことを自分の言葉でまとめるメモ</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">書くことで記憶が定着します。メモはブラウザに自動保存されます。</div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div><label class="memo-lbl">📊 貸借対照表（BS）について、自分なりの理解</label><textarea class="memo-area" rows="3" id="m_bs" placeholder="例：左側が持っているもの、右側がどうやってお金を集めたか。マイホームと同じ！" oninput="saveMemo('m_bs',this.value)"></textarea></div>
+      <div><label class="memo-lbl">📈 損益計算書（PL）と経常利益について</label><textarea class="memo-area" rows="3" id="m_pl" placeholder="例：5つの利益の中で経常利益が最重要。銀行も税理士もここを見る。" oninput="saveMemo('m_pl',this.value)"></textarea></div>
+      <div><label class="memo-lbl">💰 利益と現金の違いについて</label><textarea class="memo-area" rows="3" id="m_cash" placeholder="例：利益が出ても設備投資や売掛金増加で現金は減る。BSとPLを両方見ないとわからない。" oninput="saveMemo('m_cash',this.value)"></textarea></div>
+      <div><label class="memo-lbl">🎯 自社の課題と、これからやること</label><textarea class="memo-area" rows="4" id="m_action" placeholder="例：まず月次試算表をお願いする。3期分の経常利益を並べて確認する。" oninput="saveMemo('m_action',this.value)"></textarea></div>
     </div>
-    <div id="completionCard" style="display:none;" class="completion">
-      <span class="completion-icon">🏆</span>
-      <h2>おめでとうございます！</h2>
-      <p>あなたは「決算書マスター入門」を修了しました。<br>
-      これからは数字を自分の言葉で語れる経営者として、<br>
-      会社の未来を切り拓いていきましょう！</p>
-      <div style="background:var(--warm-gray);border-radius:16px;padding:24px;margin:20px 0;text-align:left;">
-        <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:12px;">📜 習得したこと</div>
-        <div style="font-size:14px;line-height:2.0;color:var(--text);">
-          ✅ 貸借対照表（BS）の構造と読み方<br>
-          ✅ 損益計算書（PL）5つの利益<br>
-          ✅ 経常利益の重要性<br>
-          ✅ 自己資本比率・流動比率・労働分配率<br>
-          ✅ 「利益≠現金」の仕組み<br>
-          ✅ 3ヶ月アクションプラン
-        </div>
-      </div>
-      <button class="btn btn-navy" onclick="restart()" style="margin-top:12px;">もう一度最初から復習する</button>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="s-save" onclick="printMemo()" style="flex:1;">🖨️ メモを印刷する</button>
+      <button class="s-reset" onclick="clearMemo()" style="padding:13px 18px;flex:0 0 auto;">🗑️ クリア</button>
     </div>
   </div>
 
-  <!-- ===== 追加3セクション ===== -->
-  <div id="bonusSection" style="display:none;">
+  <div style="text-align:center;margin-top:36px;" id="compBtn">
+    <button class="btn btn-g" style="font-size:17px;padding:17px 44px;" onclick="showComp()">🎉 全ステップ完了！修了証を受け取る</button>
+  </div>
 
-    <!-- 1️⃣ 自社チェックシート -->
-    <div class="section-title" style="margin-top:48px;">自社の数字を入れてみよう</div>
-    <div class="section-sub">決算書の数字を入力すると、自社の健康診断ができます</div>
-
-    <div class="card">
-      <div class="card-title">
-        <div class="card-icon" style="background:#dbeafe;">🏢</div>
-        自社 経営指標 簡易診断シート
-      </div>
-      <div style="font-size:13px;color:var(--text-light);margin-bottom:16px;">直近の決算書を手元に用意して入力してください（単位：万円）</div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">売上高（万円）</label>
-          <input type="number" id="myUriage" class="setting-input" placeholder="例：5000" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">売上原価（万円）</label>
-          <input type="number" id="myGenka" class="setting-input" placeholder="例：1500" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">経常利益（万円）</label>
-          <input type="number" id="myKeijo" class="setting-input" placeholder="例：300" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">人件費（万円）</label>
-          <input type="number" id="myJinken" class="setting-input" placeholder="例：800" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">流動資産（万円）</label>
-          <input type="number" id="myRyudoShisan" class="setting-input" placeholder="例：1800" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">流動負債（万円）</label>
-          <input type="number" id="myRyudoFusai" class="setting-input" placeholder="例：800" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">純資産（万円）</label>
-          <input type="number" id="myJunShisan" class="setting-input" placeholder="例：1500" oninput="calcMyIndex()">
-        </div>
-        <div>
-          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">総資産（万円）</label>
-          <input type="number" id="mySoShisan" class="setting-input" placeholder="例：3500" oninput="calcMyIndex()">
-        </div>
-      </div>
-
-      <!-- 診断結果 -->
-      <div id="myResult" style="display:none;">
-        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:12px;padding-top:12px;border-top:1px solid #e5e7eb;">📊 あなたの会社の診断結果</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div class="meter-card" style="cursor:default;">
-            <div class="meter-label">粗利率</div>
-            <div class="meter-value" id="r_arari" style="font-size:24px;">－</div>
-            <div class="meter-bench">目安：業種平均と比較を</div>
-            <div class="meter-status" id="r_arari_s">入力待ち</div>
-          </div>
-          <div class="meter-card" style="cursor:default;">
-            <div class="meter-label">売上高経常利益率</div>
-            <div class="meter-value" id="r_keijo" style="font-size:24px;">－</div>
-            <div class="meter-bench">目安：3%以上◎</div>
-            <div class="meter-status" id="r_keijo_s">入力待ち</div>
-          </div>
-          <div class="meter-card" style="cursor:default;">
-            <div class="meter-label">労働分配率</div>
-            <div class="meter-value" id="r_rodo" style="font-size:24px;">－</div>
-            <div class="meter-bench">目安：60%以下◎</div>
-            <div class="meter-status" id="r_rodo_s">入力待ち</div>
-          </div>
-          <div class="meter-card" style="cursor:default;">
-            <div class="meter-label">流動比率</div>
-            <div class="meter-value" id="r_ryudo" style="font-size:24px;">－</div>
-            <div class="meter-bench">目安：120%以上◎</div>
-            <div class="meter-status" id="r_ryudo_s">入力待ち</div>
-          </div>
-          <div class="meter-card" style="cursor:default;grid-column:1/-1;">
-            <div class="meter-label">自己資本比率</div>
-            <div class="meter-value" id="r_jiko" style="font-size:24px;">－</div>
-            <div class="meter-bench">目安：30%以上◎</div>
-            <div class="meter-status" id="r_jiko_s">入力待ち</div>
-          </div>
-        </div>
-        <div id="myComment" style="margin-top:16px;padding:16px;background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;font-size:13px;line-height:1.9;display:none;"></div>
+  <div id="compCard" style="display:none;" class="completion">
+    <span class="comp-icon">🏆</span>
+    <h2>おめでとうございます！</h2>
+    <p>あなたは「決算書マスター」を修了しました。<br>これからは数字を自分の言葉で語れる経営者として、<br>会社の未来を切り拓いていきましょう！</p>
+    <div class="comp-summary">
+      <div class="cs-title">📜 習得したこと</div>
+      <div class="cs-item">
+        ✅ 貸借対照表（BS）の構造と読み方<br>
+        ✅ 損益計算書（PL）5つの利益の意味と流れ<br>
+        ✅ 経常利益がなぜ最重要かの理由<br>
+        ✅ 自社の粗利率・経常利益率・労働分配率・流動比率・自己資本比率<br>
+        ✅ 「利益≠現金」の仕組みと黒字倒産を防ぐ視点<br>
+        ✅ 税理士への5つの質問テンプレート<br>
+        ✅ 3ヶ月アクションプラン
       </div>
     </div>
+    <button class="btn btn-n" onclick="restartApp()" style="margin-top:12px;">もう一度最初から復習する</button>
+  </div>
 
-    <!-- 2️⃣ 税理士への質問テンプレート -->
-    <div class="section-title" style="margin-top:40px;">税理士への質問テンプレート</div>
-    <div class="section-sub">次回の面談でそのままコピーして使えます</div>
-
-    <div class="card">
-      <div class="card-title">
-        <div class="card-icon" style="background:#d1fae5;">💬</div>
-        面談でそのまま使える5つの質問
-      </div>
-      <div style="font-size:13px;color:var(--text-light);margin-bottom:16px;">チェックボックスで使った質問を管理できます</div>
-      <ul class="check-list">
-        <li class="check-item">
-          <div class="check-box" onclick="toggleCheck(this)">　</div>
-          <div class="check-text">
-            <strong>Q1. 経常利益について</strong>
-            「先生、今期の経常利益は前期と比べていかがでしょうか？変化の主な原因を教えていただけますか？」
-          </div>
-        </li>
-        <li class="check-item">
-          <div class="check-box" onclick="toggleCheck(this)">　</div>
-          <div class="check-text">
-            <strong>Q2. 粗利率について</strong>
-            「売上高は増えていますが、粗利率は維持できていますか？原価率が上がっている場合、どう対処すべきでしょうか？」
-          </div>
-        </li>
-        <li class="check-item">
-          <div class="check-box" onclick="toggleCheck(this)">　</div>
-          <div class="check-text">
-            <strong>Q3. 労働分配率について</strong>
-            「人件費の労働分配率は何%でしょうか？賃上げを検討しているのですが、どのくらいの粗利増加が必要か教えてください。」
-          </div>
-        </li>
-        <li class="check-item">
-          <div class="check-box" onclick="toggleCheck(this)">　</div>
-          <div class="check-text">
-            <strong>Q4. 自己資本比率について</strong>
-            「自己資本比率は現在何%ですか？銀行からの評価という観点でいかがでしょうか？」
-          </div>
-        </li>
-        <li class="check-item">
-          <div class="check-box" onclick="toggleCheck(this)">　</div>
-          <div class="check-text">
-            <strong>Q5. 現金とキャッシュフローについて</strong>
-            「利益は出ているのに現金が増えない気がするのですが、どこにお金が使われているか一緒に確認していただけますか？」
-          </div>
-        </li>
-      </ul>
-      <div style="margin-top:16px;padding:14px;background:#f8fafc;border-radius:10px;font-size:13px;color:var(--text-light);line-height:1.8;">
-        💡 これらの質問を自分の言葉で聞けるようになったとき、あなたは本当の意味で「数字で語れる経営者」です。
-      </div>
-    </div>
-
-    <!-- 3️⃣ 自分の言葉メモ欄 -->
-    <div class="section-title" style="margin-top:40px;">自分の言葉でまとめるメモ</div>
-    <div class="section-sub">書くことで記憶が定着します。自由に入力してください</div>
-
-    <div class="card">
-      <div class="card-title">
-        <div class="card-icon" style="background:#f3e8ff;">✏️</div>
-        学んだことを自分の言葉で書いてみよう
-      </div>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div>
-          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">📊 貸借対照表（BS）について、自分なりの理解</label>
-          <textarea class="setting-input" rows="3" placeholder="例：左側が持っているもの、右側がどうやってお金を集めたか。マイホームと同じ考え方！" style="resize:vertical;" oninput="saveMemo('memo_bs',this.value)" id="memo_bs"></textarea>
-        </div>
-        <div>
-          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">📈 損益計算書（PL）と経常利益について</label>
-          <textarea class="setting-input" rows="3" placeholder="例：5つの利益の中で経常利益が一番大事。銀行も税理士もここを見る。特別利益で数字が変わるから純利益だけ見てはダメ。" style="resize:vertical;" oninput="saveMemo('memo_pl',this.value)" id="memo_pl"></textarea>
-        </div>
-        <div>
-          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">💰 利益と現金の違いについて</label>
-          <textarea class="setting-input" rows="3" placeholder="例：利益が出ても設備投資や売掛金増加で現金は減る。BSとPLを両方見ないと本当のことがわからない。" style="resize:vertical;" oninput="saveMemo('memo_cash',this.value)" id="memo_cash"></textarea>
-        </div>
-        <div>
-          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">🎯 自社の課題と、これからやること</label>
-          <textarea class="setting-input" rows="4" placeholder="例：まず税理士に月次試算表をお願いする。3期分の経常利益を並べて推移を確認する。労働分配率が60%を超えているので粗利を増やす方法を考える。" style="resize:vertical;" oninput="saveMemo('memo_action',this.value)" id="memo_action"></textarea>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px;margin-top:16px;">
-        <button class="setting-save-btn" onclick="printMemo()" style="flex:1;">🖨️ メモを印刷する</button>
-        <button class="setting-reset-btn" onclick="clearMemo()" style="flex:0 0 auto;padding:14px 20px;">🗑️ クリア</button>
-      </div>
-      <div style="font-size:12px;color:var(--text-light);margin-top:8px;text-align:center;">メモはブラウザに自動保存されます</div>
-    </div>
-
-  </div><!-- /bonusSection -->
-
-  <div class="nav-btns" style="border-top:none;">
-    <button class="btn btn-outline" onclick="prevStep(5)">← 前へ</button>
+  <div class="nav-btns" style="border-top:none;margin-top:0;">
+    <button class="btn btn-o" onclick="prevStep(5)">← 前へ</button>
     <div></div>
   </div>
 </div>
@@ -1998,510 +832,251 @@
 </div><!-- /container -->
 
 <script>
-  // ===== TRIAL CONTROL =====
-  const TRIAL_KEY   = 'kessan_trial_count';
-  const UNLOCK_KEY  = 'kessan_unlocked';
-  const CORRECT_PW  = 'kessansyo-2025';
-  const MAX_TRIAL   = 3;
-  const STRIPE_URL  = 'https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z';
+// ===== CONSTANTS =====
+const TRIAL_KEY  = 'km_trial';
+const UNLOCK_KEY = 'km_unlock';
+const SETT_KEY   = 'km_settings';
+const PW         = 'kessansyo-2025';
+const MAX_TRIAL  = 3;
+const STRIPE     = 'https://buy.stripe.com/7sY9AS5eyfvDa515sMcV20Z';
 
-  function initTrial() {
-    // すでに解除済みならそのまま
-    if (localStorage.getItem(UNLOCK_KEY) === '1') return;
-
-    const used = parseInt(localStorage.getItem(TRIAL_KEY) || '0');
-
-    // 購入リンクを設定から取得して表示
-    buildPurchaseNote('purchaseNote');
-    buildPurchaseNote('purchaseNote2');
-
-    if (used >= MAX_TRIAL) {
-      // 回数終了 → ロック画面
-      document.getElementById('trialView').style.display  = 'none';
-      document.getElementById('lockedView').style.display = 'block';
-      document.getElementById('trialOverlay').classList.add('show');
-      return;
-    }
-
-    // ドット描画
-    const dots = document.getElementById('trialDots');
-    dots.innerHTML = '';
-    for (let i = 0; i < MAX_TRIAL; i++) {
-      const d = document.createElement('div');
-      d.className = 'trial-dot ' + (i < used ? 'used' : 'remaining');
+// ===== TRIAL =====
+function initTrial() {
+  if(localStorage.getItem(UNLOCK_KEY)==='1') return;
+  const used = parseInt(localStorage.getItem(TRIAL_KEY)||'0');
+  if(used >= MAX_TRIAL) {
+    document.getElementById('tv-trial').style.display='none';
+    document.getElementById('tv-locked').style.display='block';
+  } else {
+    const dots = document.getElementById('tDots');
+    dots.innerHTML='';
+    for(let i=0;i<MAX_TRIAL;i++){
+      const d=document.createElement('div');
+      d.className='t-dot '+(i<used?'used':'rem');
       dots.appendChild(d);
     }
-
-    const rem = MAX_TRIAL - used;
-    document.getElementById('trialRemText').innerHTML =
-      `残り <span>${rem}</span> 回 無料でご利用いただけます`;
-
-    document.getElementById('trialOverlay').classList.add('show');
+    const rem=MAX_TRIAL-used;
+    document.getElementById('tRem').innerHTML=`残り <span>${rem}</span> 回 無料でご利用いただけます`;
   }
-
-  function buildPurchaseNote(elId) {
-    document.getElementById(elId).innerHTML =
-      `続けてご利用いただくには <a href="${STRIPE_URL}" target="_blank">こちらから購入</a> してパスワードを取得してください。`;
+  document.getElementById('tOverlay').classList.add('show');
+}
+function startApp() {
+  const used=parseInt(localStorage.getItem(TRIAL_KEY)||'0');
+  localStorage.setItem(TRIAL_KEY,used+1);
+  document.getElementById('tOverlay').classList.remove('show');
+}
+function chkPw(n) {
+  const inp=document.getElementById('pw'+n);
+  const err=document.getElementById('pe'+n);
+  if(inp.value.trim()===PW) {
+    localStorage.setItem(UNLOCK_KEY,'1');
+    document.getElementById('tOverlay').classList.remove('show');
+  } else {
+    inp.classList.add('err');
+    err.classList.add('show');
+    setTimeout(()=>inp.classList.remove('err'),500);
   }
+}
 
-  function startApp() {
-    const used = parseInt(localStorage.getItem(TRIAL_KEY) || '0');
-    localStorage.setItem(TRIAL_KEY, used + 1);
-    document.getElementById('trialOverlay').classList.remove('show');
-  }
+// ===== PANELS =====
+function openHow(){ document.getElementById('howPanel').classList.add('open'); document.getElementById('oBg').classList.add('show'); document.body.style.overflow='hidden'; }
+function openSett(){ loadSettFields(); document.getElementById('settPanel').classList.add('open'); document.getElementById('oBg').classList.add('show'); document.body.style.overflow='hidden'; }
+function closeAll(){ document.querySelectorAll('.side-l,.side-r').forEach(e=>e.classList.remove('open')); document.getElementById('oBg').classList.remove('show'); document.body.style.overflow=''; }
 
-  function checkPw() {
-    const val = document.getElementById('pwInput').value.trim();
-    if (val === CORRECT_PW) {
-      unlock();
-    } else {
-      const inp = document.getElementById('pwInput');
-      const err = document.getElementById('pwError');
-      inp.classList.add('error');
-      err.classList.add('show');
-      setTimeout(() => inp.classList.remove('error'), 500);
-    }
-  }
-
-  function checkPw2() {
-    const val = document.getElementById('pwInput2').value.trim();
-    if (val === CORRECT_PW) {
-      unlock();
-    } else {
-      const inp = document.getElementById('pwInput2');
-      const err = document.getElementById('pwError2');
-      inp.classList.add('error');
-      err.classList.add('show');
-      setTimeout(() => inp.classList.remove('error'), 500);
-    }
-  }
-
-  function unlock() {
-    localStorage.setItem(UNLOCK_KEY, '1');
-    document.getElementById('trialOverlay').classList.remove('show');
-  }
-
-  // ===== SETTINGS & PANELS =====
-  const STORAGE_KEY = 'kessan_master_settings';
-
-  function loadSettings() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const s = JSON.parse(raw);
-      if (s.orgName) {
-        document.getElementById('setOrgName').value = s.orgName;
-        document.getElementById('topBarOrg').textContent = s.orgName;
-      }
-      if (s.appTitle) {
-        document.getElementById('setAppTitle').value = s.appTitle;
-        document.getElementById('topBarTitle').childNodes[0].textContent = s.appTitle + ' ';
-      }
-      if (s.contactUrl) {
-        document.getElementById('setContactUrl').value = s.contactUrl;
-        document.getElementById('howContactLink').href = s.contactUrl;
-        document.getElementById('howContactBox').style.display = 'block';
-      }
-      if (s.contactText) {
-        document.getElementById('setContactText').value = s.contactText;
-        document.getElementById('howContactLink').textContent = '📞 ' + s.contactText;
-      }
-      if (s.contactMsg) {
-        document.getElementById('setContactMsg').value = s.contactMsg;
-        document.getElementById('howContactText').textContent = s.contactMsg;
-      }
-      if (s.gold) {
-        document.documentElement.style.setProperty('--gold', s.gold);
-        document.documentElement.style.setProperty('--gold-light', s.goldLight || s.gold);
-        document.documentElement.style.setProperty('--navy', s.navy || '#1a2744');
-      }
-    } catch(e) {}
-  }
-
-  function saveSettings() {
-    const orgName = document.getElementById('setOrgName').value.trim();
-    const appTitle = document.getElementById('setAppTitle').value.trim();
-    const contactUrl = document.getElementById('setContactUrl').value.trim();
-    const contactText = document.getElementById('setContactText').value.trim();
-    const contactMsg = document.getElementById('setContactMsg').value.trim();
-
-    const s = {
-      orgName, appTitle, contactUrl, contactText, contactMsg,
-      gold: getComputedStyle(document.documentElement).getPropertyValue('--gold').trim(),
-      goldLight: getComputedStyle(document.documentElement).getPropertyValue('--gold-light').trim(),
-      navy: getComputedStyle(document.documentElement).getPropertyValue('--navy').trim()
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
-
-    // 即時反映
-    if (orgName) document.getElementById('topBarOrg').textContent = orgName;
-    if (appTitle) document.getElementById('topBarTitle').childNodes[0].textContent = appTitle + ' ';
-    if (contactUrl) {
-      document.getElementById('howContactLink').href = contactUrl;
-      document.getElementById('howContactBox').style.display = 'block';
-    }
-    if (contactText) document.getElementById('howContactLink').textContent = '📞 ' + contactText;
-    if (contactMsg) document.getElementById('howContactText').textContent = contactMsg;
-
-    const toast = document.getElementById('savedToast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
-  }
-
-  function resetSettings() {
-    if (!confirm('設定をデフォルトに戻しますか？')) return;
-    localStorage.removeItem(STORAGE_KEY);
-    document.getElementById('setOrgName').value = '';
-    document.getElementById('setAppTitle').value = '';
-    document.getElementById('setContactUrl').value = '';
-    document.getElementById('setContactText').value = '';
-    document.getElementById('setContactMsg').value = '';
-    document.getElementById('topBarOrg').textContent = '';
-    document.getElementById('topBarTitle').childNodes[0].textContent = '決算書マスター ';
-    document.getElementById('howContactBox').style.display = 'none';
-    document.documentElement.style.setProperty('--gold', '#c8962a');
-    document.documentElement.style.setProperty('--gold-light', '#f0c040');
-    document.documentElement.style.setProperty('--navy', '#1a2744');
-    const toast = document.getElementById('savedToast');
-    toast.textContent = '🔄 デフォルトに戻しました';
-    toast.classList.add('show');
-    setTimeout(() => { toast.classList.remove('show'); toast.textContent = '✅ 設定を保存しました！'; }, 2000);
-  }
-
-  function setTheme(gold, navy) {
-    document.documentElement.style.setProperty('--gold', gold);
-    document.documentElement.style.setProperty('--gold-light', gold);
-    document.documentElement.style.setProperty('--navy', navy);
-  }
-
-  function openSettings() {
-    document.getElementById('settingsPanel').classList.add('open');
-    document.getElementById('overlayBg').classList.add('show');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function openHow() {
-    document.getElementById('howPanel').classList.add('open');
-    document.getElementById('overlayBg').classList.add('show');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeAll() {
-    document.getElementById('settingsPanel').classList.remove('open');
-    document.getElementById('howPanel').classList.remove('open');
-    document.getElementById('overlayBg').classList.remove('show');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    loadSettings();
-    initTrial();
-  });
-
-  // ===== MAIN APP =====
-  let currentStep = 1;
-  const totalSteps = 5;
-  const completedSteps = new Set();
-  const quizResults = {};
-
-  const meterDetails = {
-    m1: {
-      title: '自己資本比率（43%）',
-      emoji: '💎',
-      content: `<strong>計算式：純資産 ÷ 総資産 × 100</strong><br>
-このサンプルは 1,500万 ÷ 3,500万 = 43%<br><br>
-📌 意味：会社の総資産のうち「自分のお金」の割合。高いほど借金に頼らない健全な経営を意味します。<br>
-🎯 目安：30%以上なら健全。50%超えれば優良企業。<br>
-⚠️ 10%未満は銀行から「要注意先」とみなされるリスクがあります。`,
-      color: '#7c3aed'
-    },
-    m2: {
-      title: '流動比率（225%）',
-      emoji: '💧',
-      content: `<strong>計算式：流動資産 ÷ 流動負債 × 100</strong><br>
-このサンプルは 1,800万 ÷ 800万 = 225%<br><br>
-📌 意味：1年以内に返すべき借金を、1年以内に現金化できる資産で返せるかどうかの指標。<br>
-🎯 目安：120%以上あれば安心。200%超えれば優良。<br>
-⚠️ 100%を下回ると「短期的な支払能力に問題あり」のサイン。`,
-      color: '#059669'
-    },
-    m3: {
-      title: '売上高経常利益率（34%）',
-      emoji: '💰',
-      content: `<strong>計算式：経常利益 ÷ 売上高 × 100</strong><br>
-このサンプルは 1,700万 ÷ 5,000万 = 34%（非常に高い）<br><br>
-📌 意味：売上100円に対して何円の「本業の実力利益」が残るかを示す指標。<br>
-🎯 目安：中小企業の平均は2〜3%台。5%超えれば優良。10%超えは超優良。<br>
-⚠️ マイナスの場合、事業の見直しが必要なシグナルです。`,
-      color: '#dc2626'
-    },
-    m4: {
-      title: '労働分配率（58%）',
-      emoji: '👥',
-      content: `<strong>計算式：人件費 ÷ 粗利（売上総利益）× 100</strong><br>
-このサンプルは 2,030万 ÷ 3,500万 = 58%<br><br>
-📌 意味：稼いだ粗利のうち、どれだけを従業員に分配しているかの割合。<br>
-🎯 目安：業種によるが50〜60%が一般的。<br>
-⚠️ 賃上げをしたい場合、労働分配率を下げずに「1人あたりの粗利」を上げることが重要。<br>
-💡 つまり、値上げ・高付加価値化で粗利を増やすことが賃上げの財源になります！`,
-      color: '#d97706'
-    },
-    m5: {
-      title: '粗利率（70%）',
-      emoji: '📊',
-      content: `<strong>計算式：粗利（売上総利益）÷ 売上高 × 100</strong><br>
-このサンプルは 3,500万 ÷ 5,000万 = 70%（非常に高い）<br><br>
-📌 意味：売上のうち何%が「付加価値」として残るか。業種によって大きく異なります。<br>
-🎯 業種別目安：製造業35〜45%、小売業30〜40%、サービス業60〜80%<br>
-⚠️ 毎年同じ比率か確認を。下がっていたら、仕入れ価格の上昇か値引き増加のサインです。`,
-      color: '#1d4ed8'
-    }
+// ===== SETTINGS =====
+function loadSettings() {
+  try {
+    const s=JSON.parse(localStorage.getItem(SETT_KEY)||'{}');
+    if(s.org) document.getElementById('tbOrg').textContent=s.org;
+    if(s.title) document.getElementById('tbTitle').childNodes[0].textContent=s.title+' ';
+    if(s.url) { document.getElementById('howContactLink').href=s.url; document.getElementById('howContact').style.display='block'; }
+    if(s.btnTxt) document.getElementById('howContactLink').textContent='📞 '+s.btnTxt;
+    if(s.msg) document.getElementById('howContactMsg').textContent=s.msg;
+    if(s.gold) { document.documentElement.style.setProperty('--gold',s.gold); document.documentElement.style.setProperty('--gold-l',s.goldL||s.gold); document.documentElement.style.setProperty('--navy',s.navy||'#1a2744'); }
+  } catch(e){}
+}
+function loadSettFields() {
+  try {
+    const s=JSON.parse(localStorage.getItem(SETT_KEY)||'{}');
+    if(s.org) document.getElementById('sOrg').value=s.org;
+    if(s.title) document.getElementById('sTitle').value=s.title;
+    if(s.url) document.getElementById('sUrl').value=s.url;
+    if(s.btnTxt) document.getElementById('sBtnTxt').value=s.btnTxt;
+    if(s.msg) document.getElementById('sMsg').value=s.msg;
+  } catch(e){}
+}
+function saveSettings() {
+  const s={
+    org:document.getElementById('sOrg').value.trim(),
+    title:document.getElementById('sTitle').value.trim(),
+    url:document.getElementById('sUrl').value.trim(),
+    btnTxt:document.getElementById('sBtnTxt').value.trim(),
+    msg:document.getElementById('sMsg').value.trim(),
+    gold:getComputedStyle(document.documentElement).getPropertyValue('--gold').trim(),
+    goldL:getComputedStyle(document.documentElement).getPropertyValue('--gold-l').trim(),
+    navy:getComputedStyle(document.documentElement).getPropertyValue('--navy').trim()
   };
+  localStorage.setItem(SETT_KEY,JSON.stringify(s));
+  loadSettings();
+  const t=document.getElementById('toast');
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500);
+}
+function resetSettings() {
+  if(!confirm('設定をデフォルトに戻しますか？')) return;
+  localStorage.removeItem(SETT_KEY);
+  ['sOrg','sTitle','sUrl','sBtnTxt','sMsg'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
+  document.getElementById('tbOrg').textContent='';
+  document.getElementById('tbTitle').childNodes[0].textContent='決算書マスター ';
+  document.getElementById('howContact').style.display='none';
+  document.documentElement.style.setProperty('--gold','#c8962a');
+  document.documentElement.style.setProperty('--gold-l','#f0c040');
+  document.documentElement.style.setProperty('--navy','#1a2744');
+  const t=document.getElementById('toast'); t.textContent='🔄 デフォルトに戻しました'; t.classList.add('show');
+  setTimeout(()=>{ t.classList.remove('show'); t.textContent='✅ 設定を保存しました！'; },2000);
+}
+function setTheme(g,gl,n){ document.documentElement.style.setProperty('--gold',g); document.documentElement.style.setProperty('--gold-l',gl); document.documentElement.style.setProperty('--navy',n); }
 
-  function gotoStep(n) {
-    document.getElementById(`step${currentStep}`).classList.remove('active');
-    document.getElementById(`navBtn${currentStep}`).classList.remove('active');
+// ===== STEP NAV =====
+let cur=1;
+const labels=['全体像','貸借対照表','損益計算書','自社診断','アクション'];
+function goStep(n) {
+  document.getElementById('step'+cur).classList.remove('active');
+  document.getElementById('nb'+cur).classList.remove('active');
+  cur=n;
+  document.getElementById('step'+n).classList.add('active');
+  document.getElementById('nb'+n).classList.add('active');
+  document.getElementById('progFill').style.width=(n/5*100)+'%';
+  document.getElementById('progLbl').textContent=`STEP ${n} / 5 ── ${labels[n-1]}`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextStep(n){ document.getElementById('nb'+n).classList.add('done'); goStep(n+1); }
+function prevStep(n){ if(n>1) goStep(n-1); }
 
-    if (currentStep > 1 || completedSteps.has(currentStep)) {
-      completedSteps.add(currentStep);
-      document.getElementById(`navBtn${currentStep}`).classList.add('done');
-    }
+// ===== QUIZ =====
+const qFB = {
+  q1:{ ok:'正解です！🎉 貸借対照表（BS）は「決算日時点のスナップショット」で財産と借金の状態を表します。損益計算書は1年間の儲けの流れを示すものです。', ng:'惜しい！🤔 正解は「貸借対照表（BS）」です。損益計算書は「1年間の収益と費用」を記録したものです。' },
+  q2:{ ok:'正解です！🎉 BSの右側＝「どうやってお金を集めたか」を示します。負債（借りたお金）と純資産（自分のお金）で構成されています。', ng:'惜しい！🤔 財産の一覧は左側（資産）です。右側は「そのお金をどう調達したか」で、負債＋純資産で構成されます。' },
+  q3:{ ok:'正解！⭐ 経常利益は「普通の1年間の会社の実力」を示す最重要指標。銀行は融資審査でここを真っ先に見ます。', ng:'惜しい！🤔 正解は「経常利益」です。当期純利益は特別利益などで一時的に変動するため、実力を測るには経常利益が最も信頼されています。' },
+  q4:{ ok:'正解！👥 労働分配率＝人件費÷粗利×100。賃上げ時代に「いかに1人あたりの粗利を増やすか」がカギです。', ng:'惜しい！🤔 正解は「労働分配率」です。粗利のうち人件費が占める割合で、50〜60%が業種平均の目安です。' }
+};
+function ans(el, qId, correct) {
+  el.parentElement.querySelectorAll('.q-opt').forEach(o=>{ o.classList.add('dis'); o.onclick=null; });
+  el.classList.add(correct?'ok':'ng');
+  const fb=document.getElementById(qId+'-fb');
+  fb.classList.add('show', correct?'ok':'ng');
+  fb.innerHTML=(correct?'✅ ':'❌ ')+(correct?qFB[qId].ok:qFB[qId].ng);
+}
 
-    currentStep = n;
-    document.getElementById(`step${n}`).classList.add('active');
-    document.getElementById(`navBtn${n}`).classList.add('active');
-    document.getElementById(`navBtn${n}`).classList.remove('done');
+// ===== PL TOGGLE =====
+function togglePL(id){ document.getElementById(id).classList.toggle('show'); }
 
-    const pct = Math.round((n / totalSteps) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
+// ===== SELF DIAGNOSIS =====
+function calcDiag() {
+  const v=id=>parseFloat(document.getElementById(id).value)||0;
+  const u=v('dUriage'),gk=v('dGenka'),kj=v('dKeijo'),jk=v('dJinken'),rs=v('dRyudoS'),rf=v('dRyudoF'),js=v('dJunS'),ss=v('dSoS');
+  if(u===0) return;
+  document.getElementById('diagResult').style.display='block';
 
-    const labels = ['全体像','貸借対照表','損益計算書','経営指標','アクションプラン'];
-    document.getElementById('progressLabel').textContent = `STEP ${n} / ${totalSteps} ── ${labels[n-1]}`;
+  const arari  = u>0 ? (u-gk)/u*100 : null;
+  const keijoR = u>0 ? kj/u*100 : null;
+  const arariA = u-gk;
+  const rodo   = arariA>0 ? jk/arariA*100 : null;
+  const ryudo  = rf>0 ? rs/rf*100 : null;
+  const jiko   = ss>0 ? js/ss*100 : null;
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function setM(vId,sId,val,good,warn,rev=false) {
+    const ve=document.getElementById(vId), se=document.getElementById(sId);
+    if(val===null||isNaN(val)){ ve.textContent='－'; se.textContent='入力待ち'; se.className='m-st'; return; }
+    ve.textContent=val.toFixed(1)+'%';
+    let cls,txt;
+    if(!rev){ cls=val>=good?'st-ok':val>=warn?'st-warn':'st-ng'; txt=val>=good?'✅ 良好':val>=warn?'⚠️ 要注意':'❌ 要改善'; }
+    else    { cls=val<=good?'st-ok':val<=warn?'st-warn':'st-ng'; txt=val<=good?'✅ 良好':val<=warn?'⚠️ 要注意':'❌ 要改善'; }
+    se.textContent=txt; se.className='m-st '+cls;
   }
+  setM('dr_arari','ds_arari',arari,40,20);
+  setM('dr_keijo','ds_keijo',keijoR,5,2);
+  setM('dr_rodo','ds_rodo',rodo,60,75,true);
+  setM('dr_ryudo','ds_ryudo',ryudo,120,100);
+  setM('dr_jiko','ds_jiko',jiko,30,15);
 
-  function nextStep(n) {
-    completedSteps.add(n);
-    document.getElementById(`navBtn${n}`).classList.add('done');
-    if (n < totalSteps) gotoStep(n + 1);
-  }
+  const comments=[];
+  if(keijoR!==null && keijoR<2) comments.push('経常利益率が2%未満です。費用の見直しと価格戦略の検討をおすすめします。');
+  if(rodo!==null && rodo>75)    comments.push('労働分配率が高めです。値上げ・高付加価値化で粗利を増やすことが賃上げの財源になります。');
+  if(ryudo!==null && ryudo<120) comments.push('流動比率が低めです。短期的な支払能力に注意が必要です。早めに税理士に相談しましょう。');
+  if(jiko!==null && jiko<15)    comments.push('自己資本比率が低めです。銀行評価に影響します。利益を内部留保に回す意識が大切です。');
+  if(arari!==null && arari>=40 && keijoR!==null && keijoR>=5) comments.push('粗利率・経常利益率ともに良好です！この水準を維持しながら成長を目指しましょう。');
 
-  function prevStep(n) {
-    if (n > 1) gotoStep(n - 1);
-  }
+  const ce=document.getElementById('diagComment');
+  if(comments.length>0){ ce.innerHTML='<strong>💡 あなたの会社へのアドバイス</strong><br>'+comments.join('<br>'); ce.style.display='block'; }
+  else{ ce.style.display='none'; }
+}
 
-  function answer(el, qId, correct) {
-    const opts = el.parentElement.querySelectorAll('.quiz-opt');
-    opts.forEach(o => { o.classList.add('disabled'); o.onclick = null; });
+// ===== CHECKLIST =====
+function toggleChk(el){ el.classList.toggle('chk'); el.textContent=el.classList.contains('chk')?'✓':'　'; }
 
-    const fb = document.getElementById(qId + '-fb');
-    fb.classList.add('show');
+// ===== MEMO =====
+function saveMemo(k,v){ localStorage.setItem('km_'+k,v); }
+function loadMemo(){ ['m_bs','m_pl','m_cash','m_action'].forEach(k=>{ const el=document.getElementById(k); if(el) el.value=localStorage.getItem('km_'+k)||''; }); }
+function clearMemo(){ if(!confirm('メモをすべて削除しますか？')) return; ['m_bs','m_pl','m_cash','m_action'].forEach(k=>{ localStorage.removeItem('km_'+k); const el=document.getElementById(k); if(el)el.value=''; }); }
+function printMemo(){
+  const g=id=>document.getElementById(id)?.value||'（未記入）';
+  const w=window.open('','_blank');
+  w.document.write(`<html><head><meta charset="UTF-8"><title>決算書マスター 学習メモ</title>
+  <style>body{font-family:'Noto Sans JP',sans-serif;max-width:680px;margin:40px auto;padding:0 20px;color:#1a2744;}
+  h1{font-size:19px;border-bottom:3px solid #c8962a;padding-bottom:7px;margin-bottom:22px;}
+  h2{font-size:14px;background:#1a2744;color:white;padding:7px 13px;border-radius:5px;margin-top:22px;}
+  p{font-size:13px;line-height:1.9;white-space:pre-wrap;background:#f8fafc;padding:12px;border-radius:7px;margin-top:7px;}
+  .ft{margin-top:36px;font-size:11px;color:#6b7280;text-align:center;}</style></head><body>
+  <h1>📊 決算書マスター｜学習メモ</h1>
+  <h2>貸借対照表（BS）について</h2><p>${g('m_bs')}</p>
+  <h2>損益計算書（PL）と経常利益について</h2><p>${g('m_pl')}</p>
+  <h2>利益と現金の違いについて</h2><p>${g('m_cash')}</p>
+  <h2>自社の課題とこれからやること</h2><p>${g('m_action')}</p>
+  <div class="ft">決算書マスター｜${new Date().toLocaleDateString('ja-JP')} 印刷</div>
+  </body></html>`);
+  w.document.close(); w.print();
+}
 
-    const feedbacks = {
-      q1: {
-        ok: '正解です！🎉 貸借対照表（BS）は「決算日時点のスナップショット」で、財産と借金の状態を表します。損益計算書は1年間の儲けの流れを示すものです。',
-        ng: '惜しい！🤔 正解は「貸借対照表（BS）」です。損益計算書は「1年間の収益と費用」を記録したものです。BSとPLの違いをもう一度確認しましょう。'
-      },
-      q2: {
-        ok: '正解です！🎉 BSの右側＝「どうやってお金を集めたか」を示します。負債（借りたお金）と純資産（自分のお金）で構成されています。',
-        ng: '惜しい！🤔 財産の一覧は左側（資産）です。右側は「そのお金をどう調達したか」で、負債＋純資産で構成されます。'
-      },
-      q3: {
-        ok: '正解！⭐ 経常利益は「普通の1年間の会社の実力」を示す最重要指標。銀行は融資審査でここを真っ先に見ます。',
-        ng: '惜しい！🤔 正解は「経常利益」です。当期純利益は特別利益などで一時的に変動するため、実力を測る指標としては経常利益が最も信頼されています。'
-      },
-      q4: {
-        ok: '正解！👥 労働分配率＝人件費 ÷ 粗利 × 100。賃上げ時代に「いかに1人あたりの粗利を増やすか」がカギです。',
-        ng: '惜しい！🤔 正解は「労働分配率」です。粗利のうち人件費が占める割合で、50〜60%が業種平均の目安です。'
-      }
-    };
+// ===== COMPLETION =====
+function showComp(){
+  document.getElementById('compBtn').style.display='none';
+  document.getElementById('compCard').style.display='block';
+  document.getElementById('nb5').classList.add('done');
+  window.scrollTo({top:document.getElementById('compCard').offsetTop-80,behavior:'smooth'});
+}
+function restartApp(){
+  for(let i=1;i<=5;i++){ document.getElementById('nb'+i).classList.remove('done','active'); }
+  document.getElementById('compCard').style.display='none';
+  document.getElementById('compBtn').style.display='block';
+  document.querySelectorAll('.q-opt').forEach(el=>{ el.classList.remove('ok','ng','dis'); });
+  document.querySelectorAll('.q-fb').forEach(el=>{ el.classList.remove('show','ok','ng'); el.innerHTML=''; });
+  document.querySelectorAll('.pl-detail').forEach(el=>el.classList.remove('show'));
+  // re-bind quiz
+  bindQuiz();
+  goStep(1);
+}
+function bindQuiz(){
+  const btns=document.querySelectorAll('.q-opt');
+  if(btns.length<11) return;
+  btns[0].onclick=function(){ ans(this,'q1',false); };
+  btns[1].onclick=function(){ ans(this,'q1',true); };
+  btns[2].onclick=function(){ ans(this,'q2',false); };
+  btns[3].onclick=function(){ ans(this,'q2',true); };
+  btns[4].onclick=function(){ ans(this,'q2',false); };
+  btns[5].onclick=function(){ ans(this,'q3',false); };
+  btns[6].onclick=function(){ ans(this,'q3',false); };
+  btns[7].onclick=function(){ ans(this,'q3',true); };
+  btns[8].onclick=function(){ ans(this,'q4',false); };
+  btns[9].onclick=function(){ ans(this,'q4',true); };
+  btns[10].onclick=function(){ ans(this,'q4',false); };
+}
 
-    if (correct) {
-      el.classList.add('correct');
-      fb.classList.add('ok');
-      fb.innerHTML = '✅ ' + feedbacks[qId].ok;
-    } else {
-      el.classList.add('wrong');
-      fb.classList.add('ng');
-      fb.innerHTML = '❌ ' + feedbacks[qId].ng;
-    }
-    quizResults[qId] = correct;
-  }
-
-  function toggleCheck(el) {
-    el.classList.toggle('checked');
-    el.textContent = el.classList.contains('checked') ? '✓' : '　';
-  }
-
-  function togglePL(id) {
-    const el = document.getElementById(id);
-    el.classList.toggle('show');
-  }
-
-  function showMeterDetail(id) {
-    const d = meterDetails[id];
-    const box = document.getElementById('meterDetail');
-    const content = document.getElementById('meterDetailContent');
-    content.innerHTML = `
-      <div class="card-title">
-        <div class="card-icon" style="background:#f3f4f6;font-size:20px;">${d.emoji}</div>
-        ${d.title}
-      </div>
-      <div style="font-size:14px;line-height:1.9;color:var(--text);">${d.content}</div>
-    `;
-    box.style.display = 'block';
-    box.style.borderLeft = `4px solid ${d.color}`;
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function showCompletion() {
-    document.getElementById('completeBtn').style.display = 'none';
-    document.getElementById('completionCard').style.display = 'block';
-    document.getElementById('bonusSection').style.display = 'block';
-    completedSteps.add(5);
-    document.getElementById('navBtn5').classList.add('done');
-    loadMemo();
-  }
-
-  function restart() {
-    completedSteps.clear();
-    for (let i = 1; i <= 5; i++) {
-      document.getElementById(`navBtn${i}`).classList.remove('done', 'active');
-    }
-    document.getElementById('completionCard').style.display = 'none';
-    document.getElementById('completeBtn').style.display = 'block';
-    document.getElementById('bonusSection').style.display = 'none';
-    document.querySelectorAll('.quiz-opt').forEach(el => {
-      el.classList.remove('correct','wrong','disabled');
-      el.onclick = null;
-    });
-    document.querySelectorAll('.quiz-feedback').forEach(el => {
-      el.classList.remove('show','ok','ng');
-      el.innerHTML = '';
-    });
-    bindQuizzes();
-    document.querySelectorAll('.pl-detail').forEach(el => el.classList.remove('show'));
-    document.getElementById('meterDetail').style.display = 'none';
-    gotoStep(1);
-  }
-
-  // ===== 自社診断 =====
-  function calcMyIndex() {
-    const v = id => parseFloat(document.getElementById(id).value) || 0;
-    const uriage = v('myUriage'), genka = v('myGenka'),
-          keijo = v('myKeijo'), jinken = v('myJinken'),
-          ryudoS = v('myRyudoShisan'), ryudoF = v('myRyudoFusai'),
-          junS = v('myJunShisan'), soS = v('mySoShisan');
-
-    if (uriage === 0) return;
-    document.getElementById('myResult').style.display = 'block';
-
-    const arari    = uriage > 0 ? ((uriage - genka) / uriage * 100) : null;
-    const keijoR   = uriage > 0 ? (keijo / uriage * 100) : null;
-    const arariAbs = uriage - genka;
-    const rodo     = arariAbs > 0 ? (jinken / arariAbs * 100) : null;
-    const ryudo    = ryudoF > 0 ? (ryudoS / ryudoF * 100) : null;
-    const jiko     = soS > 0 ? (junS / soS * 100) : null;
-
-    function setMeter(valId, statusId, val, good, warn, unit='%', reverse=false) {
-      const el = document.getElementById(valId);
-      const st = document.getElementById(statusId);
-      if (val === null || isNaN(val)) { el.textContent='－'; st.textContent='入力待ち'; st.className='meter-status'; return; }
-      el.textContent = val.toFixed(1) + unit;
-      let cls, txt;
-      if (!reverse) {
-        cls = val >= good ? 'status-ok' : val >= warn ? 'status-warn' : 'status-ng';
-        txt = val >= good ? '✅ 良好' : val >= warn ? '⚠️ 要注意' : '❌ 要改善';
-      } else {
-        cls = val <= good ? 'status-ok' : val <= warn ? 'status-warn' : 'status-ng';
-        txt = val <= good ? '✅ 良好' : val <= warn ? '⚠️ 要注意' : '❌ 要改善';
-      }
-      st.textContent = txt; st.className = 'meter-status ' + cls;
-    }
-
-    setMeter('r_arari',  'r_arari_s',  arari,  40,  20);
-    setMeter('r_keijo',  'r_keijo_s',  keijoR,  5,   2);
-    setMeter('r_rodo',   'r_rodo_s',   rodo,   60,  75, '%', true);
-    setMeter('r_ryudo',  'r_ryudo_s',  ryudo, 120, 100);
-    setMeter('r_jiko',   'r_jiko_s',   jiko,   30,  15);
-
-    // コメント生成
-    const comments = [];
-    if (keijoR !== null && keijoR < 2)  comments.push('経常利益率が2%未満です。費用の見直しと価格戦略の検討をおすすめします。');
-    if (rodo !== null && rodo > 75)      comments.push('労働分配率が高めです。粗利を増やす（値上げ・高付加価値化）ことで賃上げの余裕が生まれます。');
-    if (ryudo !== null && ryudo < 120)   comments.push('流動比率が低めです。短期的な支払能力に注意が必要です。早めに税理士に相談しましょう。');
-    if (jiko !== null && jiko < 15)      comments.push('自己資本比率が低めです。銀行評価に影響します。利益を内部留保に回す意識が大切です。');
-    if (arari !== null && arari >= 40 && keijoR !== null && keijoR >= 5) comments.push('粗利率・経常利益率ともに良好です！この水準を維持しながら、さらなる成長を目指しましょう。');
-
-    const cEl = document.getElementById('myComment');
-    if (comments.length > 0) {
-      cEl.innerHTML = '<strong>💡 あなたの会社へのアドバイス</strong><br>' + comments.join('<br>');
-      cEl.style.display = 'block';
-    } else {
-      cEl.style.display = 'none';
-    }
-  }
-
-  // ===== メモ機能 =====
-  function saveMemo(key, val) {
-    localStorage.setItem('kessan_' + key, val);
-  }
-  function loadMemo() {
-    ['memo_bs','memo_pl','memo_cash','memo_action'].forEach(k => {
-      const el = document.getElementById(k);
-      if (el) el.value = localStorage.getItem('kessan_' + k) || '';
-    });
-  }
-  function clearMemo() {
-    if (!confirm('メモをすべて削除しますか？')) return;
-    ['memo_bs','memo_pl','memo_cash','memo_action'].forEach(k => {
-      localStorage.removeItem('kessan_' + k);
-      const el = document.getElementById(k);
-      if (el) el.value = '';
-    });
-  }
-  function printMemo() {
-    const bs     = document.getElementById('memo_bs').value || '（未記入）';
-    const pl     = document.getElementById('memo_pl').value || '（未記入）';
-    const cash   = document.getElementById('memo_cash').value || '（未記入）';
-    const action = document.getElementById('memo_action').value || '（未記入）';
-    const w = window.open('', '_blank');
-    w.document.write(`
-      <html><head><meta charset="UTF-8">
-      <title>決算書マスター 学習メモ</title>
-      <style>
-        body{font-family:'Noto Sans JP',sans-serif;max-width:700px;margin:40px auto;padding:0 20px;color:#1a2744;}
-        h1{font-size:20px;border-bottom:3px solid #c8962a;padding-bottom:8px;margin-bottom:24px;}
-        h2{font-size:15px;background:#1a2744;color:white;padding:8px 14px;border-radius:6px;margin-top:24px;}
-        p{font-size:14px;line-height:1.9;white-space:pre-wrap;background:#f8fafc;padding:14px;border-radius:8px;margin-top:8px;}
-        .footer{margin-top:40px;font-size:12px;color:#6b7280;text-align:center;}
-      </style></head><body>
-      <h1>📊 決算書マスター｜学習メモ</h1>
-      <h2>貸借対照表（BS）について</h2><p>${bs}</p>
-      <h2>損益計算書（PL）と経常利益について</h2><p>${pl}</p>
-      <h2>利益と現金の違いについて</h2><p>${cash}</p>
-      <h2>自社の課題とこれからやること</h2><p>${action}</p>
-      <div class="footer">決算書マスター｜${new Date().toLocaleDateString('ja-JP')} 印刷</div>
-      </body></html>`);
-    w.document.close();
-    w.print();
-  }
-
-  function bindQuizzes() {
-    const btns = document.querySelectorAll('.quiz-opt');
-    btns[0].onclick = function(){ answer(this,'q1',false); };
-    btns[1].onclick = function(){ answer(this,'q1',true); };
-    btns[2].onclick = function(){ answer(this,'q2',false); };
-    btns[3].onclick = function(){ answer(this,'q2',true); };
-    btns[4].onclick = function(){ answer(this,'q2',false); };
-    btns[5].onclick = function(){ answer(this,'q3',false); };
-    btns[6].onclick = function(){ answer(this,'q3',false); };
-    btns[7].onclick = function(){ answer(this,'q3',true); };
-    btns[8].onclick = function(){ answer(this,'q4',false); };
-    btns[9].onclick = function(){ answer(this,'q4',true); };
-    btns[10].onclick = function(){ answer(this,'q4',false); };
-  }
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded',()=>{
+  loadSettings();
+  loadMemo();
+  initTrial();
+});
 </script>
 </body>
 </html>
