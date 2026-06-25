@@ -1813,6 +1813,182 @@
     </div>
   </div>
 
+  <!-- ===== 追加3セクション ===== -->
+  <div id="bonusSection" style="display:none;">
+
+    <!-- 1️⃣ 自社チェックシート -->
+    <div class="section-title" style="margin-top:48px;">自社の数字を入れてみよう</div>
+    <div class="section-sub">決算書の数字を入力すると、自社の健康診断ができます</div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:#dbeafe;">🏢</div>
+        自社 経営指標 簡易診断シート
+      </div>
+      <div style="font-size:13px;color:var(--text-light);margin-bottom:16px;">直近の決算書を手元に用意して入力してください（単位：万円）</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">売上高（万円）</label>
+          <input type="number" id="myUriage" class="setting-input" placeholder="例：5000" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">売上原価（万円）</label>
+          <input type="number" id="myGenka" class="setting-input" placeholder="例：1500" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">経常利益（万円）</label>
+          <input type="number" id="myKeijo" class="setting-input" placeholder="例：300" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">人件費（万円）</label>
+          <input type="number" id="myJinken" class="setting-input" placeholder="例：800" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">流動資産（万円）</label>
+          <input type="number" id="myRyudoShisan" class="setting-input" placeholder="例：1800" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">流動負債（万円）</label>
+          <input type="number" id="myRyudoFusai" class="setting-input" placeholder="例：800" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">純資産（万円）</label>
+          <input type="number" id="myJunShisan" class="setting-input" placeholder="例：1500" oninput="calcMyIndex()">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;">総資産（万円）</label>
+          <input type="number" id="mySoShisan" class="setting-input" placeholder="例：3500" oninput="calcMyIndex()">
+        </div>
+      </div>
+
+      <!-- 診断結果 -->
+      <div id="myResult" style="display:none;">
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:12px;padding-top:12px;border-top:1px solid #e5e7eb;">📊 あなたの会社の診断結果</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="meter-card" style="cursor:default;">
+            <div class="meter-label">粗利率</div>
+            <div class="meter-value" id="r_arari" style="font-size:24px;">－</div>
+            <div class="meter-bench">目安：業種平均と比較を</div>
+            <div class="meter-status" id="r_arari_s">入力待ち</div>
+          </div>
+          <div class="meter-card" style="cursor:default;">
+            <div class="meter-label">売上高経常利益率</div>
+            <div class="meter-value" id="r_keijo" style="font-size:24px;">－</div>
+            <div class="meter-bench">目安：3%以上◎</div>
+            <div class="meter-status" id="r_keijo_s">入力待ち</div>
+          </div>
+          <div class="meter-card" style="cursor:default;">
+            <div class="meter-label">労働分配率</div>
+            <div class="meter-value" id="r_rodo" style="font-size:24px;">－</div>
+            <div class="meter-bench">目安：60%以下◎</div>
+            <div class="meter-status" id="r_rodo_s">入力待ち</div>
+          </div>
+          <div class="meter-card" style="cursor:default;">
+            <div class="meter-label">流動比率</div>
+            <div class="meter-value" id="r_ryudo" style="font-size:24px;">－</div>
+            <div class="meter-bench">目安：120%以上◎</div>
+            <div class="meter-status" id="r_ryudo_s">入力待ち</div>
+          </div>
+          <div class="meter-card" style="cursor:default;grid-column:1/-1;">
+            <div class="meter-label">自己資本比率</div>
+            <div class="meter-value" id="r_jiko" style="font-size:24px;">－</div>
+            <div class="meter-bench">目安：30%以上◎</div>
+            <div class="meter-status" id="r_jiko_s">入力待ち</div>
+          </div>
+        </div>
+        <div id="myComment" style="margin-top:16px;padding:16px;background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;font-size:13px;line-height:1.9;display:none;"></div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ 税理士への質問テンプレート -->
+    <div class="section-title" style="margin-top:40px;">税理士への質問テンプレート</div>
+    <div class="section-sub">次回の面談でそのままコピーして使えます</div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:#d1fae5;">💬</div>
+        面談でそのまま使える5つの質問
+      </div>
+      <div style="font-size:13px;color:var(--text-light);margin-bottom:16px;">チェックボックスで使った質問を管理できます</div>
+      <ul class="check-list">
+        <li class="check-item">
+          <div class="check-box" onclick="toggleCheck(this)">　</div>
+          <div class="check-text">
+            <strong>Q1. 経常利益について</strong>
+            「先生、今期の経常利益は前期と比べていかがでしょうか？変化の主な原因を教えていただけますか？」
+          </div>
+        </li>
+        <li class="check-item">
+          <div class="check-box" onclick="toggleCheck(this)">　</div>
+          <div class="check-text">
+            <strong>Q2. 粗利率について</strong>
+            「売上高は増えていますが、粗利率は維持できていますか？原価率が上がっている場合、どう対処すべきでしょうか？」
+          </div>
+        </li>
+        <li class="check-item">
+          <div class="check-box" onclick="toggleCheck(this)">　</div>
+          <div class="check-text">
+            <strong>Q3. 労働分配率について</strong>
+            「人件費の労働分配率は何%でしょうか？賃上げを検討しているのですが、どのくらいの粗利増加が必要か教えてください。」
+          </div>
+        </li>
+        <li class="check-item">
+          <div class="check-box" onclick="toggleCheck(this)">　</div>
+          <div class="check-text">
+            <strong>Q4. 自己資本比率について</strong>
+            「自己資本比率は現在何%ですか？銀行からの評価という観点でいかがでしょうか？」
+          </div>
+        </li>
+        <li class="check-item">
+          <div class="check-box" onclick="toggleCheck(this)">　</div>
+          <div class="check-text">
+            <strong>Q5. 現金とキャッシュフローについて</strong>
+            「利益は出ているのに現金が増えない気がするのですが、どこにお金が使われているか一緒に確認していただけますか？」
+          </div>
+        </li>
+      </ul>
+      <div style="margin-top:16px;padding:14px;background:#f8fafc;border-radius:10px;font-size:13px;color:var(--text-light);line-height:1.8;">
+        💡 これらの質問を自分の言葉で聞けるようになったとき、あなたは本当の意味で「数字で語れる経営者」です。
+      </div>
+    </div>
+
+    <!-- 3️⃣ 自分の言葉メモ欄 -->
+    <div class="section-title" style="margin-top:40px;">自分の言葉でまとめるメモ</div>
+    <div class="section-sub">書くことで記憶が定着します。自由に入力してください</div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:#f3e8ff;">✏️</div>
+        学んだことを自分の言葉で書いてみよう
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">📊 貸借対照表（BS）について、自分なりの理解</label>
+          <textarea class="setting-input" rows="3" placeholder="例：左側が持っているもの、右側がどうやってお金を集めたか。マイホームと同じ考え方！" style="resize:vertical;" oninput="saveMemo('memo_bs',this.value)" id="memo_bs"></textarea>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">📈 損益計算書（PL）と経常利益について</label>
+          <textarea class="setting-input" rows="3" placeholder="例：5つの利益の中で経常利益が一番大事。銀行も税理士もここを見る。特別利益で数字が変わるから純利益だけ見てはダメ。" style="resize:vertical;" oninput="saveMemo('memo_pl',this.value)" id="memo_pl"></textarea>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">💰 利益と現金の違いについて</label>
+          <textarea class="setting-input" rows="3" placeholder="例：利益が出ても設備投資や売掛金増加で現金は減る。BSとPLを両方見ないと本当のことがわからない。" style="resize:vertical;" oninput="saveMemo('memo_cash',this.value)" id="memo_cash"></textarea>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:6px;">🎯 自社の課題と、これからやること</label>
+          <textarea class="setting-input" rows="4" placeholder="例：まず税理士に月次試算表をお願いする。3期分の経常利益を並べて推移を確認する。労働分配率が60%を超えているので粗利を増やす方法を考える。" style="resize:vertical;" oninput="saveMemo('memo_action',this.value)" id="memo_action"></textarea>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="setting-save-btn" onclick="printMemo()" style="flex:1;">🖨️ メモを印刷する</button>
+        <button class="setting-reset-btn" onclick="clearMemo()" style="flex:0 0 auto;padding:14px 20px;">🗑️ クリア</button>
+      </div>
+      <div style="font-size:12px;color:var(--text-light);margin-top:8px;text-align:center;">メモはブラウザに自動保存されます</div>
+    </div>
+
+  </div><!-- /bonusSection -->
+
   <div class="nav-btns" style="border-top:none;">
     <button class="btn btn-outline" onclick="prevStep(5)">← 前へ</button>
     <div></div>
@@ -2182,8 +2358,10 @@
   function showCompletion() {
     document.getElementById('completeBtn').style.display = 'none';
     document.getElementById('completionCard').style.display = 'block';
+    document.getElementById('bonusSection').style.display = 'block';
     completedSteps.add(5);
     document.getElementById('navBtn5').classList.add('done');
+    loadMemo();
   }
 
   function restart() {
@@ -2193,8 +2371,7 @@
     }
     document.getElementById('completionCard').style.display = 'none';
     document.getElementById('completeBtn').style.display = 'block';
-
-    // reset quizzes
+    document.getElementById('bonusSection').style.display = 'none';
     document.querySelectorAll('.quiz-opt').forEach(el => {
       el.classList.remove('correct','wrong','disabled');
       el.onclick = null;
@@ -2203,12 +2380,112 @@
       el.classList.remove('show','ok','ng');
       el.innerHTML = '';
     });
-    // re-bind quiz clicks
     bindQuizzes();
-
     document.querySelectorAll('.pl-detail').forEach(el => el.classList.remove('show'));
     document.getElementById('meterDetail').style.display = 'none';
     gotoStep(1);
+  }
+
+  // ===== 自社診断 =====
+  function calcMyIndex() {
+    const v = id => parseFloat(document.getElementById(id).value) || 0;
+    const uriage = v('myUriage'), genka = v('myGenka'),
+          keijo = v('myKeijo'), jinken = v('myJinken'),
+          ryudoS = v('myRyudoShisan'), ryudoF = v('myRyudoFusai'),
+          junS = v('myJunShisan'), soS = v('mySoShisan');
+
+    if (uriage === 0) return;
+    document.getElementById('myResult').style.display = 'block';
+
+    const arari    = uriage > 0 ? ((uriage - genka) / uriage * 100) : null;
+    const keijoR   = uriage > 0 ? (keijo / uriage * 100) : null;
+    const arariAbs = uriage - genka;
+    const rodo     = arariAbs > 0 ? (jinken / arariAbs * 100) : null;
+    const ryudo    = ryudoF > 0 ? (ryudoS / ryudoF * 100) : null;
+    const jiko     = soS > 0 ? (junS / soS * 100) : null;
+
+    function setMeter(valId, statusId, val, good, warn, unit='%', reverse=false) {
+      const el = document.getElementById(valId);
+      const st = document.getElementById(statusId);
+      if (val === null || isNaN(val)) { el.textContent='－'; st.textContent='入力待ち'; st.className='meter-status'; return; }
+      el.textContent = val.toFixed(1) + unit;
+      let cls, txt;
+      if (!reverse) {
+        cls = val >= good ? 'status-ok' : val >= warn ? 'status-warn' : 'status-ng';
+        txt = val >= good ? '✅ 良好' : val >= warn ? '⚠️ 要注意' : '❌ 要改善';
+      } else {
+        cls = val <= good ? 'status-ok' : val <= warn ? 'status-warn' : 'status-ng';
+        txt = val <= good ? '✅ 良好' : val <= warn ? '⚠️ 要注意' : '❌ 要改善';
+      }
+      st.textContent = txt; st.className = 'meter-status ' + cls;
+    }
+
+    setMeter('r_arari',  'r_arari_s',  arari,  40,  20);
+    setMeter('r_keijo',  'r_keijo_s',  keijoR,  5,   2);
+    setMeter('r_rodo',   'r_rodo_s',   rodo,   60,  75, '%', true);
+    setMeter('r_ryudo',  'r_ryudo_s',  ryudo, 120, 100);
+    setMeter('r_jiko',   'r_jiko_s',   jiko,   30,  15);
+
+    // コメント生成
+    const comments = [];
+    if (keijoR !== null && keijoR < 2)  comments.push('経常利益率が2%未満です。費用の見直しと価格戦略の検討をおすすめします。');
+    if (rodo !== null && rodo > 75)      comments.push('労働分配率が高めです。粗利を増やす（値上げ・高付加価値化）ことで賃上げの余裕が生まれます。');
+    if (ryudo !== null && ryudo < 120)   comments.push('流動比率が低めです。短期的な支払能力に注意が必要です。早めに税理士に相談しましょう。');
+    if (jiko !== null && jiko < 15)      comments.push('自己資本比率が低めです。銀行評価に影響します。利益を内部留保に回す意識が大切です。');
+    if (arari !== null && arari >= 40 && keijoR !== null && keijoR >= 5) comments.push('粗利率・経常利益率ともに良好です！この水準を維持しながら、さらなる成長を目指しましょう。');
+
+    const cEl = document.getElementById('myComment');
+    if (comments.length > 0) {
+      cEl.innerHTML = '<strong>💡 あなたの会社へのアドバイス</strong><br>' + comments.join('<br>');
+      cEl.style.display = 'block';
+    } else {
+      cEl.style.display = 'none';
+    }
+  }
+
+  // ===== メモ機能 =====
+  function saveMemo(key, val) {
+    localStorage.setItem('kessan_' + key, val);
+  }
+  function loadMemo() {
+    ['memo_bs','memo_pl','memo_cash','memo_action'].forEach(k => {
+      const el = document.getElementById(k);
+      if (el) el.value = localStorage.getItem('kessan_' + k) || '';
+    });
+  }
+  function clearMemo() {
+    if (!confirm('メモをすべて削除しますか？')) return;
+    ['memo_bs','memo_pl','memo_cash','memo_action'].forEach(k => {
+      localStorage.removeItem('kessan_' + k);
+      const el = document.getElementById(k);
+      if (el) el.value = '';
+    });
+  }
+  function printMemo() {
+    const bs     = document.getElementById('memo_bs').value || '（未記入）';
+    const pl     = document.getElementById('memo_pl').value || '（未記入）';
+    const cash   = document.getElementById('memo_cash').value || '（未記入）';
+    const action = document.getElementById('memo_action').value || '（未記入）';
+    const w = window.open('', '_blank');
+    w.document.write(`
+      <html><head><meta charset="UTF-8">
+      <title>決算書マスター 学習メモ</title>
+      <style>
+        body{font-family:'Noto Sans JP',sans-serif;max-width:700px;margin:40px auto;padding:0 20px;color:#1a2744;}
+        h1{font-size:20px;border-bottom:3px solid #c8962a;padding-bottom:8px;margin-bottom:24px;}
+        h2{font-size:15px;background:#1a2744;color:white;padding:8px 14px;border-radius:6px;margin-top:24px;}
+        p{font-size:14px;line-height:1.9;white-space:pre-wrap;background:#f8fafc;padding:14px;border-radius:8px;margin-top:8px;}
+        .footer{margin-top:40px;font-size:12px;color:#6b7280;text-align:center;}
+      </style></head><body>
+      <h1>📊 決算書マスター｜学習メモ</h1>
+      <h2>貸借対照表（BS）について</h2><p>${bs}</p>
+      <h2>損益計算書（PL）と経常利益について</h2><p>${pl}</p>
+      <h2>利益と現金の違いについて</h2><p>${cash}</p>
+      <h2>自社の課題とこれからやること</h2><p>${action}</p>
+      <div class="footer">決算書マスター｜${new Date().toLocaleDateString('ja-JP')} 印刷</div>
+      </body></html>`);
+    w.document.close();
+    w.print();
   }
 
   function bindQuizzes() {
