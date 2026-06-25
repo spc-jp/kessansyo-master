@@ -409,22 +409,22 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">中小企業経営者向け 学習ツール</div>
+  <div class="hero-badge">中小企業経営者向け 学習・実務ツール</div>
   <h1>決算書を<span>自分の言葉</span>で<br>語れる経営者になる</h1>
-  <p>税理士に丸投げしない。数字で会社を守るための<br>5ステップ完全マスター</p>
+  <p>最初の1回：ステップ①〜③で基礎を学ぶ<br>毎年使う：④で自社診断　面談前に：⑤で質問を準備する</p>
   <div class="prog-wrap">
-    <div class="prog-lbl" id="progLbl">STEP 1 / 5 ── 決算書の全体像</div>
+    <div class="prog-lbl" id="progLbl">STEP 1 / 5 ── 基礎を学ぶ</div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:20%"></div></div>
   </div>
 </div>
 
 <!-- STEP NAV -->
 <div class="step-nav">
-  <button class="snav-btn active" onclick="goStep(1)" id="nb1">① 全体像</button>
+  <button class="snav-btn active" onclick="goStep(1)" id="nb1">① 基礎を学ぶ</button>
   <button class="snav-btn" onclick="goStep(2)" id="nb2">② 貸借対照表</button>
   <button class="snav-btn" onclick="goStep(3)" id="nb3">③ 損益計算書</button>
-  <button class="snav-btn" onclick="goStep(4)" id="nb4">④ 自社診断</button>
-  <button class="snav-btn" onclick="goStep(5)" id="nb5">⑤ アクション</button>
+  <button class="snav-btn" onclick="goStep(4)" id="nb4">④ 毎年の自社診断</button>
+  <button class="snav-btn" onclick="goStep(5)" id="nb5">⑤ 面談前に開く</button>
 </div>
 
 <div class="container">
@@ -460,13 +460,13 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
     </table>
   </div>
 
-  <div class="card">
-    <div class="card-title"><div class="cico" style="background:#fef3c7;">⚠️</div>「知らない」と損する3つの場面</div>
-    <div style="font-size:14px;line-height:2.1;">
+  <div class="highlight">
+    <h3>⚠️ 読めないと、こんな場面で損をします</h3>
+    <p>
       🏦 <strong>銀行融資の交渉</strong>｜「御社の自己資本比率は？」と聞かれて答えられない経営者は信頼されません。<br>
       📉 <strong>黒字倒産を防ぐ</strong>｜「利益が出てるのになぜか現金がない」は決算書を読めば原因がわかります。<br>
       💬 <strong>税理士との会話</strong>｜「先生にお任せ」のままでは、自社の本当の課題に気づけません。
-    </div>
+    </p>
   </div>
 
   <div class="quiz-box">
@@ -672,12 +672,16 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 
 <!-- ====== STEP 4 ====== -->
 <div class="step-panel" id="step4">
-  <div class="sec-title">自社の数字で経営指標を診断</div>
-  <div class="sec-sub">決算書の数字を入力するだけ。自社の健康診断ができます</div>
+  <div class="sec-title">毎年の自社診断シート</div>
+  <div class="sec-sub">決算書が届いたら、ここを開いて数字を入力してください。毎年更新することで会社の変化が見えてきます</div>
 
-  <div class="analogy">
-    <strong>🩺 健診の数値と同じです</strong>
-    血圧・血糖値・コレステロール…「高め」「正常」「要治療」と判定されるように、会社にも「目安の数値」があります。自社の決算書を手元に用意して入力してみましょう！
+  <div class="highlight">
+    <h3>📅 このステップは「毎年使う」ものです</h3>
+    <p>
+      ステップ①〜③は最初の1回でしっかり学べば十分です。<br>
+      このステップ④は、<strong>決算書が届くたびに開いて入力し直してください。</strong><br>
+      去年と今年を比べることで、会社の本当の変化が初めてわかります。
+    </p>
   </div>
 
   <div class="card">
@@ -749,8 +753,17 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 
 <!-- ====== STEP 5 ====== -->
 <div class="step-panel" id="step5">
-  <div class="sec-title">これからどうすればいい？</div>
-  <div class="sec-sub">「知識」を「行動」に変えるアクションプラン</div>
+  <div class="sec-title">税理士面談の前に開くページ</div>
+  <div class="sec-sub">面談のたびにここを開いて準備する。それだけで「数字で語れる経営者」になれます</div>
+
+  <div class="highlight">
+    <h3>💬 このステップは「面談前に毎回開く」ものです</h3>
+    <p>
+      質問テンプレートを見て、自分が聞きたいことを確認してから面談へ。<br>
+      メモ欄には気づいたことを書き足していく。<br>
+      <strong>積み上げるたびに、経営者としての言葉が磨かれていきます。</strong>
+    </p>
+  </div>
 
   <div class="card">
     <div class="card-title"><div class="cico" style="background:#d1fae5;">📋</div>毎月の数字チェック習慣</div>
@@ -938,7 +951,7 @@ function setTheme(g,gl,n){ document.documentElement.style.setProperty('--gold',g
 
 // ===== STEP NAV =====
 let cur=1;
-const labels=['全体像','貸借対照表','損益計算書','自社診断','アクション'];
+const labels=['基礎を学ぶ','貸借対照表','損益計算書','毎年の自社診断','面談前に開く'];
 function goStep(n) {
   document.getElementById('step'+cur).classList.remove('active');
   document.getElementById('nb'+cur).classList.remove('active');
